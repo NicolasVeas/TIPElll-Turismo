@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/login', (req, res) => {
-    res.render('login.ejs');
-});
-
 router.get('/', (req, res) => {
     req.getConnection((err, conn) =>{
         conn.query('SELECT * FROM customer', (err, customers) => {

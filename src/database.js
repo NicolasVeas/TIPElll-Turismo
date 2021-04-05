@@ -3,19 +3,26 @@ const path = require('path');
 const morgan = require('morgan');
 const mysql = require('mysql');
 const myConnection = require('express-myconnection');
-
 const app = express();
 
-//  importing routes
+//  Importando rutas
 const customerRout = require('./routes/customer');
+const loginRout = require('./routes/login');
 const { urlencoded } = require('express');
 
-// settings
+//  Rutas
+app.use('/', customerRout);
+app.use('/', loginRout);
+
+// Configuraciones
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'view'));
 
-//  middlewares
+// Archivos estaticos
+app.use(express.static(path.join(__dirname, 'static')));
+
+//  Middlewares
 app.use(morgan('dev'));
 app.use(myConnection(mysql, {
     host: 'localhost',
@@ -26,13 +33,7 @@ app.use(myConnection(mysql, {
 }, 'single'));
 app.use(express.urlencoded({extended:false}));
 
-//  routes
-app.use('/', customerRout);
-
-// static files
-app.use(express.static(path.join(__dirname, 'static')));
-
-//  startin the server
+//  Iniciando el servidor
 app.listen(app.get('port'), () => {
     console.log('Server on port 3000');
 });
