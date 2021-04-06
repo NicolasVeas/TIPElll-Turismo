@@ -61,7 +61,7 @@ nav{
         display: block;
     }
     .menu{
-        position: fixed;
+        position: absolute;
         width: 50%;
         height: 100vh;
         background: #2c3e50;

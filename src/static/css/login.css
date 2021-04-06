@@ -6,11 +6,6 @@
     text-transform: uppercase;
     cursor: pointer;
 }
-.iniciar-btn{
-    position: absolute;
-    top: 25px;
-    right: 15%;
-}
 
 .iniciar-btn:hover{
     color: #1abc9c;
@@ -148,5 +143,31 @@ form .registro a:hover{
 .logo{
     position: absolute;
     top: 25px;
-    left: 10%;
+    left: 100px;
+}
+
+@media screen and (max-width:1200px) {
+    .logo{
+        position: absolute;
+        top: 25px;
+        left: 6%;
+    }
+    .iniciar-btn{
+        position: absolute;
+        top: 25px;
+        right: 4.5%;
+    }
+}
+
+@media screen and (min-width:1000px) {
+    .logo{
+        position: absolute;
+        top: 25px;
+        left: 14%;
+    }
+    .iniciar-btn{
+        position: absolute;
+        top: 25px;
+        right: 14.5%;
+    }
 }
