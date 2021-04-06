@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/customer', (req, res) => {
     req.getConnection((err, conn) =>{
         conn.query('SELECT * FROM customer', (err, customers) => {
             if (err) {

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HOME</title>
+        <link rel='stylesheet' type='text/css' href='/css/styles.css'/>
+        <link rel='stylesheet' type='text/css' href='/css/nav.css'/>
+        <link rel='stylesheet' type='text/css' href='/css/login.css'/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+    </head>
+    <body>
+        
+        <!-- Inicio de sesión -->
+        <header>
+            <div class="center">
+                <a href="" class="logo"><img class="img-fluid" src="/img/icon.png"/></a>
+                <input type="checkbox" id="show">
+                <label for="show" class="iniciar-btn">Iniciar sesión</label>
+                <div class="container-log">
+                    <label for="show" class="close-btn fas fa-times"></label>
+                    <div class="text">Iniciar sesión</div>
+                    <form action="#">
+                        <div class="data">
+                            <label>e-Mail</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="data">
+                            <label>Contraseña</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="recuperarContra"><a href="#">Recuperar contraseña</a></div>
+                        <div class="btn">
+                            <div class="inner"></div>
+                            <button type="submit">Ingresar</button>
+                        </div>
+                        <div class="registro"><a href="#">Crear una cuenta</a></div>
+                    </form>
+                </div>
+            </div>
+        </header>
+
+        <!-- Barra de navegación -->
+        <nav>
+            <input type="checkbox" id="chk">
+            <label for="chk" class="show-menu-btn">
+                <i class="fas fa-ellipsis-h"></i>
+            </label>
+          
+            <ul class="menu">
+                <a href="">INICIO</a>
+                <a href="#">SERVICIOS TURÍSTICOS</a>
+                <a href="#">ATRACTIVOS TURÍSTICOS</a>
+                <a href="#">ACTIVIDADES</a>
+                <a href="#">NUESTRA CIUDAD</a>
+                <label for="chk" class="hide-menu-btn">
+                    <i class="fas fa-times"></i>
+                </label>
+            </ul>
+        </nav>
+
+    </body>
+</html>

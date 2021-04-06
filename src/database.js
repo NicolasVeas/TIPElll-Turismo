@@ -4,15 +4,7 @@ const morgan = require('morgan');
 const mysql = require('mysql');
 const myConnection = require('express-myconnection');
 const app = express();
-
-//  Importando rutas
-const customerRout = require('./routes/customer');
-const loginRout = require('./routes/login');
 const { urlencoded } = require('express');
-
-//  Rutas
-app.use('/', customerRout);
-app.use('/', loginRout);
 
 // Configuraciones
 app.set('port', process.env.PORT || 3000);
@@ -32,6 +24,10 @@ app.use(myConnection(mysql, {
     database: 'tipe'
 }, 'single'));
 app.use(express.urlencoded({extended:false}));
+
+//  Rutas
+app.use('/', require('./routes/home'));         // página principal
+app.use('/', require('./routes/customer'));
 
 //  Iniciando el servidor
 app.listen(app.get('port'), () => {
