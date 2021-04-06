@@ -6,7 +6,7 @@
 @media screen and (max-width:1200px) {
     .slidershow{
         width: 95%;
-        height: 55%;
+        height: 65%;
         overflow: hidden;
         z-index: -2;
     }
@@ -15,7 +15,7 @@
 @media screen and (min-width:1000px) {
     .slidershow{
         width: 75%;
-        height: 60%;
+        height: 70%;
         overflow: hidden;
         z-index: -2;
     }
