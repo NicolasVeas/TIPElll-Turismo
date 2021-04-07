@@ -29,7 +29,11 @@ nav{
     line-height: 100px;
     color: #fff;
 }
-.menu a:hover,
+.menu a:hover{
+    background: #1abc9c;
+    color: #fff;
+    border-radius: 5px;
+}
 .show-menu-btn:hover,
 .show-menu-btn i:hover,
 .hide-menu-btn:hover{
@@ -78,7 +82,7 @@ nav{
     }
     .hide-menu-btn{
         position: absolute;
-        top: 40px;
+        top: 30px;
         right: 40px;
     }
     #chk:checked ~ .menu{

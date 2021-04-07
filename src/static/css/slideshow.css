@@ -6,16 +6,16 @@
 @media screen and (max-width:1200px) {
     .slidershow{
         width: 95%;
-        height: 65%;
+        height: 55%;
         overflow: hidden;
         z-index: -2;
     }
 }
 
-@media screen and (min-width:1000px) {
+@media screen and (min-width:900px) {
     .slidershow{
         width: 75%;
-        height: 70%;
+        height: 60%;
         overflow: hidden;
         z-index: -2;
     }

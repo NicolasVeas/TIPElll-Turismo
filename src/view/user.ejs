@@ -1,0 +1,73 @@
+<%- include ('partials/_header')  %>
+
+    <body>
+        
+        <!-- Inicio de sesión -->
+        <header>
+            <div class="center">
+                <a href="" class="logo"><img class="img-fluid" src="/img/icon.png"/></a>
+                <input type="checkbox" id="show">
+                <a class="iniciar-btn" href="/">Cerrar sesión</a>
+                <button class="servicios-btn"><a href="">Mis servicios</a></button>
+            </div>
+        </header>
+
+        <!-- Barra de navegación -->
+        <nav>
+            <input type="checkbox" id="chk">
+            <label for="chk" class="show-menu-btn">
+                <i class="fas fa-ellipsis-h"></i>
+            </label>
+          
+            <ul class="menu">
+                <a href="">INICIO</a>
+                <a href="#">SERVICIOS TURÍSTICOS</a>
+                <a href="#">ATRACTIVOS TURÍSTICOS</a>
+                <a href="#">ACTIVIDADES</a>
+                <a href="#">NUESTRA CIUDAD</a>
+                <label for="chk" class="hide-menu-btn">
+                    <i class="fas fa-times"></i>
+                </label>
+            </ul>
+        </nav>
+
+        <section class="servicios" id=""> 
+            <div class="cont-serv">
+                <h2>Mis servicios</h2>
+                <div class="divisor">
+                    <div class="divisor-linea"></div>
+                    <div class="divisor-icon"><i class="fas fa-concierge-bell"></i></div>
+                    <div class="divisor-linea"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="cont-serv">
+                            <h3>Servicio 1</h3>
+                            <a href="#"><i class="fas fa-edit"></i></a>
+                        </div>
+                        <div class="divisor">
+                            <div class="divisor-linea"></div>
+                        </div>
+                        <div class="item-serv" data-target="">
+                            <img class="img-fluid" src="/img/Museo San Antonio.png"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="cont-serv">
+                            <h3>Servicio 1</h3>
+                            <a href="#"><i class="fas fa-edit"></i></a>
+                        </div>
+                        <div class="divisor">
+                            <div class="divisor-linea"></div>
+                        </div>
+                        <div class="item-serv" data-target="">
+                            <img class="img-fluid" src="/img/Museo San Antonio.png"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </body>
+</html>

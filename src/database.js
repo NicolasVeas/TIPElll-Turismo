@@ -28,6 +28,7 @@ app.use(express.urlencoded({extended:false}));
 //  Rutas
 app.use('/', require('./routes/home'));         // página principal
 app.use('/', require('./routes/customer'));
+app.use('/', require('./routes/user'));
 
 //  Iniciando el servidor
 app.listen(app.get('port'), () => {
