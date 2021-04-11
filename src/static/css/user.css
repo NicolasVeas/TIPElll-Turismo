@@ -33,38 +33,6 @@
     margin-top: 10px;
 }
 
-.cont-serv{
-    padding-top: 20px;
-    width: 100%;
-}
-
-.cont-serv h2{
-    font-size: 2rem;
-    text-align: center;
-    text-transform: uppercase;
-    color: #2c3e50;
-}
-
-.cont-serv h3{
-    text-align: center;
-    color: #2c3e50;
-    font-weight: 700;
-    font-size: 1.5rem;
-    orphans: 3;
-    widows: 3;
-    page-break-after: avoid;
-}
-
-.cont-serv p{
-    margin-top: 0;
-    margin-bottom: 1rem;
-    text-align: center;
-    color: #2c3e50;
-}
-
-
-/* ******************* */
-
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -73,7 +41,16 @@
     justify-content: center;
 }
 
-.col-md-6 {
+.row a{
+    position: absolute;
+    right: 45px;
+    top: 21px;
+    color: #2c3e50;
+    font-size: 1.5rem;
+
+}
+
+.col-servicio {
     position: relative;
     padding-right: 1.5rem;
     padding-left: 1.5rem;
@@ -82,24 +59,23 @@
     max-width: 50%;
 }
 
-.item-serv {
-    margin-right: auto;
-    margin-left: auto
-  }
+.contex{
+    position: relative;
+    z-index: -1;
+}
 
-.img-fluid {
+.cont-serv{
+    padding-top: 20px;
+    width: 100%;
+}
+
+.img-div {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.img-cont {
     border-radius: 0.5rem;
     max-width: 100%;
     height: auto;
-}
-
-.cont-serv a{
-    position: absolute;
-    right: 35px;
-    top: 20px;
-    color: #2c3e50;
-}
-
-.cont-serv a i{
-    font-size: 1.5rem;
 }

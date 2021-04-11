@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>HOME</title>
-        <link rel='stylesheet' type='text/css' href='/css/styles.css'/>
-        <link rel='stylesheet' type='text/css' href='/css/nav.css'/>
-        <link rel='stylesheet' type='text/css' href='/css/login.css'/>
-        <link rel='stylesheet' type='text/css' href='/css/slideshow.css'/>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-    </head>
+<%- include ('partials/_header')  %>
+
     <body>
         
         <!-- Inicio de sesión -->
@@ -43,22 +33,18 @@
 
         <!-- Barra de navegación -->
         <nav>
-            <input type="checkbox" id="chk">
-            <label for="chk" class="show-menu-btn">
-                <i class="fas fa-ellipsis-h"></i>
-            </label>
-          
-            <ul class="menu">
-                <a href="">INICIO</a>
-                <a href="#">SERVICIOS TURÍSTICOS</a>
-                <a href="#">ATRACTIVOS TURÍSTICOS</a>
-                <a href="#">ACTIVIDADES</a>
-                <a href="#">NUESTRA CIUDAD</a>
-                <label for="chk" class="hide-menu-btn">
-                    <i class="fas fa-times"></i>
-                </label>
-            </ul>
-        </nav>
+          <input type="checkbox" id="chk">
+          <label for="chk" class="show-menu-btn"><i class="fas fa-bars"></i></label>
+        
+          <ul class="menu">
+              <a href="">INICIO</a>
+              <a href="#">SERVICIOS TURÍSTICOS</a>
+              <a href="#">ATRACTIVOS TURÍSTICOS</a>
+              <a href="#">ACTIVIDADES</a>
+              <a href="#">NUESTRA CIUDAD</a>
+              <label for="chk" class="hide-menu-btn"><i class="fas fa-times"></i></label>
+          </ul>
+      </nav>
 
         <!-- Sideshow de imagenes -->
         <section id="sideshow">
@@ -70,7 +56,7 @@
                   <input type="radio" name="r" id="r4">
                   <input type="radio" name="r" id="r5">
                   <div class="slide s1">
-                    <img src="/img/1.jpg">
+                    <img src="/img/4.jpg">
                   </div>
                   <div class="slide">
                     <img src="/img/2.jpg">
