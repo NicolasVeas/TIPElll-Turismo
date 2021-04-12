@@ -4,9 +4,14 @@
   font-family: "montserrat",sans-serif;
 }
 
+html{
+    height: 100%;
+}
+
 body{
   background: #fff;
   margin: auto;
+  min-height: 100%;
 }
 
 header{
@@ -21,15 +26,26 @@ nav{
 }
 
 @media screen and (max-width:1200px) {
-  body{
-      width: 95%;
-  }
+    body{
+        width: 95%;
+    }
+    .rows{
+        grid-template: /* (alto ancho) */
+            "slideshow" 300px  
+            "prueba" 70px;
+    }	
 }
 
-@media screen and (min-width:900px) {
-  body{
-      width: 75%;
-  }
+@media screen and (min-width:1000px) {
+    body{
+        width: 75%;
+    }
+
+    .rows{
+        grid-template: /* (alto ancho) */
+            "slideshow" 450px  
+            "prueba" 70px;
+    }
 }
 
 .text-center{
@@ -54,29 +70,58 @@ p{
     margin-bottom: 1rem;
 }
 
-
-.divisor {
-  margin: 1.25rem 0 1.5rem;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.rows{
+    display: grid;
+    grid-template-areas: 
+        "slideshow"
+        "prueba";
 }
+
+.slideshow{
+    grid-area: slideshow;
+}
+
+.prueba{
+    grid-area: prueba;
+}
+
+
+.prueba .lista-servicios{
+    display: grid;
+    grid-template-columns: repeat(6, 0.5fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(50px, auto);
+    font-size: 50px;
+    text-align: center;
+    padding: 5px;
+}
+
+
+
+/* Divisor de página */
+.divisor {
+    margin: 1.25rem 0 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .divisor .divisor-linea{
-  width: 100%;
-  max-width: 6rem;
-  height: 0.3rem;
-  background-color: #2c3e50;
-  border-radius: 1rem;
-  border-color: #2c3e50 !important;
+    width: 100%;
+    max-width: 6rem;
+    height: 0.3rem;
+    background-color: #2c3e50;
+    border-radius: 1rem;
+    border-color: #2c3e50 !important;
 }
 .divisor .divisor-linea:first-child {
-  margin-right: 1rem;
+    margin-right: 1rem;
 }
 .divisor .divisor-linea:last-child {
-  margin-left: 1rem;
+    margin-left: 1rem;
 }
 .divisor .divisor-icon {
-  color: #2c3e50 !important;
-  font-size: 2rem;
+    color: #2c3e50 !important;
+    font-size: 2rem;
 } 

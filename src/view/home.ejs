@@ -33,54 +33,71 @@
 
         <!-- Barra de navegación -->
         <nav>
-          <input type="checkbox" id="chk">
-          <label for="chk" class="show-menu-btn"><i class="fas fa-bars"></i></label>
-        
-          <ul class="menu">
-              <a href="">INICIO</a>
-              <a href="#">SERVICIOS TURÍSTICOS</a>
-              <a href="#">ATRACTIVOS TURÍSTICOS</a>
-              <a href="#">ACTIVIDADES</a>
-              <a href="#">NUESTRA CIUDAD</a>
-              <label for="chk" class="hide-menu-btn"><i class="fas fa-times"></i></label>
-          </ul>
-      </nav>
+            <input type="checkbox" id="chk">
+            <label for="chk" class="show-menu-btn"><i class="fas fa-bars"></i></label>
+            
+            <ul class="menu">
+                <a href="">INICIO</a>
+                <a href="#">SERVICIOS TURÍSTICOS</a>
+                <a href="#">ATRACTIVOS TURÍSTICOS</a>
+                <a href="#">ACTIVIDADES</a>
+                <a href="#">NUESTRA CIUDAD</a>
+                <label for="chk" class="hide-menu-btn"><i class="fas fa-times"></i></label>
+            </ul>
+        </nav>
 
-        <!-- Sideshow de imagenes -->
-        <section id="sideshow">
-            <div class="slidershow middle">
-                <div class="slides">
-                  <input type="radio" name="r" id="r1" checked>
-                  <input type="radio" name="r" id="r2">
-                  <input type="radio" name="r" id="r3">
-                  <input type="radio" name="r" id="r4">
-                  <input type="radio" name="r" id="r5">
-                  <div class="slide s1">
-                    <img src="/img/4.jpg">
-                  </div>
-                  <div class="slide">
-                    <img src="/img/2.jpg">
-                  </div>
-                  <div class="slide">
-                    <img src="/img/3.jpg">
-                  </div>
-                  <div class="slide">
-                    <img src="/img/4.jpg">
-                  </div>
-                  <div class="slide">
-                    <img src="/img/5.jpg">
-                  </div>
+        <div class="rows">
+
+             <!-- Sideshow de imagenes -->
+            <section class="slideshow">
+                
+                <div class="slide-body">
+                    <input type="radio" id="i1" name="images" checked />
+                    <input type="radio" id="i2" name="images" />
+                    <input type="radio" id="i3" name="images" />
+                    <input type="radio" id="i4" name="images" />
+                    <input type="radio" id="i5" name="images" />	
+                    
+                    <div class="slide_img" id="one">			
+                        <img src="/img/5.jpg">  
+                    </div>
+                    <div class="slide_img" id="two">
+                        <img src="/img/4.jpg">
+                    </div>
+                    <div class="slide_img" id="three">
+                        <img src="/img/2.jpg">
+                    </div>
+                    <div class="slide_img" id="four">
+                        <img src="/img/3.jpg">
+                    </div>
+                    <div class="slide_img" id="five">
+                        <img src="/img/5.jpg">
+                    </div>
+                    <div id="nav-slide">
+                        <label for="i1" class="dots" id="dot1"></label>
+                        <label for="i2" class="dots" id="dot2"></label>
+                        <label for="i3" class="dots" id="dot3"></label>
+                        <label for="i4" class="dots" id="dot4"></label>
+                        <label for="i5" class="dots" id="dot5"></label>
+                    </div>
+                        
                 </div>
-          
-                <div class="navigation">
-                  <label for="r1" class="bar"></label>
-                  <label for="r2" class="bar"></label>
-                  <label for="r3" class="bar"></label>
-                  <label for="r4" class="bar"></label>
-                  <label for="r5" class="bar"></label>
+            </section>
+
+            <!-- Iconos de navegación -->
+            <section class="prueba">
+                <div class="lista-servicios">
+                    <div class="one"><a href="" class=""><i class="fab fa-accessible-icon"></i></a></div>
+                    <div class="two"><a href="" class=""><i class="fab fa-accessible-icon"></i></a></div>
+                    <div class="three"><a href="" class=""><i class="fab fa-accessible-icon"></i></a></div>
+                    <div class="four"><a href="" class=""><i class="fab fa-accessible-icon"></i></a></div>
+                    <div class="five"><a href="" class=""><i class="fab fa-accessible-icon"></i></a></div>
+                    <div class="six"><a href="" class=""><i class="fab fa-accessible-icon"></i></a></div>
                 </div>
-              </div>
-        </section>
+            </section>
+            
+
+        </div>
 
     </body>
 </html>
