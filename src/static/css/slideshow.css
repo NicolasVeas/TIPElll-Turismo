@@ -69,6 +69,7 @@
 
 #i1, #i2, #i3, #i4, #i5{ display: none;}
 
+
 /* //////////////// */
 
 /* .slide-body{
@@ -157,3 +158,18 @@ input[name="r"]{
         z-index: -2;
     }
 } */
+
+#contenedor-categoria{
+    background-color: #f8f9fb;
+    padding: 50px 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    width: auto;    
+    position: relative;
+  }
+
+#iconos img {
+    max-width: 80%;
+    vertical-align: middle;
+  }

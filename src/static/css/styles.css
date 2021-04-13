@@ -89,7 +89,7 @@ p{
 .prueba .lista-servicios{
     display: grid;
     grid-template-columns: repeat(6, 0.5fr);
-    grid-gap: 10px;
+    grid-gap: 1px;
     grid-auto-rows: minmax(50px, auto);
     font-size: 50px;
     text-align: center;
