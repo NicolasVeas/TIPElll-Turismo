@@ -5,6 +5,7 @@
     --sec: #3A4750;
     --ter: #c4a119;
     --cuar: #EEE;
+    --hover: #1abc9c;
 }
 
 body{
@@ -21,6 +22,14 @@ header{
     width: calc(100% - 0%);
     top: 0;
     height: 30px;
+}
+.text-center{
+    text-align: center;
+}
+h3{
+    font-size: 1rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
 }
 
 .left-area a{
@@ -232,18 +241,17 @@ label #sidebar-btn:hover{
 }
 
 
-.form-control{
-    display:block;
-    width:100%;
-    padding:.375rem .75rem;
-    font-size:1rem;
-    line-height:1.5;
-    color:#495057;
+.busqueda-input{
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
     background-color: #fff;
-    background-clip:padding-box;
+    background-clip: padding-box;
     border:1px solid #ced4da;
-    border-radius:.25rem;
-    transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 .busqueda{

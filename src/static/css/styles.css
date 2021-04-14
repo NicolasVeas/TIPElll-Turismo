@@ -1,3 +1,10 @@
+:root{
+    --pri: #303841;
+    --sec: #3A4750;
+    --ter: #c4a119;
+    --cuar: #EEE;
+    --hover: #1abc9c;
+}
 *{
   margin: 0;
   padding: 0;
@@ -9,19 +16,18 @@ html{
 }
 
 body{
-  background: #fff;
+  background: var(--cuar);
   margin: auto;
   min-height: 100%;
 }
 
 header{
   height: 50px;
-  background: #2c3e50;
+  background: var(--pri);
 }
 
 nav{
   padding: 1em;
-  background: orange;
   height: 80px;
 }
 
@@ -31,9 +37,13 @@ nav{
     }
     .rows{
         grid-template: /* (alto ancho) */
-            "slideshow" 300px  
-            "prueba" 70px;
-    }	
+            "slideshow" 450px  
+            "servicios" auto
+            "prueba" 200px;
+    }
+    .p-footer{
+        font-size: 0.8rem;
+    }
 }
 
 @media screen and (min-width:1000px) {
@@ -44,7 +54,11 @@ nav{
     .rows{
         grid-template: /* (alto ancho) */
             "slideshow" 450px  
-            "prueba" 70px;
+            "servicios" auto
+            "prueba" 200px;
+    }
+    .p-footer{
+        font-size: 1rem;
     }
 }
 
@@ -52,7 +66,10 @@ nav{
     text-align: center;
 }
 .text-color{
-    color: #2c3e50;
+    color: var(--sec);
+}
+.text-uppercase{
+    text-transform: uppercase;
 }
 
 h2{
@@ -64,6 +81,12 @@ h3{
     font-size: 1rem;
     font-size: 1.5rem;
 }
+h4{
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700px;
+    line-height: 1.2;
+}
 
 p{
     margin-top: 0;
@@ -74,6 +97,7 @@ p{
     display: grid;
     grid-template-areas: 
         "slideshow"
+        "servicios"
         "prueba";
 }
 
@@ -81,21 +105,57 @@ p{
     grid-area: slideshow;
 }
 
-.prueba{
-    grid-area: prueba;
+/* Parte de NAVEGACION CON ICONOS */
+
+.servicios{
+    grid-area: servicios;
 }
 
-
-.prueba .lista-servicios{
+.servicios .lista-servicios{
     display: grid;
     grid-template-columns: repeat(6, 0.5fr);
-    grid-gap: 1px;
+    grid-gap: 10px;
     grid-auto-rows: minmax(50px, auto);
     font-size: 50px;
     text-align: center;
     padding: 5px;
 }
 
+#iconos img {
+    max-width: 80%;
+    vertical-align: middle;
+}
+
+/* Fin parte de NAVEGACION CON ICONOS */
+
+
+.prueba{
+    grid-area: prueba;
+    background: var(--ter);
+}
+
+/* Footer */
+.footer{
+    /* grid-area: footer; */
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    background-color: var(--pri);
+    color: #fff;
+}
+.container-footer{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.cuadros{
+    display: flex;
+}
+.cuadro{
+    position: relative;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+/* Fin footer */
 
 
 /* Divisor de página */
@@ -106,7 +166,6 @@ p{
     justify-content: center;
     align-items: center;
 }
-
 .divisor .divisor-linea{
     width: 100%;
     max-width: 6rem;
@@ -124,4 +183,5 @@ p{
 .divisor .divisor-icon {
     color: #2c3e50 !important;
     font-size: 2rem;
-} 
+}
+/* Fin divisor de página */

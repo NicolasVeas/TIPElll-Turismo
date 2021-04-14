@@ -1,3 +1,10 @@
+:root{
+    --pri: #303841;
+    --sec: #3A4750;
+    --ter: #c4a119;
+    --cuar: #EEE;
+    --hover: #1abc9c;
+}
 /* Boton de inicio de sesión */
 .iniciar-btn{
     font-size: 15px;
@@ -163,7 +170,7 @@ form .registro a:hover{
     }
 }
 
-@media screen and (min-width:900px) {
+@media screen and (min-width:1000px) {
     .logo{
         position: absolute;
         top: 25px;

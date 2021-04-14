@@ -1,11 +1,11 @@
-<%- include ('partials/_header') %>
+<%- include ('partials/_header')  %>
 
     <body>
-
+        
         <!-- Inicio de sesión -->
         <header>
             <div class="center">
-                <a href="" class="logo"><img class="img-fluid" src="/img/icon.png" /></a>
+                <a href="" class="logo"><img class="img-fluid" src="/img/icon.png"/></a>
                 <input type="checkbox" id="show">
                 <label for="show" class="iniciar-btn">Iniciar sesión</label>
                 <div class="container-log">
@@ -35,7 +35,7 @@
         <nav>
             <input type="checkbox" id="chk">
             <label for="chk" class="show-menu-btn"><i class="fas fa-bars"></i></label>
-
+            
             <ul class="menu">
                 <a href="">INICIO</a>
                 <a href="#">SERVICIOS TURÍSTICOS</a>
@@ -48,16 +48,16 @@
 
         <div class="rows">
 
-            <!-- Sideshow de imagenes -->
+             <!-- Sideshow de imagenes -->
             <section class="slideshow">
-
+                
                 <div class="slide-body">
                     <input type="radio" id="i1" name="images" checked />
                     <input type="radio" id="i2" name="images" />
                     <input type="radio" id="i3" name="images" />
                     <input type="radio" id="i4" name="images" />
-                    <input type="radio" id="i5" name="images" />
-
+                    <input type="radio" id="i5" name="images" />	
+                    
                     <div class="slide_img" id="one">
                         <img src="/img/home1.jpg">
                     </div>
@@ -80,54 +80,61 @@
                         <label for="i4" class="dots" id="dot4"></label>
                         <label for="i5" class="dots" id="dot5"></label>
                     </div>
-
+                        
                 </div>
             </section>
 
             <!-- Iconos de navegación -->
-            <section class="prueba">
-                <div id="contenedor-categoria">
-                    <div class="lista-servicios">
-
-                        <div class="one">
-                            <a id="iconos" href="">
-                                <img class="foto" src="/img/icono-1.png" alt="Dónde Alojarse">
-                            </a>
-                        </div>
-                        <div class="two">
-                            <a id="iconos" href="">
-                                <img class="foto" src="/img/icono-2.png" alt="Dónde Alojarse">
-                            </a>
-                        </div>
-                        <div class="three">
-                            <a id="iconos" href="">
-                                <img class="foto" src="/img/icono-3.png" alt="Dónde Alojarse">
-                            </a>
-                        </div>
-                        <div class="four">
-                            <a id="iconos" href="">
-                                <img class="foto" src="/img/icono-4.png" alt="Dónde Alojarse">
-                            </a>
-                        </div>
-                        <div class="five">
-                            <a id="iconos" href="">
-                                <img class="foto" src="/img/icono-5.png" alt="Dónde Alojarse">
-                            </a>
-                        </div>
-                        <div class="six">
-                            <a id="iconos" href="">
-                                <img class="foto" src="/img/icono-6.png" alt="Dónde Alojarse">
-                            </a>
-                        </div>
-    
-    
+            <section class="servicios">
+                <div class="lista-servicios">
+                    <div class="one">
+                        <a id="iconos" href=""><img class="foto" src="/img/icono-1.png" alt="Dónde Alojarse"></a>
+                    </div>
+                    <div class="one">
+                        <a id="iconos" href=""><img class="foto" src="/img/icono-2.png" alt="Dónde Alojarse"></a>
+                    </div>
+                    <div class="one">
+                        <a id="iconos" href=""><img class="foto" src="/img/icono-3.png" alt="Dónde Alojarse"></a>
+                    </div>
+                    <div class="one">
+                        <a id="iconos" href=""><img class="foto" src="/img/icono-4.png" alt="Dónde Alojarse"></a>
+                    </div>
+                    <div class="one">
+                        <a id="iconos" href=""><img class="foto" src="/img/icono-5.png" alt="Dónde Alojarse"></a>
+                    </div>
+                    <div class="one">
+                        <a id="iconos" href=""><img class="foto" src="/img/icono-6.png" alt="Dónde Alojarse"></a>
                     </div>
                 </div>
             </section>
+            <!-- Fin iconos de navegación -->
 
+            <section class="prueba">
+                
+            </section>
 
         </div>
 
-    </body>
+        <!-- Footer -->
+        <section class="footer text-center text-uppercase">
+            <div class="container-footer">
+                <div class="cuadros">
+                    <div class="cuadro">
+                        <h4>Contactos</h4>
+                        <p class="p-footer">
+                            +56 - 35 - 2337000
+                            <br />
+                            +56 - 35 - 2337001
+                        </p>
+                        <p class="p-footer"></i> informaciones@sanantonio.cl</p>
+                    </div>
+                    <div class="cuadro">
+                        <h4>Edificio Consistorial</h4>
+                        <p class="p-footer"><i class="fas fa-map-marker-alt"></i> Av. Ramón Barros Luco 1881</p>
+                </div>
+            </div>
+        </section>
+        <!-- Fin footer -->
 
-    </html>
+    </body>
+</html>
