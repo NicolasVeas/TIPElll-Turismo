@@ -23,11 +23,13 @@ app.use(myConnection(mysql, {
     port: '3306',
     database: 'tipe'
 }, 'single'));
+
 app.use(express.urlencoded({extended:false}));
 
 //  Rutas
 app.use('/', require('./routes/home'));         // pág principal
-app.use('/', require('./routes/customer'));     // KJAHSDKAHSDHASKJDJKADHJSKASHDJK
+
+app.use('/', require('./routes/customer'));     // asdasdasdasd
 app.use('/', require('./routes/user'));         // pág usuario
 app.use('/', require('./routes/admin'));        // pág administrador
 
