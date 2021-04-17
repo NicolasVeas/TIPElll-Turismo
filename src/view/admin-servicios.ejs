@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
         <link rel='stylesheet' type='text/css' href='/css/admin.css'/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
     </head>
-    
+
     <body>
 
         <!-- Sección del HEADER -->
@@ -33,20 +33,20 @@
                 <i class="fa fa-bars nav-btn"></i>
             </div>
             <div class="mobile-nav-items">
-                <a href="#"><i class="fas fa-desktop"></i><span>General</span></a>
-                <a href="#"><i class="fas fa-users"></i></i><span>Usuarios</span></a>
-                <a href="#"><i class="fas fa-map-marked-alt"></i></i><span>Atractivos</span></a>
-                <a href="#"><i class="fas fa-concierge-bell"></i><span>Servicios</span></a>
+                <a href="/admin"><i class="fas fa-desktop"></i><span>General</span></a>
+                <a href="/usuarios"><i class="fas fa-users"></i></i><span>Usuarios</span></a>
+                <a href="/atractivos"><i class="fas fa-map-marked-alt"></i></i><span>Atractivos</span></a>
+                <a href="/servicios"><i class="fas fa-concierge-bell"></i><span>Servicios</span></a>
             </div>
         </div>
         <!-- Fin de la sección del MOBILE NAV -->
         
         <!-- Sección del SIDEBAR -->
         <div class="sidebar">
-            <a href="#"><i class="fas fa-desktop"></i><span>General</span></a>
-            <a href="/update"><i class="fas fa-users"></i></i><span>Usuarios</span></a>
-            <a href="#"><i class="fas fa-map-marked-alt"></i></i><span>Atractivos</span></a>
-            <a href="#"><i class="fas fa-concierge-bell"></i><span>Servicios</span></a>
+            <a href="/admin"><i class="fas fa-desktop"></i><span>General</span></a>
+            <a href="/usuarios"><i class="fas fa-users"></i></i><span>Usuarios</span></a>
+            <a href="/atractivos"><i class="fas fa-map-marked-alt"></i></i><span>Atractivos</span></a>
+            <a href="/servicios"><i class="fas fa-concierge-bell"></i><span>Servicios</span></a>
         </div>
         <!-- Fin sección del SIDEBAR -->
 
@@ -55,7 +55,7 @@
         <div class="content">
 
             <div class="container">
-                <h3 class="text-center">tabla de usuarios</h3>
+                <h3 class="text-center">Administración de servicios</h3>
                 <div class="busqueda">
                     <input class="busqueda-input search" data-table="order-table" type="text" placeholder="Search..">
                 </div>
@@ -64,9 +64,10 @@
                     <thead>
                             <tr>
                                 <th>N°</th>
-                                <th>Nombre</th>
-                                <th>Telefono</th>
-                                <th>Tipo</th>
+                                <th>Título</th>
+                                <th>Descripción</th>
+                                <th>Teléfono</th>
+                                <th>Geolocalización</th>
                                 <th colspan="2">Acciones</th>
                             </tr>
                         </thead>
@@ -78,6 +79,7 @@
                                         <td> <%= data[i].name %> </td>
                                         <td> <%= data[i].address %> </td>
                                         <td> <%= data[i].phone %> </td>
+                                        <td></td>
                                         <td>
                                             <a href="/delete/<%= data[i].id %>" class="boton eliminar">Delete</a>
                                         </td>
@@ -91,7 +93,45 @@
                 </table>
             </div>
             
-            
+            <div class="container-form">
+                <h3 class="text-center">INGRESO DE SERVICIO</h3>
+                <form action="#">
+                    <div class="datos">
+                        <label>Titulo</label>
+                        <div class="input-user">
+                            <input class="text" type="text" placeholder="Titulo" required>
+                        </div>
+                    </div>
+                    <div class="datos">
+                        <label>Descripcion</label>
+                        <div class="input-user">
+                            <textarea class="text" name="descripcion" id="" placeholder="Escriba aqui la descripcion"></textarea>
+                        </div>
+                    </div>
+                    <div class="datos">
+                        <label>Teléfono</label>
+                        <div class="input-user">
+                            <input class="text" type="text" placeholder="Ingrese el teléfono de contacto" required>
+                        </div>
+                    </div>
+                    <div class="datos">
+                        <label>Geolocalización</label>
+                        <div class="input-user">
+                            <input class="text" type="text" placeholder="Ingrese las coordenadas del lugar" required>
+                        </div>
+                    </div>
+                    <div class="datos">
+                        <label>Eliga una imagen para el servivio.</label>
+                        <div class="file">
+                            <input class="file" type="file" placeholder="x" required>
+                        </div>
+                    </div>
+                    <div class="boton">
+                        <button type="submit">Agregar servicio</button>
+                    </div>
+                </form>
+            </div>
+
         </div>
 
         <!-- Fin sección del contenido (Cuerpo general)  -->
@@ -146,86 +186,4 @@
       
     </body>
 
-    <!-- <body>
-        <div class="container">
-            <div class="row mt-5">
-                <div class="col-md-7">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr style="text-align: center;">
-                                <th>N°</th>
-                                <th>Name</th>
-                                <th>Address</th>
-                                <th>Phone</th>
-                                <th colspan="2">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% if (data) { %>
-                                <% for(var i = 0; i < data.length; i++) { %>
-                                    <tr>
-                                        <td> <%= (i+1) %> </td>
-                                        <td> <%= data[i].name %> </td>
-                                        <td> <%= data[i].address %> </td>
-                                        <td> <%= data[i].phone %> </td>
-                                        <td>
-                                            <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Delete</a>
-                                        </td>
-                                        <td>
-                                            <a href="/update/<%= data[i].id %>" class="btn btn-info">Update</a>
-                                        </td>
-                                    </tr>
-                                <% } %>
-                            <% } %>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-md-5">
-                    <div class="card">
-                        <div class="card-body">
-                            <form action="/add" method="POST">
-                                <div class="form-group">
-                                    <input type="text" name="name" placeholder="Name" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="address" placeholder="Address" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="phone" placeholder="Phone" class="form-control">
-                                </div>
-                                <button type="submit" class="btn btn-primary">
-                                    Save customer
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="card">
-                        <div class="card-body">
-                            <form action="/update/<%= data.id %>" method="POST">
-                                <div class="form-group">
-                                    <input type="text" name="name" value=" <%= data.name %> " class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="address" value=" <%= data.address %> " class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="phone" value=" <%= data.phone %> " class="form-control">
-                                </div>
-                                <button type="submit" class="btn btn-primary">
-                                    Update customer
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </body> -->
 </html>

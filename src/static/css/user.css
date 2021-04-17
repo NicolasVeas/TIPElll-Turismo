@@ -1,3 +1,10 @@
+:root{
+    --pri: #303841;
+    --sec: #3A4750;
+    --ter: #c4a119;
+    --cuar: #EEE;
+    --hover: #1abc9c;
+}
 .servicios-btn{
     position: absolute;
     top: 20px;
@@ -26,11 +33,9 @@
     }
 }
 
-#servicios{
+.servicios{
     width: 100%;
-    height: 200px;
-    background: gray;
-    margin-top: 10px;
+    box-shadow: 0 0 8px rgb(0,0,0,0.1);
 }
 
 .row {
@@ -78,4 +83,83 @@
     border-radius: 0.5rem;
     max-width: 100%;
     height: auto;
+}
+
+/* // Formulario \\ */
+
+.container-form{
+    background: var(--cuar);
+    height: 100%;
+    padding: 20px 0;
+    box-shadow: 0 0 8px rgb(0,0,0,0.1);
+}
+
+.container-user-form{
+    padding: 15px;
+    width: 100%;
+}
+
+.datos{
+    height: auto;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.datos label{
+    margin-left: 8vh;
+    font-size: 2vh;
+}
+
+.input-user{
+    align-content: center;
+    text-align: center;
+}
+.file{
+    margin-left: 4vh;
+    padding: 5px 0;
+    font-size: 1.5vh;
+}
+
+.container-user-form form .text{
+    outline: none;
+    border: none;
+    width: 80%;
+    font-size: 17px;
+    background: var(--cuar);
+    box-shadow: 0 0 5px rgb(0,0,0,0.5) inset;
+    padding: 2px 10px;
+    margin: 5px 0;
+    letter-spacing: 1px;
+    border-radius: 15px;
+}
+.container-user-form form input{
+    height: 35px;
+}
+.container-user-form form textarea{
+    height: 100px;
+}
+
+.boton{
+    margin: 5px 0;
+    height: 45px;
+    width: 100%;
+    align-content: center;
+    text-align: center;
+}
+
+.boton button{
+    height: 100%;
+    width: 40%;
+    border: none;
+    border-radius: 15px;
+    background: var(--ter);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.boton button:hover{
+    background: var(--hover);
 }

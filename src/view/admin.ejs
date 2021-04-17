@@ -12,8 +12,8 @@
 
     <body>
 
+        <!-- Sección del HEADER -->
         <input type="checkbox" id="check">
-
         <header>
             <label for="check">
                 <i class="fas fa-bars" id="sidebar-btn"></i>
@@ -25,101 +25,77 @@
                 <a href="#" class="logout-btn"><i class="fa fa-power-off"></i></a>
             </div>
         </header>
+        <!-- Fin de la seccion del HEADER -->
 
+        <!-- Sección del MOBILE NAV -->
         <div class="mobile-nav">
             <div class="nav-bar">
                 <i class="fa fa-bars nav-btn"></i>
             </div>
             <div class="mobile-nav-items">
-                <a href="#"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
-                <a href="#"><i class="fas fa-cogs"></i><span>Components</span></a>
-                <a href="#"><i class="fas fa-table"></i><span>Tables</span></a>
-                <a href="#"><i class="fas fa-th"></i><span>Forms</span></a>
-                <a href="#"><i class="fas fa-info-circle"></i><span>About</span></a>
-                <a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+                <a href="/admin"><i class="fas fa-desktop"></i><span>General</span></a>
+                <a href="/usuarios"><i class="fas fa-users"></i></i><span>Usuarios</span></a>
+                <a href="/atractivos"><i class="fas fa-map-marked-alt"></i></i><span>Atractivos</span></a>
+                <a href="/servicios"><i class="fas fa-concierge-bell"></i><span>Servicios</span></a>
             </div>
         </div>
+        <!-- Fin de la sección del MOBILE NAV -->
         
+        <!-- Sección del SIDEBAR -->
         <div class="sidebar">
-            <a href="#"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
-            <a href="#"><i class="fas fa-cogs"></i><span>Components</span></a>
-            <a href="#"><i class="fas fa-table"></i><span>Tables</span></a>
-            <a href="#"><i class="fas fa-th"></i><span>Forms</span></a>
-            <a href="#"><i class="fas fa-info-circle"></i><span>About</span></a>
-            <a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+            <a href="/admin"><i class="fas fa-desktop"></i><span>General</span></a>
+            <a href="/usuarios"><i class="fas fa-users"></i></i><span>Usuarios</span></a>
+            <a href="/atractivos"><i class="fas fa-map-marked-alt"></i></i><span>Atractivos</span></a>
+            <a href="/servicios"><i class="fas fa-concierge-bell"></i><span>Servicios</span></a>
         </div>
-    
+        <!-- Fin sección del SIDEBAR -->
+
+
+        <!-- Sección del contenido (Cuerpo general) -->
         <div class="content">
-            <div class="card">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-            </div>
-            <div class="card">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-            </div>
-            <div class="card">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-            </div>
 
             <div class="container">
+                <h3 class="text-center">tabla de usuarios</h3>
                 <div class="busqueda">
-                    <input class="form-control light-table-filter" data-table="order-table" type="text" placeholder="Search..">
+                    <input class="busqueda-input search" data-table="order-table" type="text" placeholder="Search..">
                 </div>
 
-                <table class="table order-table">
-                  <thead>
-                    <tr>
-                      <th>Company</th>
-                      <th>Contact</th>
-                      <th>Country</th>
-                    </tr>
-                  </thead>
-                  <tr>
-                    <td>Ecopetrol</td>
-                    <td>Maria Perez</td>
-                    <td>Germany</td>
-                  </tr>
-                  <tr>
-                    <td>Contructora Amarilo</td>
-                    <td>Jhon Sanchez</td>
-                    <td>Colombia</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Primavera</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                  </tr>
-                  <tr>
-                    <td>Google SAS</td>
-                    <td>Mario Hernando</td>
-                    <td>Austria</td>
-                  </tr>
-                  <tr>
-                    <td>Bancolombia</td>
-                    <td>Alejandra Tamayo</td>
-                    <td>UK</td>
-                  </tr>
-                  <tr>
-                    <td>Orange SAS</td>
-                    <td>Andres Suarez</td>
-                    <td>Germany</td>
-                  </tr>
-                  <tr>
-                    <td>Software OneTech</td>
-                    <td>Yoshi Tannamuri</td>
-                    <td>Canada</td>
-                  </tr>
-                  <tr>
-                    <td>Studio Takaru</td>
-                    <td>Yoshi Tannamuri</td>
-                    <td>Japan</td>
-                  </tr>
+                <table class="table order-table text-center">
+                    <thead>
+                            <tr>
+                                <th>N°</th>
+                                <th>Nombre</th>
+                                <th>Telefono</th>
+                                <th>Tipo</th>
+                                <th colspan="2">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if (data) { %>
+                                <% for(var i = 0; i < data.length; i++) { %>
+                                    <tr>
+                                        <td> <%= (i+1) %> </td>
+                                        <td> <%= data[i].name %> </td>
+                                        <td> <%= data[i].address %> </td>
+                                        <td> <%= data[i].phone %> </td>
+                                        <td>
+                                            <a href="/delete/<%= data[i].id %>" class="boton eliminar">Delete</a>
+                                        </td>
+                                        <td>
+                                            <a href="/update/<%= data[i].id %>" class="boton actualizar">Update</a>
+                                        </td>
+                                    </tr>
+                                <% } %>
+                            <% } %>
+                        </tbody>
                 </table>
             </div>
             
         </div>
 
-        <!-- Archivo js -->
-        <script src="public/js/main.js"></script>
+        <!-- Fin sección del contenido (Cuerpo general)  -->
+
+
         <!-- Script de nav -->
         <script type="text/javascript">
             $(document).ready(function(){
@@ -151,7 +127,7 @@
             
                     return {
                     init: function() {
-                        var inputs = document.getElementsByClassName('light-table-filter');
+                        var inputs = document.getElementsByClassName('search');
                         Arr.forEach.call(inputs, function(input) {
                             input.oninput = _onInputEvent;
                         });
