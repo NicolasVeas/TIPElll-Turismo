@@ -55,7 +55,7 @@
         <div class="content">
 
             <div class="container">
-                <!-- <h3 class="text-center">tabla de usuarios</h3> -->
+                <h3 class="text-center">Administración de servicios</h3>
                 <div class="busqueda">
                     <input class="busqueda-input search" data-table="order-table" type="text" placeholder="Search..">
                 </div>
@@ -64,9 +64,10 @@
                     <thead>
                             <tr>
                                 <th>N°</th>
-                                <th>Nombre</th>
-                                <th>Telefono</th>
-                                <th>Tipo</th>
+                                <th>Título</th>
+                                <th>Descripción</th>
+                                <th>Teléfono</th>
+                                <th>Geolocalización</th>
                                 <th colspan="2">Acciones</th>
                             </tr>
                         </thead>
@@ -78,6 +79,7 @@
                                         <td> <%= data[i].name %> </td>
                                         <td> <%= data[i].address %> </td>
                                         <td> <%= data[i].phone %> </td>
+                                        <td></td>
                                         <td>
                                             <a href="/delete/<%= data[i].id %>" class="boton eliminar">Delete</a>
                                         </td>
@@ -91,6 +93,45 @@
                 </table>
             </div>
             
+            <div class="container-form">
+                <h3 class="text-center">INGRESO DE SERVICIO</h3>
+                <form action="#">
+                    <div class="datos">
+                        <label>Titulo</label>
+                        <div class="input-user">
+                            <input class="text" type="text" placeholder="Titulo" required>
+                        </div>
+                    </div>
+                    <div class="datos">
+                        <label>Descripcion</label>
+                        <div class="input-user">
+                            <textarea class="text" name="descripcion" id="" placeholder="Escriba aqui la descripcion"></textarea>
+                        </div>
+                    </div>
+                    <div class="datos">
+                        <label>Teléfono</label>
+                        <div class="input-user">
+                            <input class="text" type="text" placeholder="Ingrese el teléfono de contacto" required>
+                        </div>
+                    </div>
+                    <div class="datos">
+                        <label>Geolocalización</label>
+                        <div class="input-user">
+                            <input class="text" type="text" placeholder="Ingrese las coordenadas del lugar" required>
+                        </div>
+                    </div>
+                    <div class="datos">
+                        <label>Eliga una imagen para el servivio.</label>
+                        <div class="file">
+                            <input class="file" type="file" placeholder="x" required>
+                        </div>
+                    </div>
+                    <div class="boton">
+                        <button type="submit">Agregar servicio</button>
+                    </div>
+                </form>
+            </div>
+
         </div>
 
         <!-- Fin sección del contenido (Cuerpo general)  -->

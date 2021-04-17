@@ -168,6 +168,7 @@ label #sidebar-btn:hover{
     margin-right: auto;
     margin-left: auto;
     background: #fff;
+    box-shadow: 0 0 8px rgb(0,0,0,0.2);
 }
 
 .busqueda{
@@ -216,6 +217,82 @@ label #sidebar-btn:hover{
 }
 
 /* Fin sección del contenido (Cuerpo general) */
+
+/* -------------------------------------- */
+
+/* Formulario */
+
+.container-form{
+    background: #fff;
+    padding: 20px 0;
+    box-shadow: 0 0 8px rgb(0,0,0,0.1);
+}
+
+.datos{
+    height: auto;
+    margin: 10px 0;
+}
+
+.datos label{
+    margin-left: 10%;
+    font-size: 2vh;
+}
+
+.input-user{
+    align-content: center;
+    text-align: center;
+}
+.file{
+    margin-left: 5%;
+    padding: 5px 0;
+    font-size: 1.5vh;
+}
+
+form .text{
+    outline: none;
+    border: none;
+    width: 80%;
+    font-size: 17px;
+    background: var(--cuar);
+    box-shadow: 0 0 5px rgb(0,0,0,0.5) inset;
+    padding: 2px 10px;
+    margin: 5px 0;
+    letter-spacing: 1px;
+    border-radius: 15px;
+}
+form input{
+    height: 35px;
+}
+form textarea{
+    height: 100px;
+}
+
+.boton{
+    margin: 5px 0;
+    height: 45px;
+    align-content: center;
+    text-align: center;
+}
+
+.boton button{
+    height: 100%;
+    width: 40%;
+    border: none;
+    border-radius: 15px;
+    background: var(--ter);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.boton button:hover{
+    background: var(--hover);
+}
+
+
+/* Fin formulario */
 
 
 
