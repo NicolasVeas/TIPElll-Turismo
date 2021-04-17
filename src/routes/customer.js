@@ -1,31 +1,20 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/admin', (req, res) => {
-    req.getConnection((err, conn) =>{
-        conn.query('SELECT * FROM customer', (err, customers) => {
-            if (err) {
-                res.json(err);
-            }
-            res.render('admin', {
-                data: customers
-            });
-        });
-    });
-});
+// router.get('/admin', (req, res) => {
+//     req.getConnection((err, conn) =>{
+//         conn.query('SELECT * FROM customer', (err, customers) => {
+//             if (err) {
+//                 res.json(err);
+//             }
+//             res.render('admin', {
+//                 data: customers
+//             });
+//         });
+//     });
+// });
 
 // Pruebas
-
-router.get('/usuarios', (req, res) => {
-    const { id } = req.params;
-    req.getConnection((err, conn) => {
-        conn.query('SELECT * FROM customer', (err, customer) => {
-            res.render('admin-user', {
-                data: customer
-            });
-        });
-    });
-});
 
 // Fin pruebas
 

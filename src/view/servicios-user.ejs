@@ -5,7 +5,7 @@
         <div class="content">
 
             <div class="container-tabla">
-                <h3 class="text-center">emprendedores</h3>
+                <h3 class="text-center">servicios de usuarios</h3>
                 <div class="busqueda">
                     <input class="busqueda-input search" data-table="order-table" type="text" placeholder="Search..">
                 </div>
@@ -13,12 +13,13 @@
                 <table class="table order-table text-center">
                     <thead>
                             <tr>
-                                <th>N°</th>
+                                <th>ID</th>
+                                <th>Título</th>
+                                <th>Ubicación</th>
+                                <th>Teléfono</th>
                                 <th>Correo</th>
-                                <th>Contraseña</th>
-                                <th>Nombre</th>
-                                <th>Telefono</th>
-                                <th>Tipo</th>
+                                <th>Red Social</th>
+                                <th>Sernatur</th>
                                 <th colspan="2">Acciones</th>
                             </tr>
                         </thead>
@@ -28,12 +29,13 @@
                                     
                                     <% if (data[i].tipo == 'emprendedor') { %>
                                         <tr>
-                                            <td> <%= (i+1) %> </td>
-                                            <td> <%= data[i].correo %> </td>
-                                            <td> <%= data[i].contrasena %> </td>
-                                            <td> <%= data[i].nombre %> </td>
-                                            <td> <%= data[i].telefono %> </td>
-                                            <td><%= data[i].tipo %></td>
+                                            <td> <%= data[i].id_emp %> </td>
+                                            <td> <%= data[i].titulo %> </td>
+                                            <td> <%= data[i].ubicacion %> </td>
+                                            <td> <%= data[i].contacto_tel %> </td>
+                                            <td> <%= data[i].contacto_correo %> </td>
+                                            <td> <%= data[i].redsocial %> </td>
+                                            <td> <%= data[i].sernatur %> </td>
                                             <td>
                                                 <a href="/eliminar/<%= data[i].correo %>" class="boton eliminar">Eliminar</a>
                                             </td>
@@ -46,7 +48,6 @@
                 
             </div>
 
-            
         </div>
 
 <%- include ('partials-admin/_footer-admin')  %>
