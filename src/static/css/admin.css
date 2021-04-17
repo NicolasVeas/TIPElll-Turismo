@@ -14,6 +14,17 @@ body{
     font-family: "Roboto", sans-serif;
 }
 
+h3{
+    font-size: 1rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.text-center{
+    text-align: center;
+}
+
+/* Sección del HEADER */
 header{
     z-index: 1;
     position: fixed;
@@ -23,13 +34,9 @@ header{
     top: 0;
     height: 30px;
 }
-.text-center{
-    text-align: center;
-}
-h3{
-    font-size: 1rem;
-    font-size: 1.5rem;
-    text-transform: uppercase;
+
+#check{
+    display: none;
 }
 
 .left-area a{
@@ -58,6 +65,16 @@ h3{
 
 .logout-btn:hover{
     color: var(--ter);
+}
+
+/* Fin sección del HEADER */
+
+/* -------------------------------------- */
+
+/* Sección del SIDEBAR */
+
+.mobile-nav{
+    display: none;
 }
 
 .sidebar{
@@ -125,6 +142,12 @@ label #sidebar-btn:hover{
     width: 100%;
 }
 
+/* Fin sección del SIDEBAR */
+
+/* -------------------------------------- */
+
+/* Sección del contenido (Cuerpo general) */
+
 .content{
     width: (100% - 250px);
     margin-top: 60px;
@@ -139,24 +162,64 @@ label #sidebar-btn:hover{
     margin-left: 60px;
 }
 
-#check{
-    display: none;
-}
-
-.mobile-nav{
-    display: none;
-}
-
-.content .card p{
+.container{
+    width: (100% - 250px);
+    padding: 15px 15px;
+    margin-right: auto;
+    margin-left: auto;
     background: #fff;
-    padding: 15px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    opacity: 0.8;
 }
+
+.busqueda{
+    position: relative;
+    width: 100%;
+    max-width: 30%;
+    padding: 10px 0px;
+}
+
+.busqueda-input{
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: #fff;
+    background-clip: padding-box;
+    border:1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.table{
+    width:100%;
+    background-color:transparent
+}
+.table td,.table th{
+    padding: 1rem;
+    vertical-align: top;
+    border: 0.1px solid var(--cuar);
+}
+
+.boton{
+    text-decoration: none;
+    color: #fff;
+    padding: .75rem 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+.eliminar{
+    background-color: #d9534f;
+}
+.actualizar{
+    background-color: #1f9bcf;;
+    
+}
+
+/* Fin sección del contenido (Cuerpo general) */
+
+
 
 /* Responsive CSS */
-
 @media screen and (max-width: 780px){
     .sidebar{
         display: none;
@@ -238,44 +301,4 @@ label #sidebar-btn:hover{
     .active{
         display: block;
     }
-}
-
-
-.busqueda-input{
-    display: block;
-    width: 100%;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    background-color: #fff;
-    background-clip: padding-box;
-    border:1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-
-.busqueda{
-    position: relative;
-    width: 100%;
-    max-width: 30%;
-    padding: 10px 0px;
-}
-
-.container{
-    width: (100% - 250px);
-    padding: 15px 15px;
-    margin-right: auto;
-    margin-left: auto;
-    background: #fff;
-}
-
-.table{
-    width:100%;
-    background-color:transparent
-}
-.table td,.table th{
-    padding:.75rem;
-    vertical-align:top;
-    border-top:1px solid var(--cuar);
-    border:0.5px solid var(--cuar);
 }

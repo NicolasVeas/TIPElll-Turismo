@@ -14,6 +14,22 @@ router.get('/admin', (req, res) => {
     });
 });
 
+// Pruebas
+
+router.get('/usuarios', (req, res) => {
+    const { id } = req.params;
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * FROM customer', (err, customer) => {
+            res.render('admin-user', {
+                data: customer
+            });
+        });
+    });
+});
+
+// Fin pruebas
+
+
 router.post('/add', (req, res) => {
     const data = Object.assign({},req.body)
     req.getConnection((err, conn) => {
@@ -31,6 +47,17 @@ router.get('/delete/:id', (req, res) => {
         });
     });
 });
+
+// router.get('/usuarios', (req, res) => {
+//     const { id } = req.params;
+//     req.getConnection((err, conn) => {
+//         conn.query('SELECT * FROM customer', (err, customer) => {
+//             res.render('admin-user', {
+//                 data: customer
+//             });
+//         });
+//     });
+// });
 
 router.get('/update/:id', (req, res) => {
     const { id } = req.params;

@@ -26,40 +26,24 @@ header{
   background: var(--pri);
 }
 
-nav{
-  padding: 1em;
-  height: 80px;
+h2{
+    font-size: 2rem;
+    text-transform: uppercase;
 }
 
-@media screen and (max-width:1200px) {
-    body{
-        width: 95%;
-    }
-    .rows{
-        grid-template: /* (alto ancho) */
-            "slideshow" 450px  
-            "servicios" auto
-            "prueba" 200px;
-    }
-    .p-footer{
-        font-size: 0.8rem;
-    }
+h3{
+    font-size: 1rem;
+    font-size: 1.5rem;
+}
+h4{
+    margin-bottom: 1rem;
+    font-weight: 700px;
+    line-height: 1.2;
 }
 
-@media screen and (min-width:1000px) {
-    body{
-        width: 75%;
-    }
-
-    .rows{
-        grid-template: /* (alto ancho) */
-            "slideshow" 450px  
-            "servicios" auto
-            "prueba" 200px;
-    }
-    .p-footer{
-        font-size: 1rem;
-    }
+p{
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
 
 .text-center{
@@ -72,40 +56,408 @@ nav{
     text-transform: uppercase;
 }
 
-h2{
-    font-size: 2rem;
-    text-transform: uppercase;
+/* Maneja de la vista responsive */
+@media screen and (max-width:1200px) {
+    body{
+        width: 95%;
+    }
+    .cuerpo{
+        grid-template: /* (alto ancho) */
+            "slideshow" 450px  
+            "servicios" auto
+            "prueba" 200px;
+    }
+    .p-footer{
+        font-size: 0.6rem;
+    }
+    h4{
+        font-size: 1rem;
+    }
+    .logo{
+        position: absolute;
+        top: 25px;
+        left: 10%;
+    }
+    .iniciar-btn{
+        right: 6%;
+    }
 }
 
-h3{
-    font-size: 1rem;
-    font-size: 1.5rem;
-}
-h4{
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-    font-weight: 700px;
-    line-height: 1.2;
-}
+@media screen and (min-width:1000px) {
+    body{
+        width: 75%;
+    }
 
-p{
-    margin-top: 0;
-    margin-bottom: 1rem;
+    .cuerpo{
+        grid-template: /* (alto ancho) */
+            "slideshow" 450px  
+            "servicios" auto
+            "prueba" 200px;
+    }
+    .p-footer{
+        font-size: 1rem;
+    }
+    h4{
+        font-size: 1.5rem;
+    }
+    .logo{
+        position: absolute;
+        top: 25px;
+        left: 15%;
+    }
+    .iniciar-btn{
+        right: 14%;
+    }
 }
+/* Fin maneja de la vista responsive */
 
-.rows{
+/* -------------------------------------- */
+
+/* Control de las cuadriculas del cuerpo */
+.cuerpo{
     display: grid;
     grid-template-areas: 
         "slideshow"
         "servicios"
         "prueba";
 }
+/* Control de las cuadriculas del cuerpo */
+
+/* -------------------------------------- */
+
+/* Barra de navegación y login*/
+    /* Barra de navegación */
+nav{
+    height: 100px;
+    background: var(--pri);
+    padding: 0 20px;
+}
+
+.menu{
+    float: right;
+    line-height: 100px;
+}
+.menu a{
+    color: var(--cuar);
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0 10px;
+    transition: 0.4s;
+}
+.show-menu-btn, .hide-menu-btn{
+    transition: 0.4s;
+    font-size: 30px;
+    cursor: pointer;
+    display: none;
+    color: var(--cuar);
+}
+.show-menu-btn{
+    float: right;
+}
+.show-menu-btn i{
+    line-height: 100px;
+    color: var(--cuar);
+}
+.menu a:hover{
+    background: var(--hover);
+    color: var(--cuar);
+    border-radius: 5px;
+}
+.show-menu-btn:hover,
+.show-menu-btn i:hover,
+.hide-menu-btn:hover{
+    color: var(--hover);
+}
+  
+#chk{
+    position: absolute;
+    visibility: hidden;
+    z-index: -1111;
+}
+  
+.content{
+    padding: 0 20px;
+}
+
+.content img{
+    width: 100%;
+    max-width: 700px;
+    margin: 20px 0;
+}
+
+.content p{
+    text-align: justify;
+}
+
+@media screen and (max-width:1280px) {
+    .show-menu-btn, .hide-menu-btn{
+        display: block;
+    }
+    .menu{
+        display: none;
+        position: absolute;
+        width: 40%;
+        height: 100vh;
+        background: var(--pri);
+        right: -100%;
+        top: 0;
+        text-align: center;
+        padding: 80px 0;
+        line-height: normal;
+        transition: 0.7s;
+        z-index: +15;
+    }
+    .menu a{
+        display: block;
+        padding: 20px;
+    }
+    .hide-menu-btn{
+        position: absolute;
+        top: 30px;
+        right: 40px;
+    }
+    #chk:checked ~ .menu{
+        display: block;
+        right: 0;
+    }
+}
+    /* Fin barra de navegación */
+
+    /* ----------------------- */
+
+    /* Login */
+.iniciar-btn{
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.iniciar-btn{
+    position: absolute;
+    top: 25px;
+}
+
+.iniciar-btn:hover{
+    color: #1abc9c;
+}
+  
+  /* Checkbox */
+#show:checked ~ .container-log{
+    display: block;
+}
+input[type="checkbox"]{
+    display: none;
+}
+  
+.container-log{
+    display: none;
+    background: #fff;
+    width: 410px;
+    padding: 30px;
+    box-shadow: 0 0 8px rgb(0,0,0,0.4);
+    z-index: +100;
+}
+  
+.container-log{
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%);
+}
+  
+.container-log .close-btn{
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 18px;
+    cursor: pointer;
+}
+  
+.container-log .close-btn:hover{
+    color: #3498db;
+}
+  
+.container-log .text{
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;  
+}
+  
+.container-log form{
+    margin-top: -20px;
+}
+  
+.container-log form .data{
+    height: 45px;
+    width: 100%;
+    margin: 40px 0;
+}
+  
+form .data label{
+    font-size: 18px;
+}
+
+form .data input{
+    height: 100%;
+    width: 100%;
+    padding-left: 10px;
+    font-size: 17px;
+    border: 1px solid silver;
+}
+  
+form .data input:focus{
+    border-color: #3498db;
+    border-bottom-width: 2px;
+}  
+
+form .btn{
+    margin: 30px 0;
+    height: 45px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+  
+form .btn .inner{
+    height: 100%;
+    width: 300%;
+    position: absolute;
+    left: -100%;
+    z-index: -1;
+    background: -webkit-linear-gradient(right, #56d8e4, #9f01ea, #56d8e4, #9f01ea);
+    transition: all 0.4s;
+}
+  
+form .btn:hover .inner{
+    left: 0;
+}
+  
+form .btn button{
+    height: 100%;
+    width: 100%;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+  
+form .recuperarContra{
+    margin-top: -8px;
+}
+  
+form .recuperarContra a{
+    color: #3498db;
+    text-decoration: none;
+}
+  
+form .recuperarContra a:hover{
+    text-decoration: underline;
+}
+  
+form .registro{
+    text-align: center;
+}
+  
+form .registro a{
+    color: #3498db;
+    text-decoration: none;
+}
+  
+form .registro a:hover{
+    text-decoration: underline;
+}
+
+    /* Fin login */
+/* Fin barra de navegación y login */
+
+/* -------------------------------------- */
+
+/* Seccion de SLIDE SHOW */
 
 .slideshow{
     grid-area: slideshow;
 }
+.slide-body{
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    user-select: none;
+    border: none;
+    height: 100%;
+}
 
-/* Parte de NAVEGACION CON ICONOS */
+.slide-body .slide_img{
+    position: absolute;
+    width: 100%;;
+    height: 100%;
+}
+.slide-body .slide_img img{
+    width: inherit;
+    height: inherit;
+}
+
+.slide-body #nav-slide{
+    width: 100%;
+    bottom: 20px;
+    height: 11px;
+    position: absolute;
+    text-align: center;
+    z-index: 10;
+    cursor: default;
+}
+
+#nav-slide .dots{
+    top: -10px;
+    width: 50px;
+    height: 10px;
+    margin: 6px;
+    border: 2px solid #fff;
+    position: relative;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: .4s;
+}
+
+#nav-slide .dots:hover {
+    cursor: pointer;
+    background-color: #fff;
+    transition: .25s
+}
+
+.slide_img{ z-index: -1; }
+
+#i1:checked ~ #one  ,
+#i2:checked ~ #two  ,
+#i3:checked ~ #three,
+#i4:checked ~ #four ,
+#i5:checked ~ #five 
+{z-index: 9; animation: scroll 1s ease-in-out;}
+
+#i1:checked  ~  #nav-slide #dot1,
+#i2:checked  ~  #nav-slide #dot2,
+#i3:checked  ~  #nav-slide #dot3,
+#i4:checked  ~  #nav-slide #dot4,
+#i5:checked  ~  #nav-slide #dot5
+{ background-color: rgba(255,255,255,.9);}
+
+@keyframes scroll{
+    0%{	opacity:.4; }
+    100%{ opacity:1; }
+}
+
+#i1, #i2, #i3, #i4, #i5{ display: none;}
+
+/* Fin de sección de SLIDE SHOW */
+
+/* -------------------------------------- */
+
+/* Sección de NAVEGACION CON ICONOS */
 
 .servicios{
     grid-area: servicios;
@@ -126,17 +478,19 @@ p{
     vertical-align: middle;
 }
 
-/* Fin parte de NAVEGACION CON ICONOS */
+/* Fin de sección de NAVEGACION CON ICONOS */
 
+/* -------------------------------------- */
 
 .prueba{
     grid-area: prueba;
     background: var(--ter);
 }
 
-/* Footer */
+/* -------------------------------------- */
+
+/* Sección del footer */
 .footer{
-    /* grid-area: footer; */
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
     background-color: var(--pri);
@@ -155,8 +509,9 @@ p{
     flex: 0 0 50%;
     max-width: 50%;
 }
-/* Fin footer */
+/* Fin de sección del footer */
 
+/* -------------------------------------- */
 
 /* Divisor de página */
 .divisor {
