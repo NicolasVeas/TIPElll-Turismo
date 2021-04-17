@@ -27,7 +27,7 @@ app.use(express.urlencoded({extended:false}));
 
 //  Rutas
 app.use('/', require('./routes/home'));         // pág principal
-app.use('/', require('./routes/customer'));
+app.use('/', require('./routes/customer'));     // KJAHSDKAHSDHASKJDJKADHJSKASHDJK
 app.use('/', require('./routes/user'));         // pág usuario
 app.use('/', require('./routes/admin'));        // pág administrador
 
