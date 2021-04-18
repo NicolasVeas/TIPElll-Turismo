@@ -20,16 +20,15 @@
                 <div class="container-log">
                     <label for="show" class="close-btn fas fa-times"></label>
                     <div class="text">Iniciar sesión</div>
-                    <form action="#">
+                    <form action="/login" method="POST">
                         <div class="data">
                             <label>e-Mail</label>
-                            <input type="text" required>
+                            <input type="text" placeholder="Ingresa tu correo electronico" name="username"  />
                         </div>
                         <div class="data">
                             <label>Contraseña</label>
-                            <input type="text" required>
+                            <input type="password"  placeholder="Ingresa tu contraseña" name="password"  />
                         </div>
-                        <div class="recuperarContra"><a href="#">Recuperar contraseña</a></div>
                         <div class="btn">
                             <div class="inner"></div>
                             <button type="submit">Ingresar</button>

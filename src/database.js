@@ -1,39 +1,23 @@
-const express = require('express');
-const path = require('path');
-const morgan = require('morgan');
-const mysql = require('mysql');
-const myConnection = require('express-myconnection');
-const app = express();
-const { urlencoded } = require('express');
+var mysql = require('mysql');
+const { promisify }= require('util');
 
-// Configuraciones
-app.set('port', process.env.PORT || 3000);
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'view'));
 
-// Archivos estaticos
-app.use(express.static(path.join(__dirname, 'static')));
-
-//  Middlewares
-app.use(morgan('dev'));
-app.use(myConnection(mysql, {
+var conn = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'password',
     port: '3306',
-    database: 'tipe'
-}, 'single'));
-
-app.use(express.urlencoded({extended:false}));
-
-//  Rutas
-app.use('/', require('./routes/home'));         // pág principal
-
-app.use('/', require('./routes/customer'));     // asdasdasdasd
-app.use('/', require('./routes/user'));         // pág usuario
-app.use('/', require('./routes/admin'));        // pág administrador
-
-//  Iniciando el servidor
-app.listen(app.get('port'), () => {
-    console.log('Server on port 3000');
+    database: 'turismo'
 });
+
+conn.connect(function(error){
+    if(error){
+        throw error;
+    }else{
+        console.log('CONEXION EXITOSA');
+    }
+
+});
+
+conn.query = promisify(conn.query);
+module.exports = conn;
