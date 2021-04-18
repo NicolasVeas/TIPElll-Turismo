@@ -4,7 +4,7 @@
     <div class="content">
 
         <div class="container-tabla">
-            <h3 class="text-center">servicios regionales</h3>
+            <h3 class="text-center">atractivos regionales</h3>
             <div class="busqueda">
                 <input class="busqueda-input search" data-table="order-table" type="text" placeholder="Search..">
             </div>
@@ -23,27 +23,26 @@
                     <% if (data) { %>
                         <% for(var i = 0; i < data.length; i++) { %>
                             <tr>
-                                <td> <%= data[i].id_servicio %> </td>
+                                <td> <%= data[i].id_atractivo %> </td>
                                 <td> <%= data[i].titulo %> </td>
                                 <td> <%= data[i].geo_local %> </td>
                                 <td> <%= data[i].telefono %> </td>
                                 <td>
-                                    <a href="/eliminar-servicio-reg/<%= data[i].id_servicio %>" class="boton eliminar">Eliminar</a>
+                                    <a href="/eliminar-atractivo-reg/<%= data[i].id_atractivo%>" class="boton eliminar">Eliminar</a>
                                 </td>
                                 <td>
-                                    <a href="/modificar-servicio-reg/<%= data[i].id_servicio %>" class="boton actualizar">Modificar</a>
+                                    <a href="/modificar-atractivo-reg/<%= data[i].id_atractivo%>" class="boton actualizar">Modificar</a>
                                 </td>
                             </tr>
                         <% } %>
                     <% } %>
                 </tbody>
-            </table>
-                
+            </table>    
         </div>
 
         <div class="container-form">
-            <h3 class="text-center">Agregar un servicio</h3>
-            <form action="/agregar-servicio" method="POST">
+            <h3 class="text-center">Agregar un atractivo</h3>
+            <form action="/agregar-atractivo" method="POST">
                 <div class="datos">
                     <label>Título</label>
                     <div class="input-user">
@@ -51,9 +50,9 @@
                     </div>
                 </div>
                 <div class="datos">
-                    <label>Descripcion</label>
+                    <label>Descripción o historia</label>
                     <div class="input-user">
-                        <textarea class="text" name="descripcion" id="" placeholder="Escriba aqui la descripcion completa del servicio"></textarea>
+                        <textarea class="text" name="descripcion" id="" placeholder=""></textarea>
                     </div>
                 </div>
                 <div class="datos">
@@ -73,7 +72,7 @@
                     <div class="file">
                         <input class="file" type="file" placeholder="x" required>
                     </div>
-                </div> -->
+                </div> -->  
                 <div class="boton">
                     <button type="submit">Agregar servicio</button>
                 </div>
@@ -81,5 +80,7 @@
         </div>
             
     </div>
+
+    <!-- Fin sección del contenido (Cuerpo general)  -->
 
 <%- include ('partials-admin/_footer-admin')  %>
