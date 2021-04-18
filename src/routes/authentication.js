@@ -13,15 +13,14 @@ router.get('/login', (req,res) =>{
 
 router.post('/login', passport.authenticate('local',{
     
-    failureRedirect: "/xd",
+    failureRedirect: "/login",
 }), (req,res) => {
-    console.log(req.user.tipo);
     if(req.user.tipo == 'emprendedor'){
         res.redirect('/usuario');
     }else if(req.user.tipo == 'admin'){
-        res.redirect('/administracion');
+        res.redirect('/admin');
     }else{
-        res.redirect('/asd');
+        res.redirect('/login');
     }
 });
 

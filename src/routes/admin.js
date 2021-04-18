@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const conn = require('../database');
 
 router.get('/admin', (req, res) => {
     res.render('admin.ejs');
@@ -9,18 +10,24 @@ router.get('/admin', (req, res) => {
 
 // Apartado de USUARIOS
 
-router.get('/usuarios', (req, res) => {
-    req.getConnection((err, conn) =>{
-        conn.query('SELECT * FROM usuario', (err, usuarios) => {
-            console.log(usuarios);
-            if (err) {
-                res.json(err);
-            }
-            res.render('admin-user', {
-                data: usuarios
-            });
+router.get('/usuarios', (req,res,next) => {
+    
+    if(req.isAuthenticated()){
+        
+        return next();
+    }
+        res.redirect('/login');
+},(req,res) =>{
+    conn.query('SELECT * FROM usuario', (err, usuarios) => {
+        
+        if (err) {
+            res.json(err);
+        }
+        res.render('admin-user', {
+            data: usuarios
         });
     });
+    
 });
 
 router.get('/eliminar/:correo', (req, res) => {
