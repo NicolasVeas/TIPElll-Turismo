@@ -5,8 +5,6 @@ const passport = require('passport');
 const { changeUser } = require('..');
 
 
-
-
 router.get('/login', (req,res) =>{
     res.render('home.ejs');
 });

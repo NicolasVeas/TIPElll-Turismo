@@ -52,14 +52,14 @@ passport.use(new PassportLocal(function(username,password,done){
 
 //Serialización, parar la información para identificar usuario en passport
 passport.serializeUser(function(user,done){
-    console.log(user)
+//     console.log(user)
     done(null,user.correo);
 });
 //Deserializacion
 passport.deserializeUser(function(correo,done){
     
     conn.query("SELECT * FROM `usuario` WHERE correo = '" + correo + "'",function(err,rows){
-         console.log(rows[0])
+     //     console.log(rows[0])
          done(null,rows[0]);
     })
 }); 

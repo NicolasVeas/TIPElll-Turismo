@@ -11,15 +11,12 @@ router.get('/admin', (req, res) => {
 // Apartado de USUARIOS
 
 router.get('/usuarios', (req,res,next) => {
-    
     if(req.isAuthenticated()){
-        
         return next();
     }
         res.redirect('/login');
-},(req,res) =>{
+    },(req,res) =>{
     conn.query('SELECT * FROM usuario', (err, usuarios) => {
-        
         if (err) {
             res.json(err);
         }
@@ -27,7 +24,6 @@ router.get('/usuarios', (req,res,next) => {
             data: usuarios
         });
     });
-    
 });
 
 router.get('/eliminar/:correo', (req, res) => {
