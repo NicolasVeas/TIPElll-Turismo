@@ -57,6 +57,7 @@ p{
 }
 
 /* Maneja de la vista responsive */
+/* Pantalla de celular */
 @media screen and (max-width:1200px) {
     body{
         width: 95%;
@@ -81,8 +82,11 @@ p{
     .iniciar-btn{
         right: 6%;
     }
+    .text-over{
+        font-size: 13px;
+    }
 }
-
+/* Pantalla de PC */
 @media screen and (min-width:1000px) {
     body{
         width: 75%;
@@ -107,6 +111,9 @@ p{
     }
     .iniciar-btn{
         right: 14%;
+    }
+    .text-over{
+        font-size: 20px;
     }
 }
 /* Fin maneja de la vista responsive */
@@ -466,11 +473,11 @@ form .registro a:hover{
 .servicios .lista-servicios{
     display: grid;
     grid-template-columns: repeat(4, 0.5fr);
-    grid-gap: 100px;
+    grid-gap: 25px;
     grid-auto-rows: minmax(30px, auto);
     font-size: 40px;
     text-align: center;
-    padding: 40px 10px;
+    padding: 20px 10px;
 }
 
 .foto {
@@ -496,26 +503,22 @@ form .registro a:hover{
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    font-size: 20px;
 }
 
 .overlayFade{
     height: 100%;
-    width: 100%;
     top: 0;
     left: 0;
     background-color: #303841;
     border-radius: 15px;
 }
 
-.one:hover .overlay{
+.caca:hover .overlay{
     opacity: 1;
 }
 
-.one{
+.caca{
     position: relative;
-    width: 200px;
-    height: 100%;
 }
 
 
