@@ -151,6 +151,15 @@ nav{
     padding: 0 10px;
     transition: 0.4s;
 }
+
+.iniciar-btn{
+    color: var(--cuar);
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0 10px;
+    transition: 0.4s;
+}
+
 .show-menu-btn, .hide-menu-btn{
     transition: 0.4s;
     font-size: 30px;
@@ -247,7 +256,9 @@ nav{
 }
 
 .iniciar-btn:hover{
-    color: #1abc9c;
+    background: var(--hover);
+    color: var(--cuar);
+    border-radius: 5px;
 }
   
   /* Checkbox */

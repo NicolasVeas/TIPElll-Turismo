@@ -21,7 +21,7 @@
             <div class="center">
                 <a href="" class="logo"><img class="img-fluid" src="/img/icon.png"/></a>
                 <input type="checkbox" id="show">
-                <a class="iniciar-btn" href="/">Cerrar sesión</a>
+                <a class="iniciar-btn" href="/logout">Cerrar sesión</a>
                 <button class="servicios-btn"><a href="">Mis servicios</a></button>
             </div>
         </header>
@@ -89,41 +89,57 @@
                 <div class="container-user-form text-color">
                     <form action="#">
                         <div class="datos">
-                            <label>Titulo</label>
+                            <label>Título</label>
                             <div class="input-user">
-                                <input class="text" type="text" placeholder="Titulo" required>
+                                <input class="text" type="text" placeholder="Título" required>
                             </div>
                         </div>
                         <div class="datos">
-                            <label>Descripcion</label>
+                            <label>Descripción</label>
                             <div class="input-user">
-                                <textarea class="text" name="descripcion" id="" placeholder="Escriba aqui la descripcion"></textarea>
+                                <textarea class="text" name="descripcion" id="" placeholder="Escriba aqui la descripción completa del servicio"></textarea required>
                             </div>
                         </div>
                         <div class="datos">
-                            <label>x</label>
+                            <label>Geolocalización</label>
                             <div class="input-user">
-                                <input class="text" type="text" placeholder="x" required>
+                                <input class="text" type="text" name="geo_local" placeholder="Ingrese las coordenadas del lugar. ej:(0.1234,0.1234)" required>
                             </div>
                         </div>
                         <div class="datos">
-                            <label>x</label>
+                            <label>Teléfono o Celular</label>
                             <div class="input-user">
-                                <input class="text" type="text" placeholder="x" required>
+                                <input class="text" type="number" name="telefono" placeholder="Ingrese el teléfono o celular de contacto" required>
                             </div>
                         </div>
                         <div class="datos">
-                            <label>x</label>
+                            <label>Correo electrónico</label>
                             <div class="input-user">
-                                <input class="text" type="text" placeholder="x" required>
+                                <input class="text" type="email" name="telefono" placeholder="Ingrese el correo de contacto" required>
                             </div>
                         </div>
                         <div class="datos">
-                            <label>Eliga una imagen para su servivio.</label>
+                            <label>Red social</label>
+                            <div class="input-user">
+                                <input class="text" type="email" name="telefono" placeholder="Ingrese una red social" required>
+                            </div>
+                        </div>
+                        <div class="datos">
+                            <label for="cars">Seleccione la categoría de su servicio:</label>
+                            <select id="cars" name="cars">
+                                <option value="servicio_gastronomico">Servicios Gastronómicos</option>
+                                <option value="alojamiento">Alojamientos</option>
+                                <option value="agencias_ttoo">Agencias y TTOO</option>
+                                <option value="paseoNauticos">Paseos Náuticos</option>
+                                <option value="otros" selected>Otros</option>
+                            </select required>
+                        </div>
+                        <!-- <div class="datos">
+                            <label>Sernatur</label>
                             <div class="file">
                                 <input class="file" type="file" placeholder="x" required>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="boton">
                             <button type="submit">Enviar registro</button>
                         </div>

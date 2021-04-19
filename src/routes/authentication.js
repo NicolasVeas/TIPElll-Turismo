@@ -4,7 +4,7 @@ const conn = require('..');
 const passport = require('passport');
 const { changeUser } = require('..');
 
-
+// Inicio sesión
 router.post('/login', passport.authenticate('local',{
     
     failureRedirect: "/",
@@ -16,6 +16,13 @@ router.post('/login', passport.authenticate('local',{
     }else{
         res.redirect('/');
     }
+});
+
+// Cerrar sesión
+router.get("/logout", function(req, res) {
+    req.logout();
+    
+    res.redirect("/");
 });
 
 module.exports = router;

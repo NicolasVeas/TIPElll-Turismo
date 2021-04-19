@@ -6,13 +6,14 @@
         <div class="container-tabla">
             <h3 class="text-center">servicios regionales</h3>
             <div class="busqueda">
-                <input class="busqueda-input search" data-table="order-table" type="text" placeholder="Search..">
+                <input class="busqueda-input search" data-table="order-table" type="text" placeholder="Buscar...">
             </div>
 
             <table class="table order-table text-center">
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Usuario</th>
                         <th>Título</th>
                         <th>Geolocalización</th>
                         <th>Telefono</th>
@@ -24,6 +25,7 @@
                         <% for(var i = 0; i < data.length; i++) { %>
                             <tr>
                                 <td> <%= data[i].id_servicio %> </td>
+                                <td> <%= data[i].correo || 'Desconocido' %> </td>
                                 <td> <%= data[i].titulo %> </td>
                                 <td> <%= data[i].geo_local %> </td>
                                 <td> <%= data[i].telefono %> </td>
@@ -51,9 +53,9 @@
                     </div>
                 </div>
                 <div class="datos">
-                    <label>Descripcion</label>
+                    <label>Descripción</label>
                     <div class="input-user">
-                        <textarea class="text" name="descripcion" id="" placeholder="Escriba aqui la descripcion completa del servicio"></textarea>
+                        <textarea class="text" name="descripcion" id="" placeholder="Escriba aqui la descripción completa del servicio"></textarea>
                     </div>
                 </div>
                 <div class="datos">
@@ -63,9 +65,9 @@
                     </div>
                 </div>
                 <div class="datos">
-                    <label>Teléfono</label>
+                    <label>Teléfono o Celular</label>
                     <div class="input-user">
-                        <input class="text" type="text" name="telefono" placeholder="Ingrese el teléfono de contacto" required>
+                        <input class="text" type="number" name="telefono" placeholder="Ingrese el teléfono de contacto" required>
                     </div>
                 </div>
                 <!-- <div class="datos">

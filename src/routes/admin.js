@@ -72,8 +72,17 @@ router.get('/eliminar/:correo', (req,res,next) => {
         }
             res.redirect('/');
         },(req,res) =>{
-        const data = Object.assign({},req.body)
-        conn.query('INSERT INTO servicio_admin set ?', [data], (err, customer) => {
+        let data = Object.assign({},req.body);
+        let user = req.user.correo;
+        console.log(user);
+
+        conn.query('INSERT INTO servicio_admin set ? ', {
+            titulo: data.titulo,
+            correo: user,
+            descripcion: data.descripcion,
+            geo_local: data.geo_local,
+            telefono: data.telefono
+        }, (err, customer) => {
             res.redirect('/servicios-regionales');
         });
     });
