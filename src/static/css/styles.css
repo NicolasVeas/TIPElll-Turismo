@@ -481,7 +481,7 @@ form .registro a:hover{
 }
 
 .foto {
-    max-width: 100%;
+    max-width: 65%;
     vertical-align: middle;
     border-radius: 15px;
 }
