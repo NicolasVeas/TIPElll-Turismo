@@ -513,11 +513,11 @@ form .registro a:hover{
     border-radius: 15px;
 }
 
-.caca:hover .overlay{
+.one:hover .overlay{
     opacity: 1;
 }
 
-.caca{
+.one{
     position: relative;
 }
 
