@@ -465,18 +465,60 @@ form .registro a:hover{
 
 .servicios .lista-servicios{
     display: grid;
-    grid-template-columns: repeat(6, 0.5fr);
-    grid-gap: 10px;
-    grid-auto-rows: minmax(50px, auto);
-    font-size: 50px;
+    grid-template-columns: repeat(4, 0.5fr);
+    grid-gap: 100px;
+    grid-auto-rows: minmax(30px, auto);
+    font-size: 40px;
     text-align: center;
-    padding: 5px;
+    padding: 40px 10px;
 }
 
-#iconos img {
-    max-width: 80%;
+.foto {
+    max-width: 100%;
     vertical-align: middle;
+    border-radius: 15px;
 }
+
+/*  ICONOS - OVERLAY  y SUS CONTENEDORES */
+
+.overlay{
+    position: absolute;
+    transition: all .3s ease;
+    opacity: 0;
+    background-color: #EEE;
+    width: 100%;
+}
+
+.text-over {
+    color: white;
+    font-family: sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 20px;
+}
+
+.overlayFade{
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #303841;
+    border-radius: 15px;
+}
+
+.one:hover .overlay{
+    opacity: 1;
+}
+
+.one{
+    position: relative;
+    width: 200px;
+    height: 100%;
+}
+
+
 
 /* Fin de sección de NAVEGACION CON ICONOS */
 
