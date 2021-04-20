@@ -1,52 +1,83 @@
 <%- include ('partials-admin/_header-admin')  %>
 
+    <!-- Sección del contenido (Cuerpo general) -->
+    
 
-        <!-- Sección del contenido (Cuerpo general) -->
-        <div class="content">
+    <div class="content">
 
-            <div class="container-tabla">
-                <h3 class="text-center">USUARIOS emprendedores</h3>
-                <div class="busqueda">
-                    <input class="busqueda-input search" data-table="order-table" type="text" placeholder="Buscar...">
-                </div>
+        <% if (data.length > 0) { %>
+        <div class="container-estado">
+            <h3 class="text-center">USUARIOS pendientes</h3>
 
-                <table class="table order-table text-center">
-                    <thead>
+            <table class="table order-table text-center">
+                <thead>
+                    <tr>
+                        <th>Correo</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th colspan="2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i = 0; i < data.length; i++) { %>
+                        <% if (data[i].tipo == 'emprendedor' && data[i].estado == 0) { %>
                             <tr>
-                                <th>N°</th>
-                                <th>Correo</th>
-                                <th>Contraseña</th>
-                                <th>Nombre</th>
-                                <th>Telefono</th>
-                                <th>Tipo</th>
-                                <th colspan="2">Acciones</th>
+                                <td> <%= data[i].correo %> </td>
+                                <td> <%= data[i].nombre %> </td>
+                                <td><%= data[i].tipo %></td>
+                                <td>
+                                    <a href="/aceptar-usuario/<%= data[i].correo %>" class="boton aceptar">Aceptar</a>
+                                    <a href="/eliminar/<%= data[i].correo %>" class="boton eliminar">Rechazar</a>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <% if (data) { %>
-                                <% for(var i = 0; i < data.length; i++) { %>
-                                    
-                                    <% if (data[i].tipo == 'emprendedor') { %>
-                                        <tr>
-                                            <td> <%= (i+1) %> </td>
-                                            <td> <%= data[i].correo %> </td>
-                                            <td> <%= data[i].contrasena %> </td>
-                                            <td> <%= data[i].nombre %> </td>
-                                            <td> <%= data[i].telefono %> </td>
-                                            <td><%= data[i].tipo %></td>
-                                            <td>
-                                                <a href="/eliminar/<%= data[i].correo %>" class="boton eliminar">Eliminar</a>
-                                            </td>
-                                        </tr>
-                                    <% } %>
-                                <% } %>
-                            <% } %>
-                        </tbody>
-                </table>
-                
+                        <% } %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <% } %>
+
+        <div class="container-tabla">
+            <h3 class="text-center">USUARIOS emprendedores</h3>
+            <div class="busqueda">
+                <input class="busqueda-input search" data-table="order-table" type="text" placeholder="Buscar...">
             </div>
 
-            
+            <table class="table order-table text-center">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Correo</th>
+                        <th>Contraseña</th>
+                        <th>Nombre</th>
+                        <th>Telefono</th>
+                        <th>Tipo</th>
+                        <th colspan="2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data) { %>
+                        <% for(var i = 0; i < data.length; i++) { %>
+                            
+                            <% if (data[i].tipo == 'emprendedor' && data[i].estado == 1) { %>
+                                <tr>
+                                    <td> <%= (i+1) %> </td>
+                                    <td> <%= data[i].correo %> </td>
+                                    <td> <%= data[i].contrasena %> </td>
+                                    <td> <%= data[i].nombre %> </td>
+                                    <td> <%= data[i].telefono %> </td>
+                                    <td><%= data[i].tipo %></td>
+                                    <td>
+                                        <a href="/eliminar/<%= data[i].correo %>" class="boton eliminar">Eliminar</a>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                </tbody>
+            </table>
         </div>
+
+    </div>
 
 <%- include ('partials-admin/_footer-admin')  %>

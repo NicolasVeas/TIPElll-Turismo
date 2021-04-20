@@ -86,7 +86,7 @@ header{
     position: fixed;
     left: 0;
     width: 250px;
-    height: calc(100% - 9%);
+    height: 100%;
     transition: 0.5s;
     transition-property: left;
     overflow-y: auto;
@@ -162,7 +162,11 @@ label #sidebar-btn:hover{
     margin-left: 60px;
 }
 
-.container-tabla{
+.container-estado{
+    margin-bottom: 30px;
+}
+
+.container-tabla, .container-estado{
     width: (100% - 250px);
     padding: 15px 15px;
     margin-right: auto;
@@ -207,6 +211,9 @@ label #sidebar-btn:hover{
     padding: .75rem 1.5rem;
     font-size: 1rem;
     line-height: 1.5rem;
+}
+.aceptar{
+    background-color: #5cb85c;
 }
 .eliminar{
     background-color: #d9534f;

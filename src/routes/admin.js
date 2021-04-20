@@ -2,15 +2,25 @@ const express = require('express');
 const router = express.Router();
 const conn = require('../database');
 
-router.get('/admin', (req, res) => {
-    res.render('admin.ejs');
-});
+router.get('/admin', (req, res, next) => {
+    if(req.isAuthenticated()){
+        if(req.user.tipo == 'emprendedor' ){
+            res.redirect('/usuario');
+        }
+        else{
+            res.redirect('/usuarios-admin');
+        }
+        return next();
+    }
+        res.redirect('/');
+    }
+);
 
 //* -------------------------------------- *//
 
 // Apartado de USUARIOS
 
-router.get('/usuarios', (req,res,next) => {
+router.get('/usuarios-admin', (req,res,next) => {
     if(req.isAuthenticated()){
         return next();
     }
@@ -37,9 +47,25 @@ router.get('/eliminar/:correo', (req,res,next) => {
         if (err) {
             res.json(err);
         }
-        res.redirect('/usuarios');
+        res.redirect('/usuarios-admin');
     });
 });
+
+router.get('/aceptar-usuario/:correo', (req, res, next) => {
+    if(req.isAuthenticated()){
+        return next();
+    }
+        res.redirect('/');
+    },(req,res) =>{
+        const { correo } = req.params;
+        conn.query("UPDATE usuario SET estado = 1 WHERE correo = ?", [correo], (err, rows) => {
+        if (err) {
+            res.json(err);
+        }
+        res.redirect('/usuarios-admin');
+    });
+});
+
 
 
 // Fin apartado de USUARIOS
@@ -157,6 +183,37 @@ router.get('/eliminar/:correo', (req,res,next) => {
             });
         });
     });
+
+    router.get('/eliminar-servicio-user/:id_emp', (req, res, next) => {
+        if(req.isAuthenticated()){
+            return next();
+        }
+            res.redirect('/');
+        },(req,res) =>{
+            const { id_emp } = req.params;
+            conn.query('DELETE FROM servicio_emprendedor WHERE id_emp = ?', [id_emp], (err, rows) => {
+            if (err) {
+                res.json(err);
+            }
+            res.redirect('/servicios-usuarios');
+        });
+    });
+
+    router.get('/aceptar-servicio/:id_emp', (req, res, next) => {
+        if(req.isAuthenticated()){
+            return next();
+        }
+            res.redirect('/');
+        },(req,res) =>{
+            const { id_emp } = req.params;
+            conn.query("UPDATE servicio_emprendedor SET solicitud = 1 WHERE id_emp = ?", [id_emp], (err, rows) => {
+            if (err) {
+                res.json(err);
+            }
+            res.redirect('/servicios-usuarios');
+        });
+    });
+    
 
     //  Fin SERVICIOS DE USUSARIOS
 

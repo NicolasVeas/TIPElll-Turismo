@@ -4,6 +4,38 @@
         <!-- Sección del contenido (Cuerpo general) -->
         <div class="content">
 
+            <% if (data.length > 0) { %>
+                <div class="container-estado">
+                    <h3 class="text-center">servicios pendientes</h3>
+        
+                    <table class="table order-table text-center">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Ubicación</th>
+                                <th>Sernatur</th>
+                                <th colspan="2">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i = 0; i < data.length; i++) { %>
+                                <% if (data[i].estado == 0) { %>
+                                    <tr>
+                                        <td> <%= data[i].correo %> </td>
+                                        <td> <%= data[i].nombre %> </td>
+                                        <td><%= data[i].tipo %></td>
+                                        <td>
+                                            <a href="/aceptar-servicio/<%= data[i].id_emp %>" class="boton aceptar">Aceptar</a>
+                                            <a href="/eliminar-servicio-user/<%= data[i].id_emp %>" class="boton eliminar">Rechazar</a>
+                                        </td>
+                                    </tr>
+                                <% } %>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            <% } %>
+
             <div class="container-tabla">
                 <h3 class="text-center">servicios de usuarios</h3>
                 <div class="busqueda">
@@ -26,21 +58,16 @@
                         <tbody>
                             <% if (data) { %>
                                 <% for(var i = 0; i < data.length; i++) { %>
-                                    
-                                    <% if (data[i].tipo == 'emprendedor') { %>
-                                        <tr>
-                                            <td> <%= data[i].id_emp %> </td>
-                                            <td> <%= data[i].titulo %> </td>
-                                            <td> <%= data[i].ubicacion %> </td>
-                                            <td> <%= data[i].contacto_tel %> </td>
-                                            <td> <%= data[i].contacto_correo %> </td>
-                                            <td> <%= data[i].redsocial %> </td>
-                                            <td> <%= data[i].sernatur %> </td>
-                                            <td>
-                                                <a href="/eliminar/<%= data[i].correo %>" class="boton eliminar">Eliminar</a>
-                                            </td>
-                                        </tr>
-                                    <% } %>
+                                    <tr>
+                                        <td> <%= data[i].id_emp %> </td>
+                                        <td> <%= data[i].titulo %> </td>
+                                        <td> <%= data[i].ubicacion %> </td>
+                                        <td> <%= data[i].contacto_tel %> </td>
+                                        <td> <%= data[i].contacto_correo %> </td>
+                                        <td> <%= data[i].redsocial %> </td>
+                                        <td> <%= data[i].sernatur %> </td>
+                                        <td><a href="/eliminar-servicio-user/<%= data[i].id_emp %>" class="boton eliminar">Eliminar</a></td>
+                                    </tr>
                                 <% } %>
                             <% } %>
                         </tbody>
