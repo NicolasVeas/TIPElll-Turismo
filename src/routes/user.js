@@ -16,8 +16,6 @@ router.post('/agregar-servicio-emprendedor', (req, res, next) => {
 
     let data = Object.assign({},req.body);
     let user = req.user.correo;
-    console.log(data);
-    console.log(user);
     conn.query('INSERT INTO servicio_emprendedor set ? ', {
         titulo: data.titulo,
         correo: user,

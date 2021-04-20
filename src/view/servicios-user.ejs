@@ -19,11 +19,11 @@
                         </thead>
                         <tbody>
                             <% for(var i = 0; i < data.length; i++) { %>
-                                <% if (data[i].estado == 0) { %>
+                                <% if (data[i].solicitud == 0) { %>
                                     <tr>
-                                        <td> <%= data[i].correo %> </td>
-                                        <td> <%= data[i].nombre %> </td>
-                                        <td><%= data[i].tipo %></td>
+                                        <td> <%= data[i].titulo %> </td>
+                                        <td> <%= data[i].ubicacion %> </td>
+                                        <td><%= data[i].sernatur %></td>
                                         <td>
                                             <a href="/aceptar-servicio/<%= data[i].id_emp %>" class="boton aceptar">Aceptar</a>
                                             <a href="/eliminar-servicio-user/<%= data[i].id_emp %>" class="boton eliminar">Rechazar</a>
@@ -50,7 +50,6 @@
                                 <th>Ubicación</th>
                                 <th>Teléfono</th>
                                 <th>Correo</th>
-                                <th>Red Social</th>
                                 <th>Sernatur</th>
                                 <th colspan="2">Acciones</th>
                             </tr>
@@ -58,16 +57,17 @@
                         <tbody>
                             <% if (data) { %>
                                 <% for(var i = 0; i < data.length; i++) { %>
-                                    <tr>
-                                        <td> <%= data[i].id_emp %> </td>
-                                        <td> <%= data[i].titulo %> </td>
-                                        <td> <%= data[i].ubicacion %> </td>
-                                        <td> <%= data[i].contacto_tel %> </td>
-                                        <td> <%= data[i].contacto_correo %> </td>
-                                        <td> <%= data[i].redsocial %> </td>
-                                        <td> <%= data[i].sernatur %> </td>
-                                        <td><a href="/eliminar-servicio-user/<%= data[i].id_emp %>" class="boton eliminar">Eliminar</a></td>
-                                    </tr>
+                                    <% if (data[i].solicitud == 1) { %>
+                                        <tr>
+                                            <td> <%= data[i].id_emp %> </td>
+                                            <td> <%= data[i].titulo %> </td>
+                                            <td> <%= data[i].ubicacion %> </td>
+                                            <td> <%= data[i].contacto_tel %> </td>
+                                            <td> <%= data[i].contacto_correo %> </td>
+                                            <td> <%= data[i].sernatur %> </td>
+                                            <td><a href="/eliminar-servicio-user/<%= data[i].id_emp %>" class="boton eliminar">Eliminar</a></td>
+                                        </tr>
+                                    <% } %>
                                 <% } %>
                             <% } %>
                         </tbody>

@@ -8,6 +8,7 @@
 .servicios-btn{
     position: absolute;
     top: 20px;
+    right: 30%;
     height: 30px;
     width: 150px;
     background: #e6b800;
@@ -19,18 +20,6 @@
     text-transform: uppercase;
     font-size: 15px;
     font-weight: 400;
-}
-
-@media screen and (max-width:1200px) {
-    .servicios-btn{
-        right: 30%;
-    }
-}
-
-@media screen and (min-width:900px) {
-    .servicios-btn{
-        right: 30%;
-    }
 }
 
 .servicios{
@@ -46,13 +35,13 @@
     justify-content: center;
 }
 
-.row a{
+.row .edit{
     position: absolute;
     right: 45px;
     top: 21px;
     color: #2c3e50;
     font-size: 1.5rem;
-
+    z-index: +1;
 }
 
 .col-servicio {
@@ -66,7 +55,6 @@
 
 .contex{
     position: relative;
-    z-index: -1;
 }
 
 .cont-serv{
@@ -88,39 +76,33 @@
 /* // Formulario \\ */
 
 .container-form{
-    background: var(--cuar);
-    height: 100%;
+    background: #fff;
     padding: 20px 0;
     box-shadow: 0 0 8px rgb(0,0,0,0.1);
 }
 
-.container-user-form{
-    padding: 15px;
-    width: 100%;
-}
-
 .datos{
     height: auto;
-    width: 100%;
     margin: 10px 0;
 }
 
 .datos label{
-    margin-left: 8vh;
-    font-size: 2vh;
+    margin-left: 10%;
+    font-size: 3vh;
 }
 
 .input-user{
     align-content: center;
     text-align: center;
 }
-.file{
-    margin-left: 4vh;
-    padding: 5px 0;
-    font-size: 1.5vh;
+
+select{
+    margin-left: 5px;
+    padding: 10px 10px;
+    font-size: 2vh;
 }
 
-.container-user-form form .text{
+form .text{
     outline: none;
     border: none;
     width: 80%;
@@ -132,17 +114,17 @@
     letter-spacing: 1px;
     border-radius: 15px;
 }
-.container-user-form form input{
+
+form input{
     height: 35px;
 }
-.container-user-form form textarea{
+form textarea{
     height: 100px;
 }
 
 .boton{
     margin: 5px 0;
     height: 45px;
-    width: 100%;
     align-content: center;
     text-align: center;
 }

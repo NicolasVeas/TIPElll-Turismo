@@ -22,8 +22,8 @@ body{
 }
 
 header{
-  height: 50px;
-  background: var(--pri);
+    height: 50px;
+    background: var(--pri);
 }
 
 h2{

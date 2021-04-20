@@ -174,7 +174,7 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
         }
             res.redirect('/');
         },(req,res) =>{
-        conn.query('SELECT * FROM servicio_admin', (err, servicios) => {
+        conn.query('SELECT * FROM servicio_emprendedor', (err, servicios) => {
             if (err) {
                 res.json(err);
             }

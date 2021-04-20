@@ -50,7 +50,7 @@
 
                 <div class="row">
                     <div class="col-servicio">
-                        <a href=""><i class="fas fa-edit"></i></a>
+                        <a class="edit" href=""><i class="fas fa-edit"></i></a>
                         <div class="contex">
                             <div class="cont-serv">
                                 <h3 class="text-center text-color">Servicio 1</h3>
@@ -59,21 +59,22 @@
                                 <div class="divisor-linea"></div>
                             </div>
                             <div class="img-div" data-target="">
-                                <img class="img-cont" src="/img/Museo San Antonio.png"/>
+                                <a href=""><img class="img-cont" src="/img/Museo San Antonio.png"/></a>
                             </div>
                         </div>
                     </div>
+                    
                     <div class="col-servicio">
-                        <a href=""><i class="fas fa-edit"></i></a>
+                        <a class="edit" href=""><i class="fas fa-edit"></i></a>
                         <div class="contex">
                             <div class="cont-serv">
-                                <h3 class="text-center text-color">Servicio 2</h3>
+                                <h3 class="text-center text-color">Servicio 1</h3>
                             </div>
                             <div class="divisor">
                                 <div class="divisor-linea"></div>
                             </div>
                             <div class="img-div" data-target="">
-                                <img class="img-cont" src="/img/Museo San Antonio.png"/>
+                                <a href=""><img class="img-cont" src="/img/Museo San Antonio.png"/></a>
                             </div>
                         </div>
                     </div>
@@ -84,71 +85,69 @@
         <section class="form-user">
             <div class="container-form">
                 <h3 class="text-center">INGRESO DE SERVICIO</h3>
-                <div class="container-user-form text-color">
-                    <form action="agregar-servicio-emprendedor" method="POST">
-                        <div class="datos">
-                            <label>Título</label>
-                            <div class="input-user">
-                                <input class="text" name="titulo" type="text" placeholder="Título" required>
-                            </div>
+                <form action="agregar-servicio-emprendedor" method="POST">
+                    <div class="datos">
+                        <label>Título</label>
+                        <div class="input-user">
+                            <input class="text" name="titulo" type="text" placeholder="Título" required>
                         </div>
-                        <div class="datos">
-                            <label>Descripción</label>
-                            <div class="input-user">
-                                <textarea class="text" name="descripcion" id="" placeholder="Escriba aquí la descripción completa del servicio"></textarea required>
-                            </div>
+                    </div>
+                    <div class="datos">
+                        <label>Descripción</label>
+                        <div class="input-user">
+                            <textarea class="text" name="descripcion" id="" placeholder="Escriba aquí la descripción completa del servicio"></textarea required>
                         </div>
-                        <div class="datos">
-                            <label>Ubicación</label>
-                            <div class="input-user">
-                                <input class="text" type="text" name="ubicacion" placeholder="Ingrese las coordenadas del lugar. ej:(0.1234,0.1234)" required>
-                            </div>
+                    </div>
+                    <div class="datos">
+                        <label>Ubicación</label>
+                        <div class="input-user">
+                            <input class="text" type="text" name="ubicacion" placeholder="Ingrese las coordenadas del lugar. ej:(0.1234,0.1234)" required>
                         </div>
-                        <div class="datos">
-                            <label>Teléfono o Celular</label>
-                            <div class="input-user">
-                                <input class="text" type="number" name="contacto_tel" placeholder="Ingrese el teléfono o celular de contacto" required>
-                            </div>
+                    </div>
+                    <div class="datos">
+                        <label>Teléfono o Celular</label>
+                        <div class="input-user">
+                            <input class="text" type="number" name="contacto_tel" placeholder="Ingrese el teléfono o celular de contacto" required>
                         </div>
-                        <div class="datos">
-                            <label>Correo electrónico</label>
-                            <div class="input-user">
-                                <input class="text" type="email" name="contacto_correo" placeholder="Ingrese el correo de contacto" required>
-                            </div>
+                    </div>
+                    <div class="datos">
+                        <label>Correo electrónico</label>
+                        <div class="input-user">
+                            <input class="text" type="email" name="contacto_correo" placeholder="Ingrese el correo de contacto" required>
                         </div>
-                        <div class="datos">
-                            <label>Redes Sociales</label>
-                            <div class="input-user">
-                                <textarea class="text" name="redsocial" id="" placeholder="Escriba aquí sus redes sociales"></textarea required>
-                            </div>
+                    </div>
+                    <div class="datos">
+                        <label>Redes Sociales</label>
+                        <div class="input-user">
+                            <textarea class="text" name="redsocial" id="" placeholder="Escriba aquí sus redes sociales"></textarea required>
                         </div>
-                        <div class="datos">
-                            <label for="cars">Seleccione la categoría de su servicio:</label>
-                            <select id="" name="tipo">
-                                <option value="servicio_gastronomico">Servicios Gastronómicos</option>
-                                <option value="alojamiento">Alojamientos</option>
-                                <option value="agencias_ttoo">Agencias y TTOO</option>
-                                <option value="paseoNauticos">Paseos Náuticos</option>
-                                <option value="otros" selected>Otros</option>
-                            </select required>
+                    </div>
+                    <div class="datos">
+                        <label for="cars">Seleccione la categoría de su servicio:</label>
+                        <select id="" name="tipo">
+                            <option value="servicio_gastronomico">Servicios Gastronómicos</option>
+                            <option value="alojamiento">Alojamientos</option>
+                            <option value="agencias_ttoo">Agencias y TTOO</option>
+                            <option value="paseoNauticos">Paseos Náuticos</option>
+                            <option value="otros" selected>Otros</option>
+                        </select required>
+                    </div>
+                    <!-- <div class="datos">
+                        <label>Sernatur</label>
+                        <div class="file">
+                            <input class="file" type="file" placeholder="x" required>
                         </div>
-                        <!-- <div class="datos">
-                            <label>Sernatur</label>
-                            <div class="file">
-                                <input class="file" type="file" placeholder="x" required>
-                            </div>
-                        </div> -->
-                        <!-- <div class="img">
-                            <label>Sernatur</label>
-                            <div class="file">
-                                <input class="file" type="file" placeholder="x" required>
-                            </div>
-                        </div> -->
-                        <div class="boton">
-                            <button type="submit">Enviar registro</button>
+                    </div> -->
+                    <!-- <div class="img">
+                        <label>Sernatur</label>
+                        <div class="file">
+                            <input class="file" type="file" placeholder="x" required>
                         </div>
-                    </form>
-                </div>
+                    </div> -->
+                    <div class="boton">
+                        <button type="submit">Enviar registro</button>
+                    </div>
+                </form>
             </div>
         </section>
 
