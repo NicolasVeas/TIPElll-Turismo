@@ -100,7 +100,7 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
         },(req,res) =>{
         let data = Object.assign({},req.body);
         let user = req.user.correo;
-        console.log(user);
+        
 
         conn.query('INSERT INTO servicio_admin set ? ', {
             titulo: data.titulo,

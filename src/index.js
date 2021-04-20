@@ -45,7 +45,7 @@ passport.use(new PassportLocal(function(username,password,done){
               return done(null, false); 
     //console.log(rows[0].password + " y " + password);
     //console.log(rows[0].rut + " y " + username)
-    return done(null, {correo:rows[0].correo, name: rows[0].nombre, tipo: rows[0].tipo});			
+    return done(null, {correo:rows[0].correo, name: rows[0].nombre, tipo: rows[0].tipo, estado: rows[0].estado});			
     
     });     
 }));

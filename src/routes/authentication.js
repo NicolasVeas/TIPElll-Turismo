@@ -8,7 +8,8 @@ const { changeUser } = require('..');
 router.post('/login', passport.authenticate('local',{
     failureRedirect: "/",
 }), (req,res) => {
-    if(req.user.tipo == 'emprendedor'){
+    console.log(req.user);
+    if(req.user.tipo == 'emprendedor' && req.user.estado == 1){
         res.redirect('/usuario');
     }else if(req.user.tipo == 'admin'){
         res.redirect('/admin');
