@@ -6,7 +6,6 @@ const { changeUser } = require('..');
 
 // Inicio sesión
 router.post('/login', passport.authenticate('local',{
-    
     failureRedirect: "/",
 }), (req,res) => {
     if(req.user.tipo == 'emprendedor'){

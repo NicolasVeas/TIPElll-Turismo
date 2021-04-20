@@ -6,6 +6,17 @@ router.get('/usuario', (req, res) => {
     res.render('user.ejs');
 });
 
+// Registro de usuario
+router.post('/registro', (req,res,next) => {
+    console.log(req.body);
+    conn.query('INSERT INTO usuario set ?', [req.body], (err, resp) => {
+        if (err) {
+            res.json(err);
+        }
+        res.redirect('/');
+    });
+});
+
 // Agregar servicio emprendedor
 router.post('/agregar-servicio-emprendedor', (req, res, next) => {
     if(req.isAuthenticated()){
@@ -29,5 +40,6 @@ router.post('/agregar-servicio-emprendedor', (req, res, next) => {
         res.redirect('/usuario');
     });
 });
+
 
 module.exports = router;

@@ -66,7 +66,6 @@ passport.deserializeUser(function(correo,done){
 
 //  Rutas
 app.use('/', require('./routes/home'));         // pág principal
-app.use('/', require('./routes/customer'));     // pág 
 app.use('/', require('./routes/user'));         // pág usuario
 app.use('/', require('./routes/admin'));        // pág administrador
 app.use('/', require('./routes/authentication')); // login - sign up
