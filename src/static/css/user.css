@@ -155,9 +155,6 @@ select{
     padding: 10px 10px;
     font-size: 2vh;
 }
-form{
-    margin-top: 20px;
-}
 
 form .text{
     outline: none;
