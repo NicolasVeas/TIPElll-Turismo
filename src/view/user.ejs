@@ -87,46 +87,46 @@
             <div class="container-form">
                 <h3 class="text-center">INGRESO DE SERVICIO</h3>
                 <div class="container-user-form text-color">
-                    <form action="#">
+                    <form action="agregar-servicio-emprendedor" method="POST">
                         <div class="datos">
                             <label>Título</label>
                             <div class="input-user">
-                                <input class="text" type="text" placeholder="Título" required>
+                                <input class="text" name="titulo" type="text" placeholder="Título" required>
                             </div>
                         </div>
                         <div class="datos">
                             <label>Descripción</label>
                             <div class="input-user">
-                                <textarea class="text" name="descripcion" id="" placeholder="Escriba aqui la descripción completa del servicio"></textarea required>
+                                <textarea class="text" name="descripcion" id="" placeholder="Escriba aquí la descripción completa del servicio"></textarea required>
                             </div>
                         </div>
                         <div class="datos">
-                            <label>Geolocalización</label>
+                            <label>Ubicación</label>
                             <div class="input-user">
-                                <input class="text" type="text" name="geo_local" placeholder="Ingrese las coordenadas del lugar. ej:(0.1234,0.1234)" required>
+                                <input class="text" type="text" name="ubicacion" placeholder="Ingrese las coordenadas del lugar. ej:(0.1234,0.1234)" required>
                             </div>
                         </div>
                         <div class="datos">
                             <label>Teléfono o Celular</label>
                             <div class="input-user">
-                                <input class="text" type="number" name="telefono" placeholder="Ingrese el teléfono o celular de contacto" required>
+                                <input class="text" type="number" name="contacto_tel" placeholder="Ingrese el teléfono o celular de contacto" required>
                             </div>
                         </div>
                         <div class="datos">
                             <label>Correo electrónico</label>
                             <div class="input-user">
-                                <input class="text" type="email" name="telefono" placeholder="Ingrese el correo de contacto" required>
+                                <input class="text" type="email" name="contacto_correo" placeholder="Ingrese el correo de contacto" required>
                             </div>
                         </div>
                         <div class="datos">
-                            <label>Red social</label>
+                            <label>Redes Sociales</label>
                             <div class="input-user">
-                                <input class="text" type="email" name="telefono" placeholder="Ingrese una red social" required>
+                                <textarea class="text" name="redsocial" id="" placeholder="Escriba aquí sus redes sociales"></textarea required>
                             </div>
                         </div>
                         <div class="datos">
                             <label for="cars">Seleccione la categoría de su servicio:</label>
-                            <select id="cars" name="cars">
+                            <select id="" name="tipo">
                                 <option value="servicio_gastronomico">Servicios Gastronómicos</option>
                                 <option value="alojamiento">Alojamientos</option>
                                 <option value="agencias_ttoo">Agencias y TTOO</option>
@@ -135,6 +135,12 @@
                             </select required>
                         </div>
                         <!-- <div class="datos">
+                            <label>Sernatur</label>
+                            <div class="file">
+                                <input class="file" type="file" placeholder="x" required>
+                            </div>
+                        </div> -->
+                        <!-- <div class="img">
                             <label>Sernatur</label>
                             <div class="file">
                                 <input class="file" type="file" placeholder="x" required>
