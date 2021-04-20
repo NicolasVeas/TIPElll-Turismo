@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const conn = require('../database');
 
-router.get('/usuario', (req, res) => {
+router.get('/mis-servicios', (req, res) => {
     res.render('user.ejs');
 });
 

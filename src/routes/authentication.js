@@ -9,7 +9,7 @@ router.post('/login', passport.authenticate('local',{
     failureRedirect: "/",
 }), (req,res) => {
     if(req.user.tipo == 'emprendedor'){
-        res.redirect('/usuario');
+        res.redirect('/');
     }else if(req.user.tipo == 'admin'){
         res.redirect('/admin');
     }else{
