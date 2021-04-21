@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIS SERVICIOS</title>
+    <link rel='stylesheet' type='text/css' href='/css/styles.css' />
+    <link rel='stylesheet' type='text/css' href='/css/user.css' />
+    <link rel='stylesheet' type='text/css' href='/css/nav.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+    <!-- <script src="js/navegador.js"></script> -->
+</head>
+
+<body>
+
+    <!-- Inicio de sesión -->
+    <header>
+        <div class="center">
+            <a href="" class="logo"><img class="img-fluid" src="/img/icon.png" /></a>
+            <input type="checkbox" id="show">
+            <a class="iniciar-btn" href="/logout">Cerrar sesión</a>
+            <button class="servicios-btn"><a href="/mis-servicios">Mis servicios</a></button>
+        </div>
+    </header>
+
+    <!-- Barra de navegación -->
+    <nav>
+        <input type="checkbox" id="chk">
+        <label for="chk" class="show-menu-btn"><i class="fas fa-bars"></i></label>
+
+        <ul class="menu">
+            <a href="">INICIO</a>
+            <a href="#">SERVICIOS TURÍSTICOS</a>
+            <a href="#">ATRACTIVOS TURÍSTICOS</a>
+            <label for="chk" class="hide-menu-btn"><i class="fas fa-times"></i></label>
+        </ul>
+    </nav>
+
+    <!-- Sección del contenido (Cuerpo general) -->
+    <div class="">
+
+        <div class="container-form">
+            <h3 class="text-center text-color">Modificar un servicio</h3>
+            <form action="/modificar-servicio-emp/<%= data.id_emp %>" method="POST">
+                <div class="datos">
+                    <label>Título</label>
+                    <div class="input-user">
+                        <input class="text" type="text" name="titulo" value="<%= data.titulo %>" required>
+                    </div>
+                </div>
+                <div class="datos">
+                    <label>Descripción o historia</label>
+                    <div class="input-user">
+                        <textarea class="text" name="descripcion" required><%= data.descripcion %></textarea>
+                    </div>
+                </div>
+                <div class="datos">
+                    <label>Ubicación</label>
+                    <div class="input-user">
+                        <input class="text" type="text" name="ubicacion" value="<%= data.ubicacion %>" required>
+                    </div>
+                </div>
+                <div class="datos">
+                    <label>Contacto teléfono o celular</label>
+                    <div class="input-user">
+                        <input class="text" type="text" name="contacto_tel" value="<%= data.contacto_tel %>" required>
+                    </div>
+                </div>
+                <div class="datos">
+                    <label>Correo electrónico</label>
+                    <div class="input-user">
+                        <input class="text" type="text" name="contacto_correo" value="<%= data.contacto_correo %>" required>
+                    </div>
+                </div>
+                <div class="datos">
+                    <label>Redes sociales</label>
+                    <div class="input-user">
+                        <textarea class="text" name="redsocial" required><%= data.redsocial %></textarea>
+                    </div>
+                </div>
+                <!-- <div class="datos">
+                    <label>Agregue una imagen para el servivio.</label>
+                    <div class="file">
+                        <input class="file" type="file" placeholder="x" required>
+                    </div>
+                </div> -->  
+                <div class="boton">
+                    <button type="submit">Modificar servicio</button>
+                </div>
+            </form>
+        </div>
+            
+    </div>
+
+    <!-- Fin sección del contenido (Cuerpo general)  -->
+
+    </body>
+</html>

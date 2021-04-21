@@ -30,9 +30,9 @@
         <label for="chk" class="show-menu-btn"><i class="fas fa-bars"></i></label>
 
         <ul class="menu">
-            <a href="/">INICIO</a>
-            <a href="/servicios-turisticos">SERVICIOS TURÍSTICOS</a>
-            <a href="/atractivos-turisticos">ATRACTIVOS TURÍSTICOS</a>
+            <a href="">INICIO</a>
+            <a href="#">SERVICIOS TURÍSTICOS</a>
+            <a href="#">ATRACTIVOS TURÍSTICOS</a>
             <label for="chk" class="hide-menu-btn"><i class="fas fa-times"></i></label>
         </ul>
     </nav>
@@ -45,24 +45,27 @@
                     <tr>
                         <th>Título</th>
                         <th>Ubicación</th>
-                        <th colspan="1">Estado</th>
+                        <th colspan="2">Estado</th>
                     </tr>
                 </thead>
                 <tbody>
+                   
                     <% if (data) { %>
                     <% for(var i=0; i < data.length; i++) { %>
-                        <% if (data[i].solicitud==0) { %>
+                        
+                        <% if (data[i].solicitud == 0) { %>
+                            <% console.log(data[i])%>
                     <tr>
-                        <td>asd </td>
-                        <td> asd</td>
+                        <td> <%= data[i].titulo %></td>
+                        <td> <%= data[i].id_emp %></td>
                         <td> 
-                            <a href="/" class="boton cancelar">Cancelar</a>
+                            <a href="/cancelar-servicio-emp/<%= data[i].id_emp %>" class="boton cancelar">Cancelar</a>
                         </td>
                     </tr>
                         <% } %>
                     <% } %>
                     <% } %>
-                
+                    
                 </tbody>
             </table>
 
@@ -85,7 +88,7 @@
                         <% if (data[i].solicitud==1) { %>
                             <% cont=1;%>
                             <div class="col-servicio">
-                                <a class="edit" href=""><i class="fas fa-edit"></i></a>
+                                <a class="edit" href="/modificar-servicio-emp/<%= data[i].id_emp %>"><i class="fas fa-edit"></i></a>
                                 <div class="contex">
                                     <div class="cont-serv">
                                         <h3 class="text-center text-color">

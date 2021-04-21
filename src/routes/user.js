@@ -8,7 +8,8 @@ router.get('/mis-servicios', (req, res,next) => {
     }
     res.redirect('/');
 }, (req, res) => {
-    conn.query('SELECT * FROM servicio_emprendedor', (err, servicios) => {
+    conn.query('SELECT * FROM servicio_emprendedor where correo = ?', [req.user.correo], (err, servicios) => {
+        console.log(servicios);
         if (err) {
             res.json(err);
         }
@@ -54,5 +55,57 @@ router.post('/agregar-servicio-emprendedor', (req, res, next) => {
     });
 });
 
+// Cancela solicitud el emprendedor
+router.get('/cancelar-servicio-emp/:id_emp', (req, res, next) => {
+    if(req.isAuthenticated()){
+        return next();
+    }
+        res.redirect('/');
+    },(req,res) =>{
+        const { id_emp } = req.params;
+        conn.query('DELETE FROM servicio_emprendedor WHERE id_emp = ?', [id_emp], (err, rows) => {
+        if (err) {
+            res.json(err);
+        }
+        res.redirect('/mis-servicios');
+    });
+});
+
+// enviamos el servicio a la vista modificar servicio emp
+router.get('/modificar-servicio-emp/:id_emp', (req, res, next) => {
+    if(req.isAuthenticated()){
+        return next();
+    }
+        res.redirect('/');
+    },(req,res) =>{
+        const { id_emp } = req.params;
+        conn.query('SELECT * FROM servicio_emprendedor WHERE id_emp = ?', [id_emp], (err, rows) => {
+        if (err) {
+            res.json(err);
+        }
+        res.render('mod-servicios-emp', {
+            data: rows[0]
+        });
+    });
+});
+
+// UPDATE de la modificacion del servicio emprendedor
+router.post('/modificar-servicio-emp/:id_emp', (req, res, next) => {
+    if(req.isAuthenticated()){
+        return next();
+    }
+        res.redirect('/');
+    },(req,res) =>{
+        const { id_emp } = req.params;
+        const solicitud = { solicitud: 0};
+        const newServicio = Object.assign(req.body,solicitud)
+        console.log(newServicio);
+        conn.query('UPDATE servicio_emprendedor set ? WHERE id_emp = ?', [newServicio, id_emp], (err, rows) => {
+        if (err) {
+            res.json(err);
+        }
+        res.redirect('/mis-servicios');
+    });
+});
 
 module.exports = router;

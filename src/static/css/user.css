@@ -90,6 +90,13 @@
     box-shadow: 0 0 8px rgb(0,0,0,0.2);
 }
 
+.servicioEmp{
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 0 8px rgb(0,0,0,0.2);
+    margin-bottom: 30px;
+}
+
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -120,6 +127,7 @@
 .cont-serv{
     padding-top: 20px;
     width: 100%;
+    margin-bottom: 30px;
 }
 
 .img-div {
