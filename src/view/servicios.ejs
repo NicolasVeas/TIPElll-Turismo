@@ -7,7 +7,7 @@
             <div class="titulo">
                 <h3 class="text-uppercase text-center">apartado de servicios</h3>
             </div>
-            <div id="mapid"></div>
+            <div id="mapa-servicios"></div>
         </section>
 
         <!-- Iconos de navegación -->
@@ -57,5 +57,109 @@
         </section>
 
     </div>
+
+    <script>
+        var map = L.map('mapa-servicios').setView([-33.59829709005887, -71.60798902585982], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var banco = L.icon ({
+            iconUrl: '/img/banco.svg',
+            iconSize: [30,80],
+            iconArchor: [20,90]
+        })
+        var farmacia = L.icon ({
+            iconUrl: '/img/farmacia.svg',
+            iconSize: [30,80],
+            iconArchor: [20,90]
+        })
+        var casadecambio = L.icon ({
+            iconUrl: '/img/casadecambio.svg',
+            iconSize: [30,80],
+            iconArchor: [20,90]
+        })
+        var policia = L.icon ({
+            iconUrl: '/img/policia.svg',
+            iconSize: [30,80],
+            iconArchor: [20,90]
+        })
+        var supermercado = L.icon ({
+            iconUrl: '/img/supermercado.svg',
+            iconSize: [30,80],
+            iconArchor: [20,90]
+        })
+        var maritimo = L.icon ({
+            iconUrl: '/img/maritimo.svg',
+            iconSize: [30,80],
+            iconArchor: [20,90]
+        })
+        var municipalidad = L.icon ({
+            iconUrl: '/img/municipalidad.svg',
+            iconSize: [30,80],
+            iconArchor: [20,90]
+        })
+
+        // Municipalidad
+        L.marker([-33.595959127001976, -71.61340652360725],{icon:municipalidad}).addTo(map)
+            .bindPopup('Municipalidad de San Antonio')
+            .openPopup();
+
+        // Bancos
+        L.marker([-33.60603532060074, -71.61297601475364],{icon:banco}).addTo(map)
+            .bindPopup('Banco Estado')
+            .openPopup();
+        L.marker([-33.59298518959393, -71.61399671928763],{icon:banco}).addTo(map)
+            .bindPopup('Banco Santander')
+            .openPopup();
+        L.marker([-33.598724089776965, -71.6065966108086],{icon:banco}).addTo(map)
+            .bindPopup('Banco Scotiabank')
+            .openPopup();
+            
+        // Casas de cambio
+        L.marker([-33.59696730252475, -71.61286602573482],{icon:casadecambio}).addTo(map)
+            .bindPopup('Casa de cambio')
+            .openPopup();
+        L.marker([-33.58149233887189, -71.6140398360453],{icon:casadecambio}).addTo(map)
+            .bindPopup('Casa de cambio')
+            .openPopup();    
+
+        // Farmacias
+        L.marker([-33.579750139920534, -71.61164202412007],{icon:farmacia}).addTo(map)
+            .bindPopup('Farmacia')
+            .openPopup();
+        L.marker([-33.58797281892074, -71.60718984629949],{icon:farmacia}).addTo(map)
+            .bindPopup('Farmacia')
+            .openPopup();
+
+        // Carabineros
+        L.marker([-33.59627111584387, -71.61212137913641],{icon:policia}).addTo(map)
+            .bindPopup('Carabineros')
+            .openPopup();
+        // PDI
+        L.marker([-33.58625856972693, -71.61003995192071],{icon:policia}).addTo(map)
+            .bindPopup('PDI')
+            .openPopup();
+
+        // Supermercado
+        L.marker([-33.606718081467186, -71.61106304579319],{icon:supermercado}).addTo(map)
+            .bindPopup('Supermercado')
+            .openPopup();
+        L.marker([-33.58012288049643, -71.61364722702447],{icon:supermercado}).addTo(map)
+            .bindPopup('Supermercado')
+            .openPopup();
+
+        // Gobernacion Maritima de San Antonio
+        L.marker([-33.58159607912064, -71.61353014355157],{icon:maritimo}).addTo(map)
+            .bindPopup('Gobernacion Maritima')
+            .openPopup();
+
+        // Ejemplo
+        // L.marker([],{icon:}).addTo(map)
+        //     .bindPopup('')
+        //     .openPopup();
+    </script>
+
 
 <%- include ('partials-home/_footer-home')  %>

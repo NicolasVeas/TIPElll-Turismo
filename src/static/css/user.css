@@ -35,7 +35,7 @@
     .boton button{
         width: 60%;
     }
-    #mapid { height: 315px; }
+    #mapa-servicios, #mapa-atractivos { height: 315px; }
 }
 /* Pantalla de PC */
 @media screen and (min-width:1000px) {
@@ -65,10 +65,10 @@
     .boton button{
         width: 30%;
     }
-    #mapid { height: 415px; }
+    #mapa-servicios, #mapa-atractivos { height: 415px; }
 }
 
-#mapid{
+#mapa-servicios, #mapa-atractivos{
     z-index: 0;
 }
 .servicios-btn{
