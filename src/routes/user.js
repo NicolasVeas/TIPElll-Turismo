@@ -3,12 +3,15 @@ const router = express.Router();
 const conn = require('../database');
 
 router.get('/mis-servicios', (req, res) => {
-    res.render('user.ejs');
-});
+    if(req.isAuthenticated()){
+        res.render('user.ejs');
+    }
+        res.redirect('/');
+    }
+);
 
 // Registro de usuario
 router.post('/registro', (req,res,next) => {
-    console.log(req.body);
     conn.query('INSERT INTO usuario set ?', [req.body], (err, resp) => {
         if (err) {
             res.json(err);

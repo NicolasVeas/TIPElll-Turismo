@@ -35,6 +35,7 @@
     .boton button{
         width: 60%;
     }
+    #mapid { height: 315px; }
 }
 /* Pantalla de PC */
 @media screen and (min-width:1000px) {
@@ -64,8 +65,12 @@
     .boton button{
         width: 30%;
     }
+    #mapid { height: 415px; }
 }
 
+#mapid{
+    z-index: 0;
+}
 .servicios-btn{
     position: absolute;
     top: 20px;

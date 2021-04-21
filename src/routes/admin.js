@@ -13,8 +13,7 @@ router.get('/admin', (req, res, next) => {
         return next();
     }
         res.redirect('/');
-    }
-);
+});
 
 //* -------------------------------------- *//
 

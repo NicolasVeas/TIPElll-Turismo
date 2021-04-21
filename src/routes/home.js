@@ -8,4 +8,16 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/servicios-turisticos', (req, res) => {
+    res.render('servicios.ejs', {
+        data: req.user
+    });
+});
+
+router.get('/atractivos-turisticos', (req, res) => {
+    res.render('atractivos.ejs', {
+        data: req.user
+    });
+});
+
 module.exports = router;

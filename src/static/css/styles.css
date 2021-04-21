@@ -51,6 +51,11 @@ form{
 .text-uppercase{
     text-transform: uppercase;
 }
+.titulo{
+    height: 35px;
+    background: var(--pri);
+    color: var(--cuar);
+}
 
 /* Maneja de la vista responsive */
 /* Pantalla de celular */
@@ -302,8 +307,6 @@ form{
 .one{
     position: relative;
 }
-
-
 
 /* Fin de sección de NAVEGACION CON ICONOS */
 
