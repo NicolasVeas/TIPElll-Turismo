@@ -117,8 +117,8 @@ nav{
         font-size: 15px;
     }
     .iniciar-btn{
-        font-size: 15px;
-        right: 20%;
+        font-size: 12px;
+        right: 3%;
     }
 
     /* Menu colapse */
@@ -164,7 +164,7 @@ nav{
     }
     .iniciar-btn{
         font-size: 15px;
-        right: 15%;
+        right: 14%;
     }
     
 }
