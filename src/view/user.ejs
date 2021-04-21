@@ -1,98 +1,131 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MIS SERVICIOS</title>
-        <link rel='stylesheet' type='text/css' href='/css/styles.css'/>
-        <link rel='stylesheet' type='text/css' href='/css/user.css'/>
-        <link rel='stylesheet' type='text/css' href='/css/nav.css'/>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-        <!-- <script src="js/navegador.js"></script> -->
-    </head>
 
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIS SERVICIOS</title>
+    <link rel='stylesheet' type='text/css' href='/css/styles.css' />
+    <link rel='stylesheet' type='text/css' href='/css/user.css' />
+    <link rel='stylesheet' type='text/css' href='/css/nav.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+    <!-- <script src="js/navegador.js"></script> -->
+</head>
 
-        <!-- Inicio de sesión -->
-        <header>
-            <div class="center">
-                <a href="" class="logo"><img class="img-fluid" src="/img/icon.png"/></a>
-                <input type="checkbox" id="show">
-                <a class="iniciar-btn" href="/logout">Cerrar sesión</a>
-                <button class="servicios-btn"><a href="/mis-servicios">Mis servicios</a></button>
+<body>
+
+    <!-- Inicio de sesión -->
+    <header>
+        <div class="center">
+            <a href="" class="logo"><img class="img-fluid" src="/img/icon.png" /></a>
+            <input type="checkbox" id="show">
+            <a class="iniciar-btn" href="/logout">Cerrar sesión</a>
+            <button class="servicios-btn"><a href="/mis-servicios">Mis servicios</a></button>
+        </div>
+    </header>
+
+    <!-- Barra de navegación -->
+    <nav>
+        <input type="checkbox" id="chk">
+        <label for="chk" class="show-menu-btn"><i class="fas fa-bars"></i></label>
+
+        <ul class="menu">
+            <a href="">INICIO</a>
+            <a href="#">SERVICIOS TURÍSTICOS</a>
+            <a href="#">ATRACTIVOS TURÍSTICOS</a>
+            <label for="chk" class="hide-menu-btn"><i class="fas fa-times"></i></label>
+        </ul>
+    </nav>
+
+    <section class="servicios" id="">
+        <div class="cont-serv">
+            <h3 class="text-center text-color">SERVICIOS PENDIENTES</h3>
+            <table class="table order-table text-center">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Ubicación</th>
+                        <th colspan="1">Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data) { %>
+                    <% for(var i=0; i < data.length; i++) { %>
+                        <% if (data[i].solicitud==0) { %>
+                    <tr>
+                        <td>asd </td>
+                        <td> asd</td>
+                        <td> 
+                            <a href="/" class="boton cancelar">Cancelar</a>
+                        </td>
+                    </tr>
+                        <% } %>
+                    <% } %>
+                    <% } %>
+                
+                </tbody>
+            </table>
+
+        </div>
+    </section>
+
+    <section class="servicios" id="">
+        <div class="cont-serv">
+            <h3 class="text-center text-color">MIS SERVICIOS</h3>
+            <div class="divisor">
+                <div class="divisor-linea"></div>
+                <div class="divisor-icon"><i class="fas fa-concierge-bell"></i></div>
+                <div class="divisor-linea"></div>
             </div>
-        </header>
 
-        <!-- Barra de navegación -->
-        <nav>
-            <input type="checkbox" id="chk">
-            <label for="chk" class="show-menu-btn"><i class="fas fa-bars"></i></label>
-          
-            <ul class="menu">
-                <a href="">INICIO</a>
-                <a href="#">SERVICIOS TURÍSTICOS</a>
-                <a href="#">ATRACTIVOS TURÍSTICOS</a> 
-                <label for="chk" class="hide-menu-btn"><i class="fas fa-times"></i></label>
-            </ul>
-        </nav>
-
-        <section class="servicios" id=""> 
-            <div class="cont-serv">
-                <h2 class="text-center text-color">Mis servicios</h2>
-                <div class="divisor">
-                    <div class="divisor-linea"></div>
-                    <div class="divisor-icon"><i class="fas fa-concierge-bell"></i></div>
-                    <div class="divisor-linea"></div>
+            <% var cont=0;%>
+                <% if (data) { %>
+                    <div class="row">
+                    <% for(var i=0; i < data.length; i++) { %>
+                        <% if (data[i].solicitud==1) { %>
+                            <% cont=1;%>
+                            <div class="col-servicio">
+                                <a class="edit" href=""><i class="fas fa-edit"></i></a>
+                                <div class="contex">
+                                    <div class="cont-serv">
+                                        <h3 class="text-center text-color">
+                                            <%= data[i].titulo %>
+                                        </h3>
+                                    </div>
+                                    <div class="divisor">
+                                        <div class="divisor-linea"></div>
+                                    </div>
+                                    <div class="img-div" data-target="">
+                                        <a href=""><img class="img-cont" src="/img/Museo San Antonio.png" /></a>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% } %>
+                <% } %>
+                
+                <% if (cont==0) { %>
+                    <h4 class="text-center text-color text-h4">Lo sentimos, no hay servicios disponibles. Debes revisar las solicitudes pendientes o <a href="#add-service">ingresar una solicitud.</a></h4>
+                <% } %>
                 </div>
+        </div>
+    </section>
 
-                <div class="row">
-                    <div class="col-servicio">
-                        <a class="edit" href=""><i class="fas fa-edit"></i></a>
-                        <div class="contex">
-                            <div class="cont-serv">
-                                <h3 class="text-center text-color">Servicio 1</h3>
-                            </div>
-                            <div class="divisor">
-                                <div class="divisor-linea"></div>
-                            </div>
-                            <div class="img-div" data-target="">
-                                <a href=""><img class="img-cont" src="/img/Museo San Antonio.png"/></a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-servicio">
-                        <a class="edit" href=""><i class="fas fa-edit"></i></a>
-                        <div class="contex">
-                            <div class="cont-serv">
-                                <h3 class="text-center text-color">Servicio 1</h3>
-                            </div>
-                            <div class="divisor">
-                                <div class="divisor-linea"></div>
-                            </div>
-                            <div class="img-div" data-target="">
-                                <a href=""><img class="img-cont" src="/img/Museo San Antonio.png"/></a>
-                            </div>
-                        </div>
+    <section class="form-user">
+        <div class="container-form">
+            <h3 class="text-center text-color" id="add-service">INGRESO DE SERVICIO</h3>
+            <form action="agregar-servicio-emprendedor" method="POST">
+                <div class="datos">
+                    <label>Título</label>
+                    <div class="input-user">
+                        <input class="text" name="titulo" type="text" placeholder="Título" required>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section class="form-user">
-            <div class="container-form">
-                <h3 class="text-center text-color">INGRESO DE SERVICIO</h3>
-                <form action="agregar-servicio-emprendedor" method="POST">
-                    <div class="datos">
-                        <label>Título</label>
-                        <div class="input-user">
-                            <input class="text" name="titulo" type="text" placeholder="Título" required>
-                        </div>
-                    </div>
-                    <div class="datos">
-                        <label>Descripción</label>
-                        <div class="input-user">
-                            <textarea class="text" name="descripcion" id="" placeholder="Escriba aquí la descripción completa del servicio"></textarea required>
+                <div class="datos">
+                    <label>Descripción</label>
+                    <div class="input-user">
+                        <textarea class="text" name="descripcion" id=""
+                            placeholder="Escriba aquí la descripción completa del servicio"></textarea required>
                         </div>
                     </div>
                     <div class="datos">

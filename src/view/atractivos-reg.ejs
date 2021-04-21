@@ -13,6 +13,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Usuario  (Correo)</th>
                         <th>Título</th>
                         <th>Geolocalización</th>
                         <th>Telefono</th>
@@ -24,6 +25,7 @@
                         <% for(var i = 0; i < data.length; i++) { %>
                             <tr>
                                 <td> <%= data[i].id_atractivo %> </td>
+                                <td> <%= data[i].correo || 'Desconocido' %> </td>
                                 <td> <%= data[i].titulo %> </td>
                                 <td> <%= data[i].geo_local %> </td>
                                 <td> <%= data[i].telefono %> </td>
@@ -52,7 +54,7 @@
                 <div class="datos">
                     <label>Descripción o historia</label>
                     <div class="input-user">
-                        <textarea class="text" name="descripcion" id="" placeholder=""></textarea>
+                        <textarea class="text" name="descripcion" id="" placeholder="Escriba aqóí la descripción o historia completa del atractivo" required="required"></textarea >
                     </div>
                 </div>
                 <div class="datos">
@@ -64,7 +66,7 @@
                 <div class="datos">
                     <label>Teléfono</label>
                     <div class="input-user">
-                        <input class="text" type="text" name="telefono" placeholder="Ingrese el teléfono de contacto" required>
+                        <input class="text" type="number" name="telefono" placeholder="Ingrese el teléfono de contacto" required>
                     </div>
                 </div>
                 <!-- <div class="datos">

@@ -238,13 +238,22 @@ router.get('/atractivos-regionales', (req,res,next) => {
     });
 });
 
+
 router.post('/agregar-atractivo', (req,res,next) => {
     if(req.isAuthenticated()){
         return next();
     }
         res.redirect('/');
     },(req,res) =>{
-    conn.query('INSERT INTO atractivo_admin set ?', [req.body], (err, resp) => {
+    let data = Object.assign({},req.body);
+    let user = req.user.correo;
+    conn.query('INSERT INTO atractivo_admin set ?', {
+        titulo: data.titulo,
+        correo: user,
+        descripcion: data.descripcion,
+        geo_local: data.geo_local,
+        telefono: data.telefono
+    }, (err, resp) => {
         if (err) {
             res.json(err);
         }

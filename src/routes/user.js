@@ -2,13 +2,23 @@ const express = require('express');
 const router = express.Router();
 const conn = require('../database');
 
-router.get('/mis-servicios', (req, res) => {
-    if(req.isAuthenticated()){
-        res.render('user.ejs');
+router.get('/mis-servicios', (req, res,next) => {
+    if (req.isAuthenticated()) {
+        return next();
     }
-        res.redirect('/');
-    }
-);
+    res.redirect('/');
+}, (req, res) => {
+    conn.query('SELECT * FROM servicio_emprendedor', (err, servicios) => {
+        if (err) {
+            res.json(err);
+        }
+        res.render('user.ejs', {
+            data: servicios
+        });
+    });
+});
+
+
 
 // Registro de usuario
 router.post('/registro', (req,res,next) => {
@@ -40,7 +50,7 @@ router.post('/agregar-servicio-emprendedor', (req, res, next) => {
         redsocial: data.redsocial,
         tipo: data.tipo
     }, (err, customer) => {
-        res.redirect('/usuario');
+        res.redirect('/mis-servicios');
     });
 });
 

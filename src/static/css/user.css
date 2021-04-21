@@ -86,7 +86,9 @@
 
 .servicios{
     width: 100%;
-    box-shadow: 0 0 8px rgb(0,0,0,0.1);
+    background: #fff;
+    margin-bottom: 30px;
+    box-shadow: 0 0 8px rgb(0,0,0,0.2);
 }
 
 .row {
@@ -198,4 +200,38 @@ form textarea{
 
 .boton button:hover{
     background: var(--hover);
+}
+
+/* css de las tablas */
+
+.table{
+    width:100%;
+    background-color:transparent
+}
+.table td,.table th{
+    padding: 1rem;
+    vertical-align: top;
+    border: 0.1px solid var(--cuar);
+}
+
+.boton{
+    text-decoration: none;
+    color: #fff;
+    padding: .75rem 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+.aceptar{
+    background-color: #5cb85c;
+}
+.eliminar{
+    background-color: #d9534f;
+}
+.actualizar{
+    background-color: #1f9bcf;
+    
+}
+
+.cancelar{
+    background-color: #f0ad4e;
 }
