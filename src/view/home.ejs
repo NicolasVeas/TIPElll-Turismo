@@ -1,78 +1,69 @@
 <%- include ('partials-home/_header-home')  %>
 
-        <div class="cuerpo">
+    <section class="slideshow">
+        <div class="slide-body">
+            <input type="radio" id="i1" name="images" checked />
+            <input type="radio" id="i2" name="images" />
+            <input type="radio" id="i3" name="images" />
+            <input type="radio" id="i4" name="images" />
+            <input type="radio" id="i5" name="images" />	
+            
+            <div class="slide_img" id="one"> <img src="/img/home1.jpg"> </div>
+            <div class="slide_img" id="two"> <img src="/img/home2.jpg"> </div>
+            <div class="slide_img" id="three"> <img src="/img/home3.jpg"> </div>
+            <div class="slide_img" id="four"> <img src="/img/home4.jpg"> </div>
+            <div class="slide_img" id="five"> <img src="/img/home5.jpg"> </div>
 
-                <!-- Sideshow de imagenes -->
-            <section class="slideshow">
-                <div class="slide-body">
-                    <input type="radio" id="i1" name="images" checked />
-                    <input type="radio" id="i2" name="images" />
-                    <input type="radio" id="i3" name="images" />
-                    <input type="radio" id="i4" name="images" />
-                    <input type="radio" id="i5" name="images" />	
-                    
-                    <div class="slide_img" id="one"> <img src="/img/home1.jpg"> </div>
-                    <div class="slide_img" id="two"> <img src="/img/home2.jpg"> </div>
-                    <div class="slide_img" id="three"> <img src="/img/home3.jpg"> </div>
-                    <div class="slide_img" id="four"> <img src="/img/home4.jpg"> </div>
-                    <div class="slide_img" id="five"> <img src="/img/home5.jpg"> </div>
-
-                    <div id="nav-slide">
-                        <label for="i1" class="dots" id="dot1"></label>
-                        <label for="i2" class="dots" id="dot2"></label>
-                        <label for="i3" class="dots" id="dot3"></label>
-                        <label for="i4" class="dots" id="dot4"></label>
-                        <label for="i5" class="dots" id="dot5"></label>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Iconos de navegación -->
-            <section class="servicios">
-                <div class="lista-servicios">
-                    <div class="one">
-                        <a href="">
-                            <img class="foto" src="/img/icono-1.png" alt="Servicios Gastronómicos">
-                            <div class="overlay overlayFade">
-                                <div class="text-over">Servicios Gastronómicos</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="one">
-                        <a href="">
-                            <img class="foto" src="/img/icono-2.png" alt="Alojamientos">
-                            <div class="overlay overlayFade">
-                                <div class="text-over">Alojamientos</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="one">
-                        <a href="">
-                            <img class="foto" src="/img/icono-3.png" alt="Agencias y TTOO">
-                            <div class="overlay overlayFade">
-                                <div class="text-over">Agencias y TTOO</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="one">
-                        <a href="">
-                            <img class="foto" src="/img/icono-4.png" alt="Paseos Náuticos">
-                            <div class="overlay overlayFade">
-                                <div class="text-over">Paseos Náuticos</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </section>
-            <!-- Fin iconos de navegación -->
-
-            <section class="prueba">
-                
-            </section>
-
+            <div id="nav-slide">
+                <label for="i1" class="dots" id="dot1"></label>
+                <label for="i2" class="dots" id="dot2"></label>
+                <label for="i3" class="dots" id="dot3"></label>
+                <label for="i4" class="dots" id="dot4"></label>
+                <label for="i5" class="dots" id="dot5"></label>
+            </div>
         </div>
+    </section>
+
+    <section class="servicios">
+        <div class="lista-servicios">
+            <div class="one">
+                <a href="">
+                    <img class="foto" src="/img/icono-1.png" alt="Servicios Gastronómicos">
+                    <div class="overlay overlayFade">
+                        <div class="text-over">Servicios Gastronómicos</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="one">
+                <a href="">
+                    <img class="foto" src="/img/icono-2.png" alt="Alojamientos">
+                    <div class="overlay overlayFade">
+                        <div class="text-over">Alojamientos</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="one">
+                <a href="">
+                    <img class="foto" src="/img/icono-3.png" alt="Agencias y TTOO">
+                    <div class="overlay overlayFade">
+                        <div class="text-over">Agencias y TTOO</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="one">
+                <a href="">
+                    <img class="foto" src="/img/icono-4.png" alt="Paseos Náuticos">
+                    <div class="overlay overlayFade">
+                        <div class="text-over">Paseos Náuticos</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="prueba"></section>
 
 <%- include ('partials-home/_footer-home')  %>
