@@ -22,21 +22,21 @@
             <input type="checkbox" id="check-menu" class="chk">
             <label for="check-menu" class="mostrar-menu"><i class="fas fa-bars"></i></label>
             <a href="" class="logo"><img src="/img/icon.png"/></a>
-            <!-- <% if (data != null) { %> -->
-                <!-- <a class="btn-login texto mayus" href="/logout">Cerrar sesión</a> -->
-            <!-- <% } %> -->
-            <!-- <% if (data == null){ %> -->
+            <% if (data != null) { %>
+                <a class="btn-login texto mayus" href="/logout">Cerrar sesión</a>
+            <% } %>
+            <% if (data == null){ %>
             <div class="cuenta texto">
                 <label for="registro" class="texto" href="">Registrarse</label>
                 o
                 <label for="iniciar-sesion" class="texto" href="">Iniciar sesión</label>
             </div>
-            <!-- <% } %> -->
+            <% } %>
 
             <ul class="menu">
-                 <!-- <% if (data != null) { %> -->
-                    <!-- <li class="mis-servicios"><a href="">MIS SERVICIOS</a></li> -->
-                <!-- <% } %> -->
+                <% if (data != null) { %>
+                    <li class="mis-servicios"><a href="">MIS SERVICIOS</a></li>
+                <% } %>
                 <li><a href="/servicios-turisticos">SERVICIOS</a></li>
                 <li><a href="/atractivos-turisticos">ATRACTIVOS</a></li>
                 <li><a href="/">INICIO</a></li>
