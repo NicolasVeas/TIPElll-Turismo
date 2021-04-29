@@ -10,14 +10,17 @@ html { scroll-behavior: smooth; }
 body {
     background: var(--cuar);
     margin: 0 auto 0;
+}
+.principal{
     display: grid;
     grid-template-areas:
-        'nav' 
-        "slideshow",
-        "servicios"
-        "prueba"
+        "nav"
+        "uno",
+        "dos"
+        "tres"
+        "cuatro"
         "footer";
-}   
+}
 a{ text-decoration: none;}
 h2, h3, h4{margin: 10px 0 5px;}
 h3, h4{font-weight: normal;}
@@ -52,13 +55,14 @@ p{
 /* Contorl de contenido responsive */
 /* Pantalla de celular */
 @media screen and (max-width:900px) {
-    body{ 
-        width: 95%; 
+    body{ width: 95%; }
+    .principal{
         grid-template: /* (alto ancho) */
         "nav"       100px
-        "slideshow" 350px  
-        "servicios" auto
-        "prueba"    200px
+        "uno" 350px  
+        "dos" auto
+        "tres"    200px
+        "cuatro" auto
         "footer" auto;
     }
     a{ font-size: 12px; }
@@ -115,11 +119,14 @@ p{
 @media screen and (min-width:901px) {
     body{
         width: 75%; 
+    }
+    .principal{
         grid-template: /* (alto ancho) */
         "nav"       100px
-        "slideshow" 350px  
-        "servicios" auto
-        "prueba"    200px
+        "uno" 350px  
+        "dos" auto
+        "tres"    200px
+        "cuatro" auto
         "footer" auto;
     }
     a{ font-size: 15px; }
@@ -289,7 +296,7 @@ p{
 
 /* Seccion Slideshow */
 .slideshow{
-    grid-area: slideshow;
+    grid-area: uno;
     z-index: 0;
 }
 .slide-body{
@@ -365,7 +372,7 @@ p{
 /* Sección de NAVEGACION CON ICONOS */
 
 .servicios{
-    grid-area: servicios;
+    grid-area: dos;
 }
 
 .lista-servicios{
@@ -432,7 +439,7 @@ p{
 
 
 .prueba{
-    grid-area: prueba;
+    grid-area: cuatro;
     background: mediumspringgreen;
 }
 
@@ -469,6 +476,15 @@ p{
 /* Contorl de contenido responsive */
 /* Pantalla de celular */
 @media screen and (max-width:900px) {
+    .usuario{
+        grid-template: /* (alto ancho) */
+        "nav" 100px
+        "primero" auto  
+        "segundo" auto
+        "tercero"    0px
+        "cuarto" 0px
+        "footer" auto;
+    }
     .container-form{ padding: 30px 10px 20px; }
     .col-servicio {
         flex: 0 0 80%;
@@ -484,6 +500,15 @@ p{
 }
 /* Pantalla de PC */
 @media screen and (min-width:901px) {
+    .usuario{
+        grid-template: /* (alto ancho) */
+        "nav" 100px
+        "primero" auto  
+        "segundo" auto
+        "tercero"    0px
+        "cuarto" 0px
+        "footer" auto;
+    }
     .container-form{ padding: 30px 100px 20px; }
     .datos label{
         font-size: 3vh;
@@ -502,11 +527,23 @@ p{
 }
 
 /* Cuerpo general */
+.usuario{
+    display: grid;
+    grid-template-areas:
+        "nav"
+        "primero"
+        "segundo"
+        "tercero"
+        "cuarto"
+        "footer";
+} 
 .mis-servicios{
+    grid-area: primero;
     width: 100%;
     background: #fff;
     box-shadow: 0 0 8px rgb(0,0,0,0.3);
 }
+.form-user{ grid-area: segundo;}
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -519,7 +556,7 @@ p{
     right: 45px;
     top: 21px;
     color: #2c3e50;
-    z-index: +1;
+    z-index: 1;
 }
 .col-servicio {
     position: relative;

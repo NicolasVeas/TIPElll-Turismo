@@ -9,7 +9,6 @@ router.get('/mis-servicios', (req, res,next) => {
     res.redirect('/');
 }, (req, res) => {
     conn.query('SELECT * FROM servicio_emprendedor where correo = ?', [req.user.correo], (err, servicios) => {
-        console.log(servicios);
         if (err) {
             res.json(err);
         }
@@ -99,7 +98,6 @@ router.post('/modificar-servicio-emp/:id_emp', (req, res, next) => {
         const { id_emp } = req.params;
         const solicitud = { solicitud: 0};
         const newServicio = Object.assign(req.body,solicitud)
-        console.log(newServicio);
         conn.query('UPDATE servicio_emprendedor set ? WHERE id_emp = ?', [newServicio, id_emp], (err, rows) => {
         if (err) {
             res.json(err);

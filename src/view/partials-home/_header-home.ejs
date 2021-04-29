@@ -16,77 +16,78 @@
     </head>
 
     <body>
-        <nav class="navegacion">
-            <input type="checkbox" id="check-menu" class="chk">
-            <label for="check-menu" class="mostrar-menu"><i class="fas fa-bars"></i></label>
-            <a href="" class="logo"><img src="/img/icon.png"/></a>
-            <% if (data != null) { %>
-                <a class="btn-logout texto mayus" href="/logout">Cerrar sesión</a>
-            <% } %>
-            <% if (data == null){ %>
-                <div class="cuenta texto">
-                    <label for="registro" class="texto" href="">Registrarse</label>
-                    o
-                    <label for="iniciar-sesion" class="texto" href="">Iniciar sesión</label>
-                </div>
-            <% } %>
-
-            <ul class="menu">
+        <div class="principal">
+            <nav class="navegacion">
+                <input type="checkbox" id="check-menu" class="chk">
+                <label for="check-menu" class="mostrar-menu"><i class="fas fa-bars"></i></label>
+                <a href="" class="logo"><img src="/img/icon.png"/></a>
                 <% if (data != null) { %>
-                    <li class="btn-servicios"><a href="/mis-servicios">MIS SERVICIOS</a></li>
+                    <a class="btn-logout texto mayus" href="/logout">Cerrar sesión</a>
                 <% } %>
-                <li><a href="/servicios-turisticos">SERVICIOS</a></li>
-                <li><a href="/atractivos-turisticos">ATRACTIVOS</a></li>
-                <li><a href="/">INICIO</a></li>
-            </ul>
+                <% if (data == null){ %>
+                    <div class="cuenta texto">
+                        <label for="registro" class="texto" href="">Registrarse</label>
+                        o
+                        <label for="iniciar-sesion" class="texto" href="">Iniciar sesión</label>
+                    </div>
+                <% } %>
 
-            <!-- PopUP inicio de sesion y registro -->
-            <input type="checkbox" id="iniciar-sesion" class="chk">
-            <input type="checkbox" id="registro" class="chk">
+                <ul class="menu">
+                    <% if (data != null) { %>
+                        <li class="btn-servicios"><a href="/mis-servicios">MIS SERVICIOS</a></li>
+                    <% } %>
+                    <li><a href="/servicios-turisticos">SERVICIOS</a></li>
+                    <li><a href="/atractivos-turisticos">ATRACTIVOS</a></li>
+                    <li><a href="/">INICIO</a></li>
+                </ul>
 
-            <!-- Inicio de sesion -->
-            <div class="popup-log">
-                <label for="iniciar-sesion" class="cerrar fas fa-times"></label>
-                <h2 class="centrado mayus">Iniciar sesion</h2>
-                <form action="/login" method="POST">
-                    <div class="data">  
-                        <h3>Email</h3>
-                        <input type="email" placeholder="Ingresa un correo electronico" name="username" required/>
-                    </div>
-                    <div class="data">
-                        <h3>Contraseña</h3>
-                        <input type="password"  placeholder="Ingresa una contraseña" name="password" required/>
-                    </div>
-                    <button type="submit" class="btn-sesion">Ingresar</button>
-                </form>
-            </div>
-            <!-- Fin inicio de sesion -->
+                <!-- PopUP inicio de sesion y registro -->
+                <input type="checkbox" id="iniciar-sesion" class="chk">
+                <input type="checkbox" id="registro" class="chk">
 
-            <!-- Registro -->
-            <div class="popup-registro">
-                <label for="registro" class="cerrar fas fa-times"></label>
-                <h2 class="centrado mayus">Registrarse</h2>
-                <form action="/registro" method="POST">
-                    <div class="data">
-                        <h3>e-Mail</h3>
-                        <input type="email" placeholder="Ingresa un correo electronico" name="correo" required/>
-                    </div>
-                    <div class="data">
-                        <h3>Contraseña</h3>
-                        <input type="password"  placeholder="Ingresa una contraseña" name="contrasena" required/>
-                    </div>
-                    <div class="data">
-                        <h3>Nombre</h3>
-                        <input type="text"  placeholder="Ingresa tu nombre" name="nombre" required/>
-                    </div>
-                    <div class="data">
-                        <h3>Contacto</h3>
-                        <input type="text"  placeholder="Ingresa tu numero de teléfono o celular" name="telefono" required/>
-                    </div>
-                    <button type="submit" class="btn-sesion">Enviar solicitud</button>
-                </form>
-            </div>
-            <!-- Fin registro -->
+                <!-- Inicio de sesion -->
+                <div class="popup-log">
+                    <label for="iniciar-sesion" class="cerrar fas fa-times"></label>
+                    <h2 class="centrado mayus">Iniciar sesion</h2>
+                    <form action="/login" method="POST">
+                        <div class="data">  
+                            <h3>Email</h3>
+                            <input type="email" placeholder="Ingresa un correo electronico" name="username" required/>
+                        </div>
+                        <div class="data">
+                            <h3>Contraseña</h3>
+                            <input type="password"  placeholder="Ingresa una contraseña" name="password" required/>
+                        </div>
+                        <button type="submit" class="btn-sesion">Ingresar</button>
+                    </form>
+                </div>
+                <!-- Fin inicio de sesion -->
 
-            <!-- Fin PopUP inicio de sesion y registro -->
-        </nav>
+                <!-- Registro -->
+                <div class="popup-registro">
+                    <label for="registro" class="cerrar fas fa-times"></label>
+                    <h2 class="centrado mayus">Registrarse</h2>
+                    <form action="/registro" method="POST">
+                        <div class="data">
+                            <h3>e-Mail</h3>
+                            <input type="email" placeholder="Ingresa un correo electronico" name="correo" required/>
+                        </div>
+                        <div class="data">
+                            <h3>Contraseña</h3>
+                            <input type="password"  placeholder="Ingresa una contraseña" name="contrasena" required/>
+                        </div>
+                        <div class="data">
+                            <h3>Nombre</h3>
+                            <input type="text"  placeholder="Ingresa tu nombre" name="nombre" required/>
+                        </div>
+                        <div class="data">
+                            <h3>Contacto</h3>
+                            <input type="text"  placeholder="Ingresa tu numero de teléfono o celular" name="telefono" required/>
+                        </div>
+                        <button type="submit" class="btn-sesion">Enviar solicitud</button>
+                    </form>
+                </div>
+                <!-- Fin registro -->
+
+                <!-- Fin PopUP inicio de sesion y registro -->
+            </nav>

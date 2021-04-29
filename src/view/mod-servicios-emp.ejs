@@ -1,99 +1,165 @@
 <!DOCTYPE html>
 <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Turismo - San Antonio</title>
+        <link rel="icon" type="image/x-icon" href="/img/icon.png" />
+        <link rel='stylesheet' type='text/css' href='/css/styles.css'/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+        <!-- Mapa -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <!-- Clave API de Google Maps -->
+        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1NrmdL2QkaeuG_1-1VFGU_YeT2zzZ0qs&callback=initMap"></script>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIS SERVICIOS</title>
-    <link rel='stylesheet' type='text/css' href='/css/styles.css' />
-    <link rel='stylesheet' type='text/css' href='/css/user.css' />
-    <link rel='stylesheet' type='text/css' href='/css/nav.css' />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-    <!-- <script src="js/navegador.js"></script> -->
-</head>
-
-<body>
-
-    <!-- Inicio de sesión -->
-    <header>
-        <div class="center">
-            <a href="" class="logo"><img class="img-fluid" src="/img/icon.png" /></a>
-            <input type="checkbox" id="show">
-            <a class="iniciar-btn" href="/logout">Cerrar sesión</a>
-            <button class="servicios-btn"><a href="/mis-servicios">Mis servicios</a></button>
-        </div>
-    </header>
-
-    <!-- Barra de navegación -->
-    <nav>
-        <input type="checkbox" id="chk">
-        <label for="chk" class="show-menu-btn"><i class="fas fa-bars"></i></label>
-
-        <ul class="menu">
-            <a href="">INICIO</a>
-            <a href="#">SERVICIOS TURÍSTICOS</a>
-            <a href="#">ATRACTIVOS TURÍSTICOS</a>
-            <label for="chk" class="hide-menu-btn"><i class="fas fa-times"></i></label>
-        </ul>
-    </nav>
-
-    <!-- Sección del contenido (Cuerpo general) -->
-    <div class="">
-
-        <div class="container-form">
-            <h3 class="text-center text-color">Modificar un servicio</h3>
-            <form action="/modificar-servicio-emp/<%= data.id_emp %>" method="POST">
-                <div class="datos">
-                    <label>Título</label>
-                    <div class="input-user">
-                        <input class="text" type="text" name="titulo" value="<%= data.titulo %>" required>
+    <body>
+        <div class="usuario">
+            <nav class="navegacion">
+                <input type="checkbox" id="check-menu" class="chk">
+                <label for="check-menu" class="mostrar-menu"><i class="fas fa-bars"></i></label>
+                <a href="" class="logo"><img src="/img/icon.png"/></a>
+                <% if (data != null) { %>
+                    <a class="btn-logout texto mayus" href="/logout">Cerrar sesión</a>
+                <% } %>
+                <% if (data == null){ %>
+                    <div class="cuenta texto">
+                        <label for="registro" class="texto" href="">Registrarse</label>
+                        o
+                        <label for="iniciar-sesion" class="texto" href="">Iniciar sesión</label>
                     </div>
-                </div>
-                <div class="datos">
-                    <label>Descripción o historia</label>
-                    <div class="input-user">
-                        <textarea class="text" name="descripcion" required><%= data.descripcion %></textarea>
-                    </div>
-                </div>
-                <div class="datos">
-                    <label>Ubicación</label>
-                    <div class="input-user">
-                        <input class="text" type="text" name="ubicacion" value="<%= data.ubicacion %>" required>
-                    </div>
-                </div>
-                <div class="datos">
-                    <label>Contacto teléfono o celular</label>
-                    <div class="input-user">
-                        <input class="text" type="text" name="contacto_tel" value="<%= data.contacto_tel %>" required>
-                    </div>
-                </div>
-                <div class="datos">
-                    <label>Correo electrónico</label>
-                    <div class="input-user">
-                        <input class="text" type="text" name="contacto_correo" value="<%= data.contacto_correo %>" required>
-                    </div>
-                </div>
-                <div class="datos">
-                    <label>Redes sociales</label>
-                    <div class="input-user">
-                        <textarea class="text" name="redsocial" required><%= data.redsocial %></textarea>
-                    </div>
-                </div>
-                <!-- <div class="datos">
-                    <label>Agregue una imagen para el servivio.</label>
-                    <div class="file">
-                        <input class="file" type="file" placeholder="x" required>
-                    </div>
-                </div> -->  
-                <div class="boton">
-                    <button type="submit">Modificar servicio</button>
-                </div>
-            </form>
-        </div>
-            
-    </div>
+                <% } %>
 
-    <!-- Fin sección del contenido (Cuerpo general)  -->
+                <ul class="menu">
+                    <% if (data != null) { %>
+                        <li class="btn-servicios"><a href="/mis-servicios">MIS SERVICIOS</a></li>
+                    <% } %>
+                    <li><a href="/servicios-turisticos">SERVICIOS</a></li>
+                    <li><a href="/atractivos-turisticos">ATRACTIVOS</a></li>
+                    <li><a href="/">INICIO</a></li>
+                </ul>
 
-    </body>
-</html>
+                <!-- PopUP inicio de sesion y registro -->
+                <input type="checkbox" id="iniciar-sesion" class="chk">
+                <input type="checkbox" id="registro" class="chk">
+
+                <!-- Inicio de sesion -->
+                <div class="popup-log">
+                    <label for="iniciar-sesion" class="cerrar fas fa-times"></label>
+                    <h2 class="centrado mayus">Iniciar sesion</h2>
+                    <form action="/login" method="POST">
+                        <div class="data">  
+                            <h3>Email</h3>
+                            <input type="email" placeholder="Ingresa un correo electronico" name="username" required/>
+                        </div>
+                        <div class="data">
+                            <h3>Contraseña</h3>
+                            <input type="password"  placeholder="Ingresa una contraseña" name="password" required/>
+                        </div>
+                        <button type="submit" class="btn-sesion">Ingresar</button>
+                    </form>
+                </div>
+                <!-- Fin inicio de sesion -->
+
+                <!-- Registro -->
+                <div class="popup-registro">
+                    <label for="registro" class="cerrar fas fa-times"></label>
+                    <h2 class="centrado mayus">Registrarse</h2>
+                    <form action="/registro" method="POST">
+                        <div class="data">
+                            <h3>e-Mail</h3>
+                            <input type="email" placeholder="Ingresa un correo electronico" name="correo" required/>
+                        </div>
+                        <div class="data">
+                            <h3>Contraseña</h3>
+                            <input type="password"  placeholder="Ingresa una contraseña" name="contrasena" required/>
+                        </div>
+                        <div class="data">
+                            <h3>Nombre</h3>
+                            <input type="text"  placeholder="Ingresa tu nombre" name="nombre" required/>
+                        </div>
+                        <div class="data">
+                            <h3>Contacto</h3>
+                            <input type="text"  placeholder="Ingresa tu numero de teléfono o celular" name="telefono" required/>
+                        </div>
+                        <button type="submit" class="btn-sesion">Enviar solicitud</button>
+                    </form>
+                </div>
+                <!-- Fin registro -->
+
+                <!-- Fin PopUP inicio de sesion y registro -->
+            </nav>
+
+            <section class="form-user">
+                <div class="separador"></div>
+                <div class="container-form">
+                    <h2 class="centrado texto-ng" id="add-service">MODIFICAR UN SERVICIO</h2>
+                    <form action="agregar-servicio-emprendedor" method="POST">
+                        <div class="data">
+                            <h3 class="negrita">Título</h3>
+                            <div class="input-user">
+                                <input type="text" name="titulo" value="<%= data.titulo %>" required>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <label>Descripción</label>
+                            <div class="input-user">
+                                <textarea name="descripcion" required><%= data.descripcion %></textarea>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <label>Ubicación</label>
+                            <div class="input-user">
+                                <input type="text" name="ubicacion" value="<%= data.ubicacion %>" required>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <label>Teléfono o Celular</label>
+                            <div class="input-user">
+                                <input type="text" name="contacto_tel" value="<%= data.contacto_tel %>" required>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <label>Correo electrónico</label>
+                            <div class="input-user">
+                                <input type="text" name="contacto_correo" value="<%= data.contacto_correo %>" required>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <label>Redes Sociales</label>
+                            <div class="input-user">
+                                <textarea class="text" name="redsocial" required><%= data.redsocial %></textarea>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <label for="cars">Seleccione la categoría de su servicio:</label>
+                            <select id="" name="tipo">
+                                <option value="servicio_gastronomico">Servicios Gastronómicos</option>
+                                <option value="alojamiento">Alojamientos</option>
+                                <option value="agencias_ttoo">Agencias y TTOO</option>
+                                <option value="paseoNauticos">Paseos Náuticos</option>
+                                <option value="otros" selected>Otros</option>
+                            </select required>
+                        </div>
+                        <!-- <div class="data">
+                            <label>Sernatur</label>
+                            <div class="file">
+                                <input class="file" type="file" placeholder="x" required>
+                            </div>
+                        </div> -->
+                        <!-- <div class="img">
+                            <label>Sernatur</label>
+                            <div class="file">
+                                <input class="file" type="file" placeholder="x" required>
+                            </div>
+                        </div> -->
+                        <div class="boton"> 
+                            <button type="submit">Enviar registro</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+<%- include ('partials-home/_footer-home')  %>
