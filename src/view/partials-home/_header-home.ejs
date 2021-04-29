@@ -7,8 +7,6 @@
         <title>Turismo - San Antonio</title>
         <link rel="icon" type="image/x-icon" href="/img/icon.png" />
         <link rel='stylesheet' type='text/css' href='/css/styles.css'/>
-        <link rel='stylesheet' type='text/css' href='/css/user.css'/>
-        <!-- <link rel='stylesheet' type='text/css' href='/css/nav.css'/> -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
         <!-- Mapa -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -23,19 +21,19 @@
             <label for="check-menu" class="mostrar-menu"><i class="fas fa-bars"></i></label>
             <a href="" class="logo"><img src="/img/icon.png"/></a>
             <% if (data != null) { %>
-                <a class="btn-login texto mayus" href="/logout">Cerrar sesión</a>
+                <a class="btn-logout texto mayus" href="/logout">Cerrar sesión</a>
             <% } %>
             <% if (data == null){ %>
-            <div class="cuenta texto">
-                <label for="registro" class="texto" href="">Registrarse</label>
-                o
-                <label for="iniciar-sesion" class="texto" href="">Iniciar sesión</label>
-            </div>
+                <div class="cuenta texto">
+                    <label for="registro" class="texto" href="">Registrarse</label>
+                    o
+                    <label for="iniciar-sesion" class="texto" href="">Iniciar sesión</label>
+                </div>
             <% } %>
 
             <ul class="menu">
                 <% if (data != null) { %>
-                    <li class="mis-servicios"><a href="">MIS SERVICIOS</a></li>
+                    <li class="btn-servicios"><a href="/mis-servicios">MIS SERVICIOS</a></li>
                 <% } %>
                 <li><a href="/servicios-turisticos">SERVICIOS</a></li>
                 <li><a href="/atractivos-turisticos">ATRACTIVOS</a></li>

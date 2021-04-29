@@ -1,46 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
+<%- include ('partials-home/_header-home')  %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIS SERVICIOS</title>
-    <link rel='stylesheet' type='text/css' href='/css/styles.css' />
-    <link rel='stylesheet' type='text/css' href='/css/user.css' />
-    <link rel='stylesheet' type='text/css' href='/css/nav.css' />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-    <!-- <script src="js/navegador.js"></script> -->
-</head>
-
-<body>
-
-    <!-- Inicio de sesión -->
-    <header>
-        <div class="center">
-            <a href="" class="logo"><img class="img-fluid" src="/img/icon.png" /></a>
-            <input type="checkbox" id="show">
-            <a class="iniciar-btn" href="/logout">Cerrar sesión</a>
-            <button class="servicios-btn"><a href="/mis-servicios">Mis servicios</a></button>
-        </div>
-    </header>
-
-    <!-- Barra de navegación -->
-    <nav>
-        <input type="checkbox" id="chk">
-        <label for="chk" class="show-menu-btn"><i class="fas fa-bars"></i></label>
-
-        <ul class="menu">
-            <a href="">INICIO</a>
-            <a href="#">SERVICIOS TURÍSTICOS</a>
-            <a href="#">ATRACTIVOS TURÍSTICOS</a>
-            <label for="chk" class="hide-menu-btn"><i class="fas fa-times"></i></label>
-        </ul>
-    </nav>
-
-    <section class="servicios" id="">
+    <section class="mis-servicios" id="">
+    <!-- <section class="mis-servicios" id=""> -->
         <div class="cont-serv">
-            <h3 class="text-center text-color">SERVICIOS PENDIENTES</h3>
-            <table class="table order-table text-center">
+            <h2 class="centrado texto-ng">SERVICIOS PENDIENTES</h2>
+            <table class="table order-table centrado texto-ng">
                 <thead>
                     <tr>
                         <th>Título</th>
@@ -59,7 +23,7 @@
                         <td> <%= data[i].titulo %></td>
                         <td> <%= data[i].id_emp %></td>
                         <td> 
-                            <a href="/cancelar-servicio-emp/<%= data[i].id_emp %>" class="boton cancelar">Cancelar</a>
+                            <a href="/cancelar-servicio-emp/<%= data[i].id_emp %>" class="boton-act cancelar">Cancelar</a>
                         </td>
                     </tr>
                         <% } %>
@@ -70,11 +34,9 @@
             </table>
 
         </div>
-    </section>
 
-    <section class="servicios" id="">
         <div class="cont-serv">
-            <h3 class="text-center text-color">MIS SERVICIOS</h3>
+            <h2 class="centrado texto-ng">MIS SERVICIOS</h2>
             <div class="divisor">
                 <div class="divisor-linea"></div>
                 <div class="divisor-icon"><i class="fas fa-concierge-bell"></i></div>
@@ -91,7 +53,7 @@
                                 <a class="edit" href="/modificar-servicio-emp/<%= data[i].id_emp %>"><i class="fas fa-edit"></i></a>
                                 <div class="contex">
                                     <div class="cont-serv">
-                                        <h3 class="text-center text-color">
+                                        <h3 class="centrado texto-ng">
                                             <%= data[i].titulo %>
                                         </h3>
                                     </div>
@@ -108,54 +70,55 @@
                 <% } %>
                 
                 <% if (cont==0) { %>
-                    <h4 class="text-center text-color text-h4">Lo sentimos, no hay servicios disponibles. Debes revisar las solicitudes pendientes o <a href="#add-service">ingresar una solicitud.</a></h4>
+                    <h4 class="centrado texto-ng text-h4">Lo sentimos, no hay servicios disponibles. Debes revisar las solicitudes pendientes o <a href="#add-service">ingresar una solicitud.</a></h4>
                 <% } %>
                 </div>
         </div>
     </section>
 
     <section class="form-user">
+        <div class="separador"></div>
         <div class="container-form">
-            <h3 class="text-center text-color" id="add-service">INGRESO DE SERVICIO</h3>
+            <h2 class="centrado texto-ng" id="add-service">INGRESO DE SERVICIO</h2>
             <form action="agregar-servicio-emprendedor" method="POST">
-                <div class="datos">
-                    <label>Título</label>
+                <div class="data">
+                    <h3 class="negrita">Título</h3>
                     <div class="input-user">
-                        <input class="text" name="titulo" type="text" placeholder="Título" required>
+                        <input class="" name="titulo" type="text" placeholder="Título" required>
                     </div>
                 </div>
-                <div class="datos">
+                <div class="data">
                     <label>Descripción</label>
                     <div class="input-user">
-                        <textarea class="text" name="descripcion" id=""
+                        <textarea class="" name="descripcion" id=""
                             placeholder="Escriba aquí la descripción completa del servicio"></textarea required>
                         </div>
                     </div>
-                    <div class="datos">
+                    <div class="data">
                         <label>Ubicación</label>
                         <div class="input-user">
-                            <input class="text" type="text" name="ubicacion" placeholder="Ingrese las coordenadas del lugar. ej:(0.1234,0.1234)" required>
+                            <input class="text" type="text" name="ubicacion" placeholder="Ingrese la ubicacion de su servicio" required>
                         </div>
                     </div>
-                    <div class="datos">
+                    <div class="data">
                         <label>Teléfono o Celular</label>
                         <div class="input-user">
                             <input class="text" type="number" name="contacto_tel" placeholder="Ingrese el teléfono o celular de contacto" required>
                         </div>
                     </div>
-                    <div class="datos">
+                    <div class="data">
                         <label>Correo electrónico</label>
                         <div class="input-user">
                             <input class="text" type="email" name="contacto_correo" placeholder="Ingrese el correo de contacto" required>
                         </div>
                     </div>
-                    <div class="datos">
+                    <div class="data">
                         <label>Redes Sociales</label>
                         <div class="input-user">
-                            <textarea class="text" name="redsocial" id="" placeholder="Escriba aquí sus redes sociales"></textarea required>
+                            <textarea class="text" name="redsocial" id="" placeholder="Ingrese sus redes sociales"></textarea required>
                         </div>
                     </div>
-                    <div class="datos">
+                    <div class="data">
                         <label for="cars">Seleccione la categoría de su servicio:</label>
                         <select id="" name="tipo">
                             <option value="servicio_gastronomico">Servicios Gastronómicos</option>
@@ -165,7 +128,7 @@
                             <option value="otros" selected>Otros</option>
                         </select required>
                     </div>
-                    <!-- <div class="datos">
+                    <!-- <div class="data">
                         <label>Sernatur</label>
                         <div class="file">
                             <input class="file" type="file" placeholder="x" required>
@@ -177,12 +140,13 @@
                             <input class="file" type="file" placeholder="x" required>
                         </div>
                     </div> -->
-                    <div class="boton">
+                    <div class="boton"> 
                         <button type="submit">Enviar registro</button>
                     </div>
                 </form>
             </div>
         </section>
+        
+        <section class="prueba"></section>
 
-    </body>
-</html>
+<%- include ('partials-home/_footer-home')  %>
