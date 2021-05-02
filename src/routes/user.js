@@ -93,6 +93,7 @@ router.get('/modificar-servicio-emp/:id_emp', (req, res, next) => {
 
 // UPDATE de la modificacion del servicio emprendedor
 router.post('/modificar-servicio-emp/:id_emp', (req, res, next) => {
+    console.log("hola");
     if(req.isAuthenticated()){
         return next();
     }
