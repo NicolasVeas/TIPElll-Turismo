@@ -45,7 +45,7 @@
 
         <div class="container-form">
             <h3 class="text-center">Agregar un servicio</h3>
-            <form action="/agregar-servicio" method="POST">
+            <form action="/agregar-servicio" method="POST" enctype="multipart/form-data">
                 <div class="datos">
                     <label>Título</label>
                     <div class="input-user">
@@ -70,12 +70,10 @@
                         <input class="text" type="number" name="telefono" placeholder="Ingrese el teléfono de contacto" required>
                     </div>
                 </div>
-                <!-- <div class="datos">
-                    <label>Agregue una imagen para el servivio.</label>
-                    <div class="file">
-                        <input class="file" type="file" placeholder="x" required>
-                    </div>
-                </div> -->
+                <div class="datos">
+                    <label for="cars">Añade una imagen (Tamaño máximo: 5 MB): </label>
+                    <input class="file" type="file" name='img' required>
+                </div>
                 <div class="boton">
                     <button type="submit">Agregar servicio</button>
                 </div>

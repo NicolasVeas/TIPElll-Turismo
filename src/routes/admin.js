@@ -104,6 +104,7 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
         conn.query('INSERT INTO servicio_admin set ? ', {
             titulo: data.titulo,
             correo: user,
+            img: req.file.filename,
             descripcion: data.descripcion,
             geo_local: data.geo_local,
             telefono: data.telefono
@@ -250,6 +251,7 @@ router.post('/agregar-atractivo', (req,res,next) => {
     conn.query('INSERT INTO atractivo_admin set ?', {
         titulo: data.titulo,
         correo: user,
+        img: req.file.filename,
         descripcion: data.descripcion,
         geo_local: data.geo_local,
         telefono: data.telefono

@@ -256,6 +256,16 @@ p{
     margin: 20px 0;
     color: #55595c;
 }
+.dataimage{
+    height: auto;
+    width: 100%;
+    margin: 20px 0;
+    color: #55595c;
+}
+#inputImg{
+    margin-top: 10px;
+    text-align: center;
+}
 .data input, .data textarea{
     height: 40px;
     font-size: 15px;
@@ -590,6 +600,9 @@ p{
     box-shadow: 0 0 8px rgb(0,0,0,0.5);
 }
 .data label{font-weight: bold; font-size: 20px;}
+
+.dataimage label{font-weight: bold; font-size: 20px;}
+
 .input-user{
     align-content: center;
     text-align: center;

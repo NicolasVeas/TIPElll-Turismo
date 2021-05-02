@@ -110,10 +110,10 @@
                             <% for(var i=0; i < data.length; i++) { %>
                                 
                                 <% if (data[i].solicitud == 0) { %>
-                                    <% console.log(data[i])%>
+                                    
                             <tr>
                                 <td> <%= data[i].titulo %></td>
-                                <td> <%= data[i].id_emp %></td>
+                                <td> <%= data[i].ubicacion %></td>
                                 <td> 
                                     <a href="/cancelar-servicio-emp/<%= data[i].id_emp %>" class="boton-act cancelar">Cancelar</a>
                                 </td>
@@ -153,7 +153,7 @@
                                                 <div class="divisor-linea"></div>
                                             </div>
                                             <div class="img-div" data-target="">
-                                                <a href=""><img class="img-cont" src="/img/Museo San Antonio.png" /></a>
+                                                <a href=""><img class="img-cont" src="/img/<%= data[i].img || 'default.png'%>" /></a>
                                             </div>
                                         </div>
                                     </div>
@@ -172,7 +172,7 @@
                 <div class="separador"></div>
                 <div class="container-form">
                     <h2 class="centrado texto-ng" id="add-service">INGRESO DE SERVICIO</h2>
-                    <form action="agregar-servicio-emprendedor" method="POST">
+                    <form action="agregar-servicio-emprendedor" enctype="multipart/form-data" method="POST">
                         <div class="data">
                             <h3 class="negrita">Título</h3>
                             <div class="input-user">
@@ -226,13 +226,11 @@
                                     <input class="file" type="file" placeholder="x" required>
                                 </div>
                             </div> -->
-                            <!-- <div class="img">
-                                <label>Sernatur</label>
-                                <div class="file">
-                                    <input class="file" type="file" placeholder="x" required>
-                                </div>
-                            </div> -->
-                            <div class="boton"> 
+                            <div class="dataimage">
+                                <label for="cars">Añade una imagen (Tamaño máximo: 5 MB): </label>
+                                <input id="inputImg" class="file" type="file" name='img' required>
+                            </div>
+                            <div class="boton">
                                 <button type="submit">Enviar registro</button>
                             </div>
                         </form>

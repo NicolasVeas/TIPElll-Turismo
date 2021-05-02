@@ -154,7 +154,8 @@ label #sidebar-btn:hover{
     padding: 20px;
     margin-left: 250px;
     background: var(--cuar);
-    height: 100vh;
+    /* height: 100vh; CAMBIE ESTO <-- */
+    height: 100%;
     transition: 0.5s;
 }
 
@@ -250,7 +251,7 @@ label #sidebar-btn:hover{
     text-align: center;
 }
 .file{
-    margin-left: 5%;
+   
     padding: 5px 0;
     font-size: 1.5vh;
 }

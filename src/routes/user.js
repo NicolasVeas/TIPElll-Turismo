@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const conn = require('../database');
+const multer = require('multer');
+const path = require('path');
 
+//Principal del user emprendedor
 router.get('/mis-servicios', (req, res,next) => {
     if (req.isAuthenticated()) {
         return next();
@@ -18,8 +21,6 @@ router.get('/mis-servicios', (req, res,next) => {
     });
 });
 
-
-
 // Registro de usuario
 router.post('/registro', (req,res,next) => {
     conn.query('INSERT INTO usuario set ?', [req.body], (err, resp) => {
@@ -31,7 +32,8 @@ router.post('/registro', (req,res,next) => {
 });
 
 // Agregar servicio emprendedor
-router.post('/agregar-servicio-emprendedor', (req, res, next) => {
+router.post('/agregar-servicio-emprendedor',(req, res, next) => {
+    
     if(req.isAuthenticated()){
         return next();
     }
@@ -46,6 +48,7 @@ router.post('/agregar-servicio-emprendedor', (req, res, next) => {
         descripcion: data.descripcion,
         ubicacion: data.ubicacion,
         contacto_tel: data.contacto_tel,
+        img: req.file.filename,
         contacto_correo: data.contacto_correo,
         redsocial: data.redsocial,
         tipo: data.tipo
