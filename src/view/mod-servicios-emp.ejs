@@ -95,7 +95,8 @@
             <section class="form-user">
                 <div class="separador"></div>
                 <div class="container-form">
-                    <h2 class="centrado texto-ng" id="add-service">MODIFICAR UN SERVICIO</h2>
+                    <h2 class="centrado texto-ng" id="add-service">SOLICITAR MODIFICACIÓN DEL SERVICIO</h2>
+                   
                     <form action="/modificar-servicio-emp/<%= data.id_emp %>" method="POST">
                         <div class="data">
                             <h3 class="negrita">Título</h3>
@@ -156,7 +157,7 @@
                             </div>
                         </div> -->
                         <div class="boton"> 
-                            <button type="submit">Enviar registro</button>
+                            <button onclick="return confirm('Una vez que modifiqué su servicio, quedará a la espera de la autorización del administrador y se eliminará el registro actual')" type="submit">Modificar registro</button>
                         </div>
                     </form>
                 </div>

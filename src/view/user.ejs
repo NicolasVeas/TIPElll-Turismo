@@ -115,7 +115,7 @@
                                 <td> <%= data[i].titulo %></td>
                                 <td> <%= data[i].ubicacion %></td>
                                 <td> 
-                                    <a href="/cancelar-servicio-emp/<%= data[i].id_emp %>" class="boton-act cancelar">Cancelar</a>
+                                    <a onclick="return confirm('¿Está seguro que desea eliminar la solicitud?')" href="/cancelar-servicio-emp/<%= data[i].id_emp %>" class="boton-act cancelar">Cancelar</a>
                                 </td>
                             </tr>
                                 <% } %>
