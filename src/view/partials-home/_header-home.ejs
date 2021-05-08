@@ -9,10 +9,8 @@
         <link rel='stylesheet' type='text/css' href='/css/styles.css'/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
         <!-- Mapa -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-        <!-- Clave API de Google Maps -->
-        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1NrmdL2QkaeuG_1-1VFGU_YeT2zzZ0qs&callback=initMap"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+		<link rel="stylesheet" type="text/css" href="/css/test.css">
     </head>
 
     <body>
@@ -21,10 +19,10 @@
                 <input type="checkbox" id="check-menu" class="chk">
                 <label for="check-menu" class="mostrar-menu"><i class="fas fa-bars"></i></label>
                 <a href="" class="logo"><img src="/img/icon.png"/></a>
-                <% if (data != null) { %>
+                <% if (usuario != null) { %>
                     <a class="btn-logout texto mayus" href="/logout">Cerrar sesión</a>
                 <% } %>
-                <% if (data == null){ %>
+                <% if (usuario == null){ %>
                     <div class="cuenta texto">
                         <label for="registro" class="texto" href="">Registrarse</label>
                         o
@@ -33,7 +31,7 @@
                 <% } %>
 
                 <ul class="menu">
-                    <% if (data != null) { %>
+                    <% if (usuario != null) { %>
                         <li class="btn-servicios"><a href="/mis-servicios">MIS SERVICIOS</a></li>
                     <% } %>
                     <li><a href="/servicios-turisticos">SERVICIOS</a></li>

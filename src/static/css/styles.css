@@ -40,6 +40,9 @@ p{
 .centrado{ text-align: center; }
 .negrita{ font-weight: bold; }
 
+/* Mapa */
+#map { height: 350px; }
+
 /* Revisar */
 .titulo{
     height: auto;
@@ -59,7 +62,7 @@ p{
     .principal{
         grid-template: /* (alto ancho) */
         "nav"       100px
-        "uno" 350px  
+        "uno" 415px  
         "dos" auto
         "tres"    200px
         "cuatro" auto
@@ -123,7 +126,7 @@ p{
     .principal{
         grid-template: /* (alto ancho) */
         "nav"       100px
-        "uno" 350px  
+        "uno" 410px  
         "dos" auto
         "tres"    200px
         "cuatro" auto
@@ -481,8 +484,6 @@ p{
 
 /* SECCION DE CSS DEL USUARIO */
 
-#mapa-servicios, #mapa-atractivos{ z-index: 0; }
-
 /* Contorl de contenido responsive */
 /* Pantalla de celular */
 @media screen and (max-width:900px) {
@@ -506,8 +507,8 @@ p{
     .boton button{
         width: 60%;
     }
-    #mapa-servicios, #mapa-atractivos { height: 290px; }
 }
+
 /* Pantalla de PC */
 @media screen and (min-width:901px) {
     .usuario{
@@ -533,7 +534,6 @@ p{
     .boton button{
         width: 30%;
     }
-    #mapa-servicios, #mapa-atractivos { height: 290px; }
 }
 
 /* Cuerpo general */
@@ -656,3 +656,10 @@ select{
 .actualizar{ background-color: #1f9bcf; }
 .cancelar{ background-color: #f0ad4e; }
 /* Fin estilo de tablas */
+
+
+/* Servicios y Atracivos dinamicos */
+
+
+
+/* Fin servicios y atractivos dinamicos */

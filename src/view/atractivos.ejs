@@ -1,11 +1,44 @@
 <%- include ('partials-home/_header-home')  %>
+<%console.log(usuario)%>
 
-    <!-- Mapa de servicios -->
+    <script>
+        var a = '<%- JSON.stringify(data)%>';
+        var data = JSON.parse(a);
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 11,
+                center: { lat: -33.59829709005887, lng: -71.60798902585982 },
+            });
+            const geocoder = new google.maps.Geocoder();
+            geocodeAddress(geocoder, map);
+        }
+    
+        function geocodeAddress(geocoder, resultsMap) {
+            for (let i = 0; i < data.length; i++) {
+                const address = data[i].geo_local;
+                geocoder.geocode({ address: address }, (results, status) => {
+                if (status === "OK") {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location,
+                        title: data[i].titulo,
+                        animation: google.maps.Animation.DROP
+                    });
+                } else {
+                    alert("Geocode was not successful for the following reason: " + status);
+                }
+                });
+            }
+        }
+
+    </script>
+
     <section class="slideshow">
         <div class="titulo">
             <h2 class="mayus centrado">apartado de atractivos</h2>
         </div>
-        <div id="mapa-atractivos"></div>
+        <div id="map"></div>
     </section>
 
     <!-- Iconos de navegación -->
@@ -50,62 +83,10 @@
     </section>
     <!-- Fin iconos de navegación -->
 
-    <section class="prueba">
-        
+    <section class="tres">
+        <div class="titulo">
+            <h2>Nueva seccion</h2>
+        </div>
     </section>
-
-    <script>
-        // Mapa
-        // -33.59829709005887, -71.60798902585982 Coordenadas San Antonio
-        var mapa = L.map('mapa-atractivos').setView([-33.59829709005887, -71.60798902585982], 13);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(mapa);
-
-
-        // Atractivos turisticos
-        // Cerro Mirador Cristo del Maipo
-        // -33.62541034346601, -71.59859473169858
-        L.marker([-33.62541034346601, -71.59859473169858]).addTo(mapa)
-            .bindPopup('Cristo del Maipo')
-            .openPopup();
-
-        // Pueblito lo Gallardo
-        // -33.62961139636703, -71.59911509594508
-        L.marker([-33.62961139636703, -71.59911509594508]).addTo(mapa)
-            .bindPopup('Pueblito lo Gallardo')
-            .openPopup();
-
-        // Faro Punta Panul
-        // -33.57476302211052, -71.62519699112556
-        L.marker([-33.57476302211052, -71.62519699112556]).addTo(mapa)
-            .bindPopup('Faro Punta Panul')
-            .openPopup();
-
-        // Grua 82 
-        // -33.585939226279685, -71.61304553136341
-        L.marker([-33.585939226279685, -71.61304553136341]).addTo(mapa)
-            .bindPopup('Grua 82 ')
-            .openPopup();
-
-        // Museo Municipal
-        // -33.60123562449381, -71.61427423745701
-        L.marker([-33.60123562449381, -71.61427423745701]).addTo(mapa)
-            .bindPopup('Museo Municipal')
-            .openPopup();
-
-        // Paseo Bellamar
-        // -33.58229509491532, -71.61371231602078
-        L.marker([-33.58229509491532, -71.61371231602078]).addTo(mapa)
-            .bindPopup('Paseo Bellamar')
-            .openPopup();
-
-        // // 
-        // // 
-        // L.marker([]).addTo(mapa)
-        //     .bindPopup('')
-        //     .openPopup();
-    </script>
 
 <%- include ('partials-home/_footer-home')  %>
