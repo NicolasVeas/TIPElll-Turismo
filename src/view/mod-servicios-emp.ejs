@@ -136,12 +136,13 @@
                         </div>
                         <div class="data">
                             <label for="cars">Seleccione la categoría de su servicio:</label>
-                            <select id="" name="tipo">
-                                <option value="servicio_gastronomico">Servicios Gastronómicos</option>
-                                <option value="alojamiento">Alojamientos</option>
-                                <option value="agencias_ttoo">Agencias y TTOO</option>
-                                <option value="paseoNauticos">Paseos Náuticos</option>
-                                <option value="otros" selected>Otros</option>
+                            <select id="" name="nombre_cat">
+                                <option value="<%= data.nombre_cat%>" selected="true" ><%= data.nombre_cat%> (Actual)</option>
+                                <% for(var i=0; i < datacat.length; i++) { %>
+                                    <% if (datacat[i].nombre_cat != data.nombre_cat){  %>
+                                        <option value="<%= datacat[i].nombre_cat %>"><%= datacat[i].nombre_cat %></option>
+                                        <% } %>
+                                <% } %>
                             </select required>
                         </div>
                         <!-- <div class="data">

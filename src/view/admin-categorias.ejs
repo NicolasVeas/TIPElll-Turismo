@@ -1,0 +1,84 @@
+<%- include ('partials-admin/_header-admin')  %>
+
+    <!-- Sección del contenido (Cuerpo general) -->
+    <div class="content">
+
+        <div class="container-tabla">
+            <h3 class="text-center">Categorías</h3>
+            <div class="busqueda">
+                <input class="busqueda-input search" data-table="order-table" type="text" placeholder="Buscar...">
+            </div>
+            <table class="table order-table text-center">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Categoría</th>
+                        <th colspan="2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (datacat) { %>
+                        <% for(var i = 0; i < datacat.length; i++) { %>
+                            <tr>
+                                <td> <%= i+1 %> </td>
+                                <td> <%= datacat[i].nombre_cat %> </td>
+                                <td>
+                                    <a href="/eliminar-categoria/<%= datacat[i].nombre_cat%>" class="boton eliminar">Eliminar</a>
+                                </td>
+                                <td>
+                                    <a onclick="cambiarboton('<%= datacat[i].nombre_cat%>')" id="btn-abrir-popup" class="boton actualizar btnpop">Modificar</a>
+                                </td>
+                            </tr>
+                        <% } %>
+                    <% } %>
+                </tbody>
+            </table>    
+        </div>
+
+
+        <div class="container-form">
+            <h3 class="text-center">Agregar una Categoría</h3>
+            <form action="/agregar-categoria" enctype="multipart/form-data" method="POST">
+                <div class="datos">
+                    <label>Nombre</label>
+                    <div class="input-user">
+                        <input class="text" type="text" name="nombre_cat" placeholder="Nombre de la categoría" required>
+                    </div>
+                </div>
+                <div class="boton">
+                    <button type="submit">Agregar Categoría</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- POPUP - MODIFICAR  -->
+        <div class="overlay" id="overlay">
+			<div class="popup" id="popup">
+				<a  id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+                <h3 class="text-center">Modificar categoría</h3>
+				<form action="/modificar-categoria" method="POST">
+                    <div class="datos-popup contenedor-inputs">
+                        <label>Nombre actual</label>
+                        <input id="nombre-actual" class="text" type="text" readonly="readonly" name="nombre_cat" >
+                    </div>
+                    <div class="datos-popup contenedor-inputs">
+                        <label>Nombre nuevo</label>
+                        <input placeholder="Ingrese el nuevo nombre de la categoría" class="text" type="text" name="new_nombre_cat" >
+                    </div>
+                    
+                    <div class="boton">
+                        <button type="submit">Modificar categoría</button>
+                    </div>
+				</form>
+			</div>
+            
+		</div>
+        
+        
+        <script src="js/popup.js"></script>
+            
+    </div>
+
+    <!-- Fin sección del contenido (Cuerpo general)  -->
+
+<%- include ('partials-admin/_footer-admin')  %>

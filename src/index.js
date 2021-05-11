@@ -105,5 +105,5 @@ app.use('/', require('./routes/authentication')); // login - sign up
 
 //  Iniciando el servidor
 app.listen(app.get('port'), () => {
-     console.log('Server on port 3000');
+     console.log('Servidor en puerto ',app.get('port'))
 });

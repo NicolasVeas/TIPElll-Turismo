@@ -212,20 +212,12 @@
                             </div>
                             <div class="data">
                                 <label for="cars">Seleccione la categoría de su servicio:</label>
-                                <select id="" name="tipo">
-                                    <option value="servicio_gastronomico">Servicios Gastronómicos</option>
-                                    <option value="alojamiento">Alojamientos</option>
-                                    <option value="agencias_ttoo">Agencias y TTOO</option>
-                                    <option value="paseoNauticos">Paseos Náuticos</option>
-                                    <option value="otros" selected>Otros</option>
+                                <select id="" name="nombre_cat">
+                                    <% for(var i=0; i < datacat.length; i++) { %>
+                                    <option value="<%= datacat[i].nombre_cat %>"><%= datacat[i].nombre_cat %></option>
+                                    <% } %>
                                 </select required>
                             </div>
-                            <!-- <div class="data">
-                                <label>Sernatur</label>
-                                <div class="file">
-                                    <input class="file" type="file" placeholder="x" required>
-                                </div>
-                            </div> -->
                             <div class="dataimage">
                                 <label for="cars">Añade una imagen (Tamaño máximo: 5 MB): </label>
                                 <input id="inputImg" class="file" type="file" name='img' required>

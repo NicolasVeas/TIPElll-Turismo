@@ -14,10 +14,17 @@ router.get('/mis-servicios', (req, res,next) => {
     conn.query('SELECT * FROM servicio_emprendedor where correo = ?', [req.user.correo], (err, servicios) => {
         if (err) {
             res.json(err);
-        }
-        res.render('user.ejs', {
-            data: servicios
+        }else{
+        conn.query('SELECT * FROM categoria', (err, categorias) => {
+            if (err) {
+                res.json(err);
+            }
+            res.render('user.ejs', {
+                data: servicios,
+                datacat: categorias
+            });
         });
+        }
     });
 });
 
@@ -51,7 +58,7 @@ router.post('/agregar-servicio-emprendedor',(req, res, next) => {
         img: req.file.filename,
         contacto_correo: data.contacto_correo,
         redsocial: data.redsocial,
-        tipo: data.tipo
+        nombre_cat: data.nombre_cat
     }, (err, customer) => {
         res.redirect('/mis-servicios');
     });
@@ -75,18 +82,22 @@ router.get('/cancelar-servicio-emp/:id_emp', (req, res, next) => {
 
 // enviamos el servicio a la vista modificar servicio emp
 router.get('/modificar-servicio-emp/:id_emp', (req, res, next) => {
-    if(req.isAuthenticated()){
+    if (req.isAuthenticated()) {
         return next();
     }
-        res.redirect('/');
-    },(req,res) =>{
-        const { id_emp } = req.params;
-        conn.query('SELECT * FROM servicio_emprendedor WHERE id_emp = ?', [id_emp], (err, rows) => {
-        if (err) {
-            res.json(err);
-        }
-        res.render('mod-servicios-emp', {
-            data: rows[0]
+    res.redirect('/');
+}, (req, res) => {
+    const { id_emp } = req.params;
+
+    conn.query('SELECT * FROM servicio_emprendedor WHERE id_emp = ?', [id_emp], (err, rows) => {
+        conn.query('SELECT * FROM categoria', (err, resp1) => {
+            conn.query('SELECT * FROM subcategoria', (err, resp2) => {
+                res.render('mod-servicios-emp', {
+                    data: rows[0],
+                    datacat: resp1,
+                    datasubcat: resp2
+                });
+            });
         });
     });
 });

@@ -314,5 +314,80 @@ router.post('/modificar-atractivo-reg/:id_atractivo', (req, res, next) => {
 
 /* -------------------------------------- */
 
+// CATEGORIAS
+
+router.get('/administrar-categorias', (req,res,next) => {
+    if(req.isAuthenticated()){
+        return next();
+    }
+        res.redirect('/');
+    },(req,res) =>{
+    conn.query('SELECT * FROM categoria', (err, resp1) => {
+        if (err) {
+            res.json(err);
+        }else{
+            conn.query('SELECT * FROM subcategoria', (err, resp2) => {
+                if (err) {
+                    res.json(err);
+                }
+                res.render('admin-categorias', {
+                    datacat: resp1,
+                    datasubcat: resp2
+                });
+            });
+        }
+    });
+});
+
+router.post('/agregar-categoria', (req,res,next) => {
+    if(req.isAuthenticated()){
+        return next();
+    }
+        res.redirect('/');
+    },(req,res) =>{
+    let data = Object.assign({},req.body);
+    conn.query('INSERT INTO categoria set ?', {
+        nombre_cat: data.nombre_cat,
+    }, (err, resp) => {
+        if (err) {
+            res.json(err);
+        }
+        res.redirect('/administrar-categorias');
+    });
+});
+
+router.get('/eliminar-categoria/:nombre_cat', (req, res, next) => {
+    if(req.isAuthenticated()){
+        return next();
+    }
+        res.redirect('/');
+    },(req,res) =>{
+        const { nombre_cat } = req.params;
+        conn.query('DELETE FROM categoria WHERE nombre_cat = ?', [nombre_cat], (err, rows) => {
+        if (err) {
+            res.json(err);
+        }
+        res.redirect('/administrar-categorias');
+    });
+});
+
+router.post('/modificar-categoria', (req, res, next) => {
+    if(req.isAuthenticated()){
+        return next();
+    }
+        res.redirect('/');
+    },(req,res) =>{
+        const newCus = req.body;
+        conn.query('UPDATE categoria set nombre_cat = ? WHERE nombre_cat = ?', [newCus.new_nombre_cat,newCus.nombre_cat], (err, rows) => {
+        if (err) {
+            res.json(err);
+        }
+        res.redirect('/administrar-categorias');
+    });
+});
+
+// Fin apartado de Categorías
+
+/* -------------------------------------- */
 
 module.exports = router;
