@@ -1,5 +1,4 @@
 <%- include ('partials-home/_header-home')  %>
-<%console.log(usuario)%>
 
     <script>
         var a = '<%- JSON.stringify(data)%>';
@@ -83,9 +82,44 @@
     </section>
     <!-- Fin iconos de navegación -->
 
-    <section class="tres">
-        <div class="titulo">
-            <h2>Nueva seccion</h2>
+    <section class="prueba" id="">
+        <!-- <section class="mis-servicios" id=""> -->
+
+        <div class="cont-serv">
+            <h2 class="centrado texto-ng">TODOS LOS ATRACTIVOS</h2>
+            <div class="divisor">
+                <div class="divisor-linea"></div>
+                <div class="divisor-icon"><i class="fas fa-concierge-bell"></i></div>
+                <div class="divisor-linea"></div>
+            </div>
+
+            <% var cont=0;%>
+                <% if (data) { %>
+                    <div class="row">
+                    <% for(var i=0; i < data.length; i++) { %>
+                            <% cont=1;%>
+                            <div class="col-individual">
+                                <div class="contex">
+                                    <div class="cont-serv">
+                                        <h3 class="centrado texto-ng">
+                                            <%= data[i].titulo %>
+                                        </h3>
+                                    </div>
+                                    <div class="divisor">
+                                        <div class="divisor-linea"></div>
+                                    </div>
+                                    <div class="img-div" data-target="">
+                                        <a href=""><img class="img-cont" src="/img/<%= data[i].img || 'default.png'%>" /></a>
+                                    </div>
+                                </div>
+                            </div>
+                    <% } %>
+                <% } %>
+                
+                <% if (cont==0) { %>
+                    <h4 class="centrado texto-ng text-h4">Lo sentimos, no hay atractivos disponibles.</a></h4>
+                <% } %>
+                </div>
         </div>
     </section>
 

@@ -57,7 +57,9 @@ router.post('/agregar-servicio-emprendedor',(req, res, next) => {
         contacto_tel: data.contacto_tel,
         img: req.file.filename,
         contacto_correo: data.contacto_correo,
-        redsocial: data.redsocial,
+        facebook: data.facebook,
+        twitter: data.twitter,
+        instagram: data.instagram,
         nombre_cat: data.nombre_cat
     }, (err, customer) => {
         res.redirect('/mis-servicios');

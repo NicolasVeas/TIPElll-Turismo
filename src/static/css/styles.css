@@ -39,9 +39,15 @@ p{
 .mayus{ text-transform: uppercase; }
 .centrado{ text-align: center; }
 .negrita{ font-weight: bold; }
+.grande{ font-size: 35px;}
+.mediano{ font-size: 23px;}
 
 /* Mapa */
 #map { height: 350px; }
+
+.dos{ grid-area: dos;}
+.tres{ grid-area: tres;}
+.cuatro{ grid-area: cuatro;}
 
 /* Revisar */
 .titulo{
@@ -64,7 +70,7 @@ p{
         "nav"       100px
         "uno" 415px  
         "dos" auto
-        "tres"    200px
+        "tres"    auto
         "cuatro" auto
         "footer" auto;
     }
@@ -128,7 +134,7 @@ p{
         "nav"       100px
         "uno" 410px  
         "dos" auto
-        "tres"    200px
+        "tres"    auto
         "cuatro" auto
         "footer" auto;
     }
@@ -452,8 +458,7 @@ p{
 
 
 .prueba{
-    grid-area: cuatro;
-    background: mediumspringgreen;
+    grid-area: tres;
 }
 
 
@@ -528,6 +533,10 @@ p{
         flex: 0 0 41.65%;
         max-width: 50%;
     }
+    .col-individual{
+        flex: 0 0 29.4%;
+        max-width: 50%;
+    }
     .row .edit{
         font-size: 1.5rem;
     }
@@ -566,9 +575,9 @@ p{
     right: 45px;
     top: 21px;
     color: #2c3e50;
-    z-index: 1;
+    z-index: 0;
 }
-.col-servicio {
+.col-servicio, .col-individual{
     position: relative;
     padding-right: 1.5rem;
     padding-left: 1.5rem;

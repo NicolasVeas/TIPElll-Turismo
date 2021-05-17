@@ -253,7 +253,8 @@ router.post('/agregar-atractivo', (req,res,next) => {
         correo: user,
         descripcion: data.descripcion,
         geo_local: data.geo_local,
-        telefono: data.telefono
+        telefono: data.telefono,
+        img: req.file.filename
     }, (err, resp) => {
         if (err) {
             res.json(err);

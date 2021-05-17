@@ -1,0 +1,69 @@
+
+<%- include ('partials-home/_header-home')  %>
+    <script>
+        var a = '<%- JSON.stringify(data)%>';
+        var data = JSON.parse(a);
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 11,
+                center: { lat: -33.59829709005887, lng: -71.60798902585982 },
+            });
+            const geocoder = new google.maps.Geocoder();
+            geocodeAddress(geocoder, map);
+        }
+
+        function geocodeAddress(geocoder, resultsMap) {
+            for (let i = 0; i < data.length; i++) {
+                const address = data[i].geo_local;
+                geocoder.geocode({ address: address }, (results, status) => {
+                if (status === "OK") {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location,
+                        title: data[i].titulo,
+                        animation: google.maps.Animation.DROP
+                    });
+                } else {
+                    alert("Geocode was not successful for the following reason: " + status);
+                }
+                });
+            }
+        }
+
+    </script>
+
+    <section class="slideshow">
+        <div class="slide-body">
+            <input type="radio" id="i1" name="images" checked />
+            <input type="radio" id="i2" name="images" />
+            
+            <div class="slide_img" id="one"> <img src="/img/<%= data[0].img || 'default.png'%>"> </div>
+            <div class="slide_img" id="two"> <img src="/img/home2.jpg"> </div>
+
+            <div id="nav-slide">
+                <label for="i1" class="dots" id="dot1"></label>
+                <label for="i2" class="dots" id="dot2"></label>
+            </div>
+        </div>
+    </section>
+
+    <section class="dos">
+        <h1 class="centrado texto-ng grande"><%= data[0].titulo%></h1>
+        <div class="divisor">
+            <div class="divisor-linea"></div>
+        </div>
+        <h3 class="texto-ng mediano centrado"> <%= data[0].descripcion%></h3>
+        <div class="divisor"></div>
+        <div class="row">
+            <div class="col-servicio" style="margin-top: 140px;">
+                <h3 class="texto-ng"><i class="fas fa-map-marker-alt texto-ng"></i> <%= data[0].geo_local%></h3>
+                <h3 class="texto-ng"><i class="fas fa-phone texto-ng"></i> <%= data[0].telefono%></h3>
+            </div>
+            <div class="col-servicio">
+                <div id="map"></div>
+            </div>
+        </div>
+    </section>
+
+<%- include ('partials-home/_footer-home')  %>
