@@ -11,7 +11,7 @@ router.get('/mis-servicios', (req, res,next) => {
     }
     res.redirect('/');
 }, (req, res) => {
-    conn.query('SELECT * FROM servicio_emprendedor where correo = ?', [req.user.correo], (err, servicios) => {
+    conn.query('SELECT * FROM servicio where correo = ?', [req.user.correo], (err, servicios) => {
         if (err) {
             res.json(err);
         }else{
@@ -48,33 +48,36 @@ router.post('/agregar-servicio-emprendedor',(req, res, next) => {
     },(req,res) =>{
 
     let data = Object.assign({},req.body);
-    let user = req.user.correo;
-    conn.query('INSERT INTO servicio_emprendedor set ? ', {
+    console.log(data);
+    conn.query('INSERT INTO servicio set ? ', {
         titulo: data.titulo,
-        correo: user,
         descripcion: data.descripcion,
-        ubicacion: data.ubicacion,
-        contacto_tel: data.contacto_tel,
-        img: req.file.filename,
+        geo_local: data.geo_local,
+        nombre_cat: data.nombre_cat,
+        correo: req.user.correo,
         contacto_correo: data.contacto_correo,
+        telefono: data.contacto_tel,
+        img: req.file.filename,
         facebook: data.facebook,
         twitter: data.twitter,
         instagram: data.instagram,
-        nombre_cat: data.nombre_cat
+        web: data.web,
+        servicio_admin: false,
+        solicitud: false
     }, (err, customer) => {
         res.redirect('/mis-servicios');
     });
 });
 
 // Cancela solicitud el emprendedor
-router.get('/cancelar-servicio-emp/:id_emp', (req, res, next) => {
+router.get('/cancelar-servicio-emp/:id_servicio', (req, res, next) => {
     if(req.isAuthenticated()){
         return next();
     }
         res.redirect('/');
     },(req,res) =>{
-        const { id_emp } = req.params;
-        conn.query('DELETE FROM servicio_emprendedor WHERE id_emp = ?', [id_emp], (err, rows) => {
+        const { id_servicio } = req.params;
+        conn.query('DELETE FROM servicio WHERE id_servicio = ?', [id_servicio], (err, rows) => {
         if (err) {
             res.json(err);
         }
@@ -83,39 +86,36 @@ router.get('/cancelar-servicio-emp/:id_emp', (req, res, next) => {
 });
 
 // enviamos el servicio a la vista modificar servicio emp
-router.get('/modificar-servicio-emp/:id_emp', (req, res, next) => {
+router.get('/modificar-servicio-emp/:id_servicio', (req, res, next) => {
     if (req.isAuthenticated()) {
         return next();
     }
     res.redirect('/');
 }, (req, res) => {
-    const { id_emp } = req.params;
+    const { id_servicio } = req.params;
 
-    conn.query('SELECT * FROM servicio_emprendedor WHERE id_emp = ?', [id_emp], (err, rows) => {
+    conn.query('SELECT * FROM servicio WHERE id_servicio = ?', [id_servicio], (err, rows) => {
         conn.query('SELECT * FROM categoria', (err, resp1) => {
-            conn.query('SELECT * FROM subcategoria', (err, resp2) => {
-                res.render('mod-servicios-emp', {
+            res.render('mod-servicios-emp', {
                     data: rows[0],
-                    datacat: resp1,
-                    datasubcat: resp2
-                });
+                    datacat: resp1
             });
         });
     });
 });
 
 // UPDATE de la modificacion del servicio emprendedor
-router.post('/modificar-servicio-emp/:id_emp', (req, res, next) => {
+router.post('/modificar-servicio-emp/:id_servicio', (req, res, next) => {
     
     if(req.isAuthenticated()){
         return next();
     }
         res.redirect('/');
     },(req,res) =>{
-        const { id_emp } = req.params;
+        const { id_servicio } = req.params;
         const solicitud = { solicitud: 0};
         const newServicio = Object.assign(req.body,solicitud)
-        conn.query('UPDATE servicio_emprendedor set ? WHERE id_emp = ?', [newServicio, id_emp], (err, rows) => {
+        conn.query('UPDATE servicio set ? WHERE id_servicio = ?', [newServicio, id_servicio], (err, rows) => {
         if (err) {
             res.json(err);
         }

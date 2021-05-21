@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const conn = require('../database');
 
-// Pruebas
+// home
 
 router.get('/', (req, res) => {
     res.render('home.ejs', {
@@ -10,8 +10,10 @@ router.get('/', (req, res) => {
     });
 });
 
+// servicios - home
+
 router.get('/servicios-turisticos', (req, res) => {
-    conn.query('SELECT * FROM servicio_admin', (err, data) => {
+    conn.query('SELECT * FROM servicio', (err, data) => {
         if (err) {
             res.json(err);
         }
@@ -21,6 +23,8 @@ router.get('/servicios-turisticos', (req, res) => {
         });
     });
 });
+
+// atractivos - home
 
 router.get('/atractivos-turisticos', (req,res,next) => {
     conn.query('SELECT * FROM atractivo_admin', (err, data) => {
@@ -33,6 +37,8 @@ router.get('/atractivos-turisticos', (req,res,next) => {
         });
     });
 });
+
+// atractivos individual - home
 
 router.get('/atractivo/:id_atractivo', (req, res) => {
     const { id_atractivo } = req.params;

@@ -25,8 +25,8 @@
                                         <td> <%= data[i].ubicacion %> </td>
                                         <td><%= data[i].sernatur %></td>
                                         <td>
-                                            <a href="/aceptar-servicio/<%= data[i].id_emp %>" class="boton aceptar">Aceptar</a>
-                                            <a href="/eliminar-servicio-user/<%= data[i].id_emp %>" class="boton eliminar">Rechazar</a>
+                                            <a href="/aceptar-servicio/<%= data[i].id_servicio %>" class="boton aceptar">Aceptar</a>
+                                            <a href="/eliminar-servicio-user/<%= data[i].id_servicio %>" class="boton eliminar">Rechazar</a>
                                         </td>
                                     </tr>
                                 <% } %>
@@ -59,13 +59,13 @@
                                 <% for(var i = 0; i < data.length; i++) { %>
                                     <% if (data[i].solicitud == 1) { %>
                                         <tr>
-                                            <td> <%= data[i].id_emp %> </td>
+                                            <td> <%= data[i].id_servicio %> </td>
                                             <td> <%= data[i].titulo %> </td>
                                             <td> <%= data[i].ubicacion %> </td>
                                             <td> <%= data[i].contacto_tel %> </td>
                                             <td> <%= data[i].contacto_correo %> </td>
                                             <td> <%= data[i].sernatur %> </td>
-                                            <td><a href="/eliminar-servicio-user/<%= data[i].id_emp %>" class="boton eliminar">Eliminar</a></td>
+                                            <td><a href="/eliminar-servicio-user/<%= data[i].id_servicio %>" class="boton eliminar">Eliminar</a></td>
                                         </tr>
                                     <% } %>
                                 <% } %>

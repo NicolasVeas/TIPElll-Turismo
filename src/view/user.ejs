@@ -113,9 +113,9 @@
                                     
                             <tr>
                                 <td> <%= data[i].titulo %></td>
-                                <td> <%= data[i].ubicacion %></td>
+                                <td> <%= data[i].geo_local %></td>
                                 <td> 
-                                    <a onclick="return confirm('¿Está seguro que desea eliminar la solicitud?')" href="/cancelar-servicio-emp/<%= data[i].id_emp %>" class="boton-act cancelar">Cancelar</a>
+                                    <a onclick="return confirm('¿Está seguro que desea eliminar la solicitud?')" href="/cancelar-servicio-emp/<%= data[i].id_servicio %>" class="boton-act cancelar">Cancelar</a>
                                 </td>
                             </tr>
                                 <% } %>
@@ -142,7 +142,7 @@
                                 <% if (data[i].solicitud==1) { %>
                                     <% cont=1;%>
                                     <div class="col-servicio">
-                                        <a class="edit" href="/modificar-servicio-emp/<%= data[i].id_emp %>"><i class="fas fa-edit"></i></a>
+                                        <a class="edit" href="/modificar-servicio-emp/<%= data[i].id_servicio %>"><i class="fas fa-edit"></i></a>
                                         <div class="contex">
                                             <div class="cont-serv">
                                                 <h3 class="centrado texto-ng">
@@ -153,7 +153,7 @@
                                                 <div class="divisor-linea"></div>
                                             </div>
                                             <div class="img-div" data-target="">
-                                                <a href=""><img class="img-cont" src="/img/<%= data[i].img || 'default.png'%>" /></a>
+                                                <a width="260" height="300" href=""><img class="img-cont" src="/img/<%= data[i].img || 'default.png'%>" /></a>
                                             </div>
                                         </div>
                                     </div>
@@ -189,37 +189,43 @@
                             <div class="data">
                                 <label>Ubicación</label>
                                 <div class="input-user">
-                                    <input class="text" type="text" name="ubicacion" placeholder="Ingrese la ubicacion de su servicio" required>
+                                    <input class="text" type="text" name="geo_local" placeholder="Ingresar la dirección del lugar, Ej: “Barros Luco 1881, San Antonio, Chile”" required>
                                 </div>
                             </div>
                             <div class="data">
-                                <label>Teléfono o Celular</label>
+                                <label>Teléfono o Celular (Contacto)</label>
                                 <div class="input-user">
                                     <input class="text" type="number" name="contacto_tel" placeholder="Ingrese el teléfono o celular de contacto" required>
                                 </div>
                             </div>
                             <div class="data">
-                                <label>Correo electrónico</label>
+                                <label>Correo electrónico (Contacto) </label>
                                 <div class="input-user">
                                     <input class="text" type="email" name="contacto_correo" placeholder="Ingrese el correo de contacto" required>
                                 </div>
                             </div>
                             <div class="data">
-                                <label>Facebook</label>
+                                <label>Facebook (opcional) </label>
                                 <div class="input-user">
                                     <input class="text" name="facebook" id="" placeholder="Ingrese el Facebook asociado"></input>
                                 </div>
                             </div>
                             <div class="data">
-                                <label>Twitter</label>
+                                <label>Twitter (opcional) </label>
                                 <div class="input-user">
                                     <input class="text" name="twitter" id="" placeholder="Ingrese el Twitter asociado"></input>
                                 </div>
                             </div>
                             <div class="data">
-                                <label>Instagram</label>
+                                <label>Instagram (opcional) </label>
                                 <div class="input-user">
                                     <input class="text" name="instagram" id="" placeholder="Ingrese el Intagram asociado"></input>
+                                </div>
+                            </div>
+                            <div class="data">
+                                <label>Sitio web (opcional)</label>
+                                <div class="input-user">
+                                    <input class="text" name="web" id="" placeholder="Ingrese el Intagram asociado"></input>
                                 </div>
                             </div>
                             <div class="data">
@@ -231,7 +237,7 @@
                                 </select required>
                             </div>
                             <div class="dataimage">
-                                <label for="cars">Añade una imagen (Tamaño máximo: 5 MB): </label>
+                                <label for="cars">Adjunte imagen (Tamaño máximo: 5 MB - Formato: JPG o PNG): </label>
                                 <input id="inputImg" class="file" type="file" name='img' required>
                             </div>
                             <div class="boton">

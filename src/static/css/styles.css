@@ -587,16 +587,21 @@ p{
 .cont-serv{
     padding-top: 20px;
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 .img-div{
     margin-right: auto;
     margin-left: auto;
+    height: calc( 200px );
+    width: 260px;
+    margin:1em auto;
+    position: relative;
 }
 .img-cont{
-    border-radius: 0.5rem;
-    max-width: 100%;
-    height: auto;
+    border-radius: 0.2rem;
+    max-width: 260px;
+    height: 200px;
+    
 }
 /* Fin cuerpo general */
 
