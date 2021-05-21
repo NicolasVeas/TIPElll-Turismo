@@ -48,7 +48,7 @@ router.post('/agregar-servicio-emprendedor',(req, res, next) => {
     },(req,res) =>{
 
     let data = Object.assign({},req.body);
-    console.log(data);
+
     conn.query('INSERT INTO servicio set ? ', {
         titulo: data.titulo,
         descripcion: data.descripcion,

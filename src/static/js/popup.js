@@ -12,7 +12,7 @@ btnCerrarPopup.addEventListener('click', function(e){
 
 for (var i = 0; i < elem.length; i++) {
     (function () {
-        console.log(elem[i]);
+       
         elem[i].addEventListener("click", function() {
 			overlay.classList.add('active'),
 			popup.classList.add('active');

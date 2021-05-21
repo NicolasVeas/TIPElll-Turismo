@@ -81,7 +81,7 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
         }
             res.redirect('/');
         },(req,res) =>{
-        conn.query('SELECT * FROM servicio_admin', (err, servicios) => {
+        conn.query('SELECT * FROM servicio where servicio_admin = 1', (err, servicios) => {
             if (err) {
                 res.json(err);
             }
@@ -101,13 +101,14 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
         let user = req.user.correo;
         
 
-        conn.query('INSERT INTO servicio_admin set ? ', {
+        conn.query('INSERT INTO servicio set ? ', {
             titulo: data.titulo,
             correo: user,
             img: req.file.filename,
             descripcion: data.descripcion,
             geo_local: data.geo_local,
-            telefono: data.telefono
+            telefono: data.telefono,
+            servicio_admin: true
         }, (err, customer) => {
             res.redirect('/servicios-regionales');
         });
@@ -120,7 +121,7 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
             res.redirect('/');
         },(req,res) =>{
             const { id_servicio } = req.params;
-            conn.query('DELETE FROM servicio_admin WHERE id_servicio = ?', [id_servicio], (err, rows) => {
+            conn.query('DELETE FROM servicio WHERE id_servicio = ?', [id_servicio], (err, rows) => {
             if (err) {
                 res.json(err);
             }
@@ -135,7 +136,7 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
             res.redirect('/');
         },(req,res) =>{
             const { id_servicio } = req.params;
-            conn.query('SELECT * FROM servicio_admin WHERE id_servicio = ?', [id_servicio], (err, rows) => {
+            conn.query('SELECT * FROM servicio WHERE id_servicio = ?', [id_servicio], (err, rows) => {
             if (err) {
                 res.json(err);
             }
@@ -153,7 +154,7 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
         },(req,res) =>{
             const { id_servicio } = req.params;
             const newServicio = Object.assign({},req.body)
-            conn.query('UPDATE servicio_admin set ? WHERE id_servicio = ?', [newServicio, id_servicio], (err, rows) => {
+            conn.query('UPDATE servicio set ? WHERE id_servicio = ?', [newServicio, id_servicio], (err, rows) => {
             if (err) {
                 res.json(err);
             }
@@ -174,7 +175,7 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
         }
             res.redirect('/');
         },(req,res) =>{
-        conn.query('SELECT * FROM servicio_emprendedor', (err, servicios) => {
+        conn.query('SELECT * FROM servicio', (err, servicios) => {
             if (err) {
                 res.json(err);
             }
@@ -184,14 +185,14 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
         });
     });
 
-    router.get('/eliminar-servicio-user/:id_emp', (req, res, next) => {
+    router.get('/eliminar-servicio-user/:id_servicio', (req, res, next) => {
         if(req.isAuthenticated()){
             return next();
         }
             res.redirect('/');
         },(req,res) =>{
-            const { id_emp } = req.params;
-            conn.query('DELETE FROM servicio_emprendedor WHERE id_emp = ?', [id_emp], (err, rows) => {
+            const { id_servicio } = req.params;
+            conn.query('DELETE FROM servicio WHERE id_servicio = ?', [id_servicio], (err, rows) => {
             if (err) {
                 res.json(err);
             }
@@ -199,14 +200,14 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
         });
     });
 
-    router.get('/aceptar-servicio/:id_emp', (req, res, next) => {
+    router.get('/aceptar-servicio/:id_servicio', (req, res, next) => {
         if(req.isAuthenticated()){
             return next();
         }
             res.redirect('/');
         },(req,res) =>{
-            const { id_emp } = req.params;
-            conn.query("UPDATE servicio_emprendedor SET solicitud = 1 WHERE id_emp = ?", [id_emp], (err, rows) => {
+            const { id_servicio } = req.params;
+            conn.query("UPDATE servicio SET solicitud = 1 WHERE id_servicio = ?", [id_servicio], (err, rows) => {
             if (err) {
                 res.json(err);
             }
@@ -317,28 +318,24 @@ router.post('/modificar-atractivo-reg/:id_atractivo', (req, res, next) => {
 
 // CATEGORIAS
 
-router.get('/administrar-categorias', (req,res,next) => {
-    if(req.isAuthenticated()){
+router.get('/administrar-categorias', (req, res, next) => {
+    if (req.isAuthenticated()) {
         return next();
     }
-        res.redirect('/');
-    },(req,res) =>{
+    res.redirect('/');
+}, (req, res) => {
     conn.query('SELECT * FROM categoria', (err, resp1) => {
         if (err) {
             res.json(err);
-        }else{
-            conn.query('SELECT * FROM subcategoria', (err, resp2) => {
-                if (err) {
-                    res.json(err);
-                }
-                res.render('admin-categorias', {
-                    datacat: resp1,
-                    datasubcat: resp2
-                });
+        } else {
+            res.render('admin-categorias', {
+                datacat: resp1
             });
         }
     });
 });
+
+
 
 router.post('/agregar-categoria', (req,res,next) => {
     if(req.isAuthenticated()){

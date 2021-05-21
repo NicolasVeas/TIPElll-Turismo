@@ -22,7 +22,7 @@
                                 <% if (data[i].solicitud == 0) { %>
                                     <tr>
                                         <td> <%= data[i].titulo %> </td>
-                                        <td> <%= data[i].ubicacion %> </td>
+                                        <td> <%= data[i].geo_local %> </td>
                                         <td><%= data[i].sernatur %></td>
                                         <td>
                                             <a href="/aceptar-servicio/<%= data[i].id_servicio %>" class="boton aceptar">Aceptar</a>
@@ -61,8 +61,8 @@
                                         <tr>
                                             <td> <%= data[i].id_servicio %> </td>
                                             <td> <%= data[i].titulo %> </td>
-                                            <td> <%= data[i].ubicacion %> </td>
-                                            <td> <%= data[i].contacto_tel %> </td>
+                                            <td> <%= data[i].geo_local %> </td>
+                                            <td> <%= data[i].telefono %> </td>
                                             <td> <%= data[i].contacto_correo %> </td>
                                             <td> <%= data[i].sernatur %> </td>
                                             <td><a href="/eliminar-servicio-user/<%= data[i].id_servicio %>" class="boton eliminar">Eliminar</a></td>

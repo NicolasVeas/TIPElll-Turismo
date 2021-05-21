@@ -23,6 +23,7 @@
                 <tbody>
                     <% if (data) { %>
                         <% for(var i = 0; i < data.length; i++) { %>
+                            
                             <tr>
                                 <td> <%= data[i].id_servicio %> </td>
                                 <td> <%= data[i].correo || 'Desconocido' %> </td>
@@ -36,6 +37,7 @@
                                     <a href="/modificar-servicio-reg/<%= data[i].id_servicio %>" class="boton actualizar">Modificar</a>
                                 </td>
                             </tr>
+                            
                         <% } %>
                     <% } %>
                 </tbody>
