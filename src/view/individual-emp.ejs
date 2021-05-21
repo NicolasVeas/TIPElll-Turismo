@@ -57,12 +57,13 @@
         <h3 class="texto-ng mediano centrado"> <%= data[0].descripcion%></h3>
         <div class="divisor"></div>
         <div class="row">
-            <div class="col-servicio" style="margin-top: 80px;">
-                <h3 class="texto-ng"><i class="fas fa-map-marker-alt texto-ng"></i> <%= data[0].ubicacion%></h3>
-                <h3 class="texto-ng"><i class="fas fa-phone texto-ng"></i> <%= data[0].contacto_tel%></h3>
+            <div class="col-servicio" style="margin-top: 60px;">
+                <h3 class="texto-ng"><i class="fas fa-map-marker-alt texto-ng"></i> <%= data[0].geo_local%></h3>
+                <h3 class="texto-ng"><i class="fas fa-phone texto-ng"></i> <%= data[0].telefono%></h3>
                 <h3 class="texto-ng"><i class="fab fa-facebook-f texto-ng"></i> <%= data[0].facebook%></h3>
                 <h3 class="texto-ng"><i class="fab fa-twitter texto-ng"></i> <%= data[0].twitter%></h3>
                 <h3 class="texto-ng"><i class="fab fa-instagram texto-ng"></i> <%= data[0].instagram%></h3>
+                <h3 class="texto-ng"><i class="fas fa-globe texto-ng"></i> <%= data[0].web%></h3>
             </div>
             <div class="col-servicio">
                 <div id="map"></div>

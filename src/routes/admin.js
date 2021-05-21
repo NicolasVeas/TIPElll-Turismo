@@ -108,7 +108,8 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
             descripcion: data.descripcion,
             geo_local: data.geo_local,
             telefono: data.telefono,
-            servicio_admin: true
+            servicio_admin: true,
+            solicitud: 1
         }, (err, customer) => {
             res.redirect('/servicios-regionales');
         });
@@ -175,7 +176,7 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
         }
             res.redirect('/');
         },(req,res) =>{
-        conn.query('SELECT * FROM servicio', (err, servicios) => {
+        conn.query('SELECT * FROM servicio WHERE servicio_admin = 0', (err, servicios) => {
             if (err) {
                 res.json(err);
             }
