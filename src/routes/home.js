@@ -2,6 +2,21 @@ const express = require('express');
 const router = express.Router();
 const conn = require('../database');
 
+// Pruebas
+
+router.get('/x', (req, res) => {
+    conn.query('SELECT * FROM servicio', (err, data) => {
+        if (err) {
+            res.json(err);
+        }
+        res.render('x.ejs', {
+            usuario: req.user,
+            data: data
+        });
+    });
+});
+
+
 // home
 router.get('/', (req, res) => {
     res.render('home.ejs', {

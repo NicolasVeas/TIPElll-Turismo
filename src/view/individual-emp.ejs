@@ -1,39 +1,6 @@
 
 <%- include ('partials-home/_header-home')  %>
 
-    <script>
-        var a = '<%- JSON.stringify(data)%>';
-        var data = JSON.parse(a);
-        function initMap() {
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 11,
-                center: { lat: -33.59829709005887, lng: -71.60798902585982 },
-            });
-            const geocoder = new google.maps.Geocoder();
-            geocodeAddress(geocoder, map);
-        }
-
-        function geocodeAddress(geocoder, resultsMap) {
-            for (let i = 0; i < data.length; i++) {
-                const address = data[i].geo_local;
-                geocoder.geocode({ address: address }, (results, status) => {
-                if (status === "OK") {
-                    resultsMap.setCenter(results[0].geometry.location);
-                    new google.maps.Marker({
-                        map: resultsMap,
-                        position: results[0].geometry.location,
-                        title: data[i].titulo,
-                        animation: google.maps.Animation.DROP
-                    });
-                } else {
-                    alert("Geocode was not successful for the following reason: " + status);
-                }
-                });
-            }
-        }
-
-    </script>
-
     <section class="slideshow">
         <div class="slide-body">
             <input type="radio" id="i1" name="images" checked />
@@ -70,5 +37,60 @@
             </div>
         </div>
     </section>
+
+    <script>
+        var a = '<%- JSON.stringify(data)%>';
+        var data = JSON.parse(a);
+        var delay = 100;
+        var infowindow = new google.maps.InfoWindow();
+        var geo = new google.maps.Geocoder(); 
+
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 11,
+            center: { lat: -33.59829709005887, lng: -71.60798902585982 },
+        });
+        var bounds = new google.maps.LatLngBounds();
+
+        function getAddress(search, next, i) {
+            geo.geocode({address:search}, function (results,status){ 
+                if (status == google.maps.GeocoderStatus.OK) {
+
+                    var marker = new google.maps.Marker({
+                        position: results[0].geometry.location,
+                        map: map,
+                        title: data[i].titulo,
+                        animation: google.maps.Animation.DROP
+                    });
+                    google.maps.event.addListener(marker, 'click', function() {
+                        infowindow.setContent(data[i].titulo);
+                        infowindow.open(map,marker);
+                    });
+                    bounds.extend(marker.position);
+                }
+                else {
+                    if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+                        sigLugar--;
+                        delay++;
+                    } else {
+                        alert("Geocode was not successful for the following reason: " + status);
+                    }   
+                }
+                next();
+            });
+        }
+
+        var lugares = []
+        for (let i = 0; i < data.length; i++) { lugares.push(data[i].geo_local); }
+        var sigLugar = 0;
+        function inicio() {
+            if (sigLugar < lugares.length) {
+                setTimeout('getAddress("'+lugares[sigLugar]+'",inicio, sigLugar-1)', delay);
+                sigLugar++;
+            } else {
+                map.fitBounds(bounds);
+            }
+        }
+        inicio();
+    </script>
 
 <%- include ('partials-home/_footer-home')  %>

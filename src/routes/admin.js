@@ -108,6 +108,11 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
             descripcion: data.descripcion,
             geo_local: data.geo_local,
             telefono: data.telefono,
+            correo: data.contanto_correo,
+            facebook: data.facebook,
+            twitter: data.twitter,
+            instagram: data.instagram,
+            web: data.web,
             servicio_admin: true,
             solicitud: 1
         }, (err, customer) => {
