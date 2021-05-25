@@ -30,12 +30,36 @@
                         <input class="text" type="text" name="telefono" value="<%= data.telefono %>" required>
                     </div>
                 </div>
-                <!-- <div class="datos">
-                    <label>Agregue una imagen para el servivio.</label>
-                    <div class="file">
-                        <input class="file" type="file" placeholder="x" required>
+                <div class="datos">
+                    <label>Correo electrónico </label>
+                    <div class="input-user">
+                        <input class="text" type="email" name="contacto_correo" value="<%= data.contacto_correo %>" required>
                     </div>
-                </div> -->  
+                </div>
+                <div class="datos">
+                    <label>Facebook (opcional) </label>
+                    <div class="input-user">
+                        <input class="text" name="facebook" value="<%= data.facebook %>"></input>
+                    </div>
+                </div>
+                <div class="datos">
+                    <label>Twitter (opcional) </label>
+                    <div class="input-user">
+                        <input class="text" name="twitter" value="<%= data.twitter %>"></input>
+                    </div>
+                </div>
+                <div class="datos">
+                    <label>Instagram (opcional) </label>
+                    <div class="input-user">
+                        <input class="text" name="instagram" value="<%= data.instagram %>"></input>
+                    </div>
+                </div>
+                <div class="datos">
+                    <label>Sitio web (opcional)</label>
+                    <div class="input-user">
+                        <input class="text" name="web" value="<%= data.web%>"></input>
+                    </div>
+                </div>
                 <div class="boton">
                     <button type="submit">Modificar servicio</button>
                 </div>
