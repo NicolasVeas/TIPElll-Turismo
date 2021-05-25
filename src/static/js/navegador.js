@@ -6,3 +6,5 @@ setInterval(function () {
         counter = 1;
     }
 }, 2500);
+
+

@@ -18,9 +18,22 @@ router.get('/x', (req, res) => {
 
 
 // home
+
 router.get('/', (req, res) => {
-    res.render('home.ejs', {
-        usuario: req.user
+    conn.query('SELECT * FROM servicio', (err, servicio) => {
+        conn.query('SELECT * FROM atractivo_admin', (err, atractivo) => {
+            conn.query('SELECT * FROM categoria', (err, categoria) => {
+                if (err) {
+                    res.json(err);
+                }
+                res.render('home.ejs', {
+                    usuario: req.user,
+                    dataServicio: servicio,
+                    dataAtractivo: atractivo,
+                    dataCategoria: categoria
+                });
+            });
+        });
     });
 });
 

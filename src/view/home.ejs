@@ -64,6 +64,98 @@
         </div>
     </section>
 
-    <section class="prueba"></section>
+    <section class="prueba" id="">
+        
+
+        <div class="div-filtro">
+            <h2 class="centrado texto-blanco">SERVICIOS Y ATRACTIVOS</h2>
+            <div class="dropdown">
+                <select id="mySelect">
+                    <option class="category_item" value="Todos">Todos</option>
+                    <% for(var i=0; i < dataCategoria.length; i++) { %>
+                    <option class="category_item" value="<%= dataCategoria[i].nombre_cat %>" ><%= dataCategoria[i].nombre_cat %></option>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-list" >
+        <div class="cont-serv">
+            
+            <% var cont=0;%>
+                <% if (dataServicio) { %>
+                    <div class="row">
+                    <% for(var i=0; i < dataServicio.length; i++) { %>
+                            <% cont=1;%>
+                            <% if (dataServicio[i].solicitud == 1) { %>
+                                <div class="col-individual" category="<%= dataServicio[i].nombre_cat %>">
+                                    <div class="contex">
+                                        <div class="cont-serv">
+                                            <h3 class="centrado texto-ng">
+                                                <%= dataServicio[i].titulo %>
+                                            </h3>
+                                        </div>
+                                        <div class="divisor">
+                                            <div class="divisor-linea"></div>
+                                        </div>
+                                        <div class="img-div" data-target="">
+                                            <a href="/servicio/<%= dataServicio[i].id_servicio%>"><img class="img-cont" src="/img/<%= dataServicio[i].img || 'default.png'%>" /></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                    <% } %>
+                <% } %>
+                
+                <% if (cont==1) { %>
+                    <h4 id="msj" class="centrado texto-ng text-h4">Lo sentimos, no hay publicaciones disponibles.</a></h4>
+                <% } %>
+                </div>
+        </div>
+
+    </section>
+
+    <script>
+        $(document).ready(function(){
+
+            //msj cuando no hay publicaciones
+            $('#msj').hide();
+
+            $('#mySelect').on('change', function() {
+                //var value = $(this).val();
+                var value = $(this).val();
+                
+                // OCULTAR PRODUCTO
+                $('.col-individual').css('transform', 'scale(0)');
+                function hideProduct() {
+                    $('.col-individual').hide();
+                } setTimeout(hideProduct, 300);
+                
+                
+                //Mostrar Producto
+                function showProduct() {
+                    
+                    if (value == 'Todos') {
+                        $('.col-individual').show();
+                        $('.col-individual').css('transform', 'scale(1)');
+                    } else {
+                        $('.col-individual[category="' + value + '"').show();
+                        $('.col-individual[category="' + value + '"]').css('transform', 'scale(1)');
+                    }
+                    
+                    // si no hay publicaciones muestra msj, si hay saca el msj
+                    if ($('.col-individual[category="' + value + '"').length > 0){
+                        console.log("hola")
+                        console.log($('.col-individual[category="' + value + '"').length);
+                    }else{
+                        console.log($('.col-individual[category="' + value + '"').length);
+                        $('#msj').show();
+                    }
+                } setTimeout(showProduct, 300);
+            });
+
+        });
+    </script>
 
 <%- include ('partials-home/_footer-home')  %>
