@@ -105,16 +105,19 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
         },(req,res) =>{
         let data = Object.assign({},req.body);
         let user = req.user.correo;
+        if(data.nombre_subcat == 'Ninguna') data.nombre_subcat = null;
         
 
         conn.query('INSERT INTO servicio set ? ', {
             titulo: data.titulo,
-            correo: user,
-            img: req.file.filename,
             descripcion: data.descripcion,
             geo_local: data.geo_local,
+            nombre_cat: data.nombre_cat,
+            nombre_subcat: data.nombre_subcat,
+            correo: user,
+            contacto_correo: data.contacto_correo,
             telefono: data.telefono,
-            correo: data.contanto_correo,
+            img: req.file.filename,
             facebook: data.facebook,
             twitter: data.twitter,
             instagram: data.instagram,

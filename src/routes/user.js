@@ -51,12 +51,14 @@ router.post('/agregar-servicio-emprendedor',(req, res, next) => {
     },(req,res) =>{
 
     let data = Object.assign({},req.body);
-
+    if(data.nombre_subcat == 'Ninguna') data.nombre_subcat = null;
+        
     conn.query('INSERT INTO servicio set ? ', {
         titulo: data.titulo,
         descripcion: data.descripcion,
         geo_local: data.geo_local,
         nombre_cat: data.nombre_cat,
+        nombre_subcat: data.nombre_subcat,
         correo: req.user.correo,
         contacto_correo: data.contacto_correo,
         telefono: data.contacto_tel,

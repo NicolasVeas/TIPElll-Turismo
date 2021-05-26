@@ -114,8 +114,8 @@
                 </div>
                 <div class="datos">
                     <label for="cars">Seleccione la subcategoría de su servicio:</label>
-                    <select id="mySelectDos">
-                        <option class="category_item_dos" value="Todos">Ninguna</option>
+                    <select id="mySelectDos" name="nombre_subcat">
+                        <option class="category_item_dos" value="Ninguna">Ninguna</option>
                         <% for(var i=0; i < dataSubcategoria.length; i++) { %>
                         <option class="category_item_dos" all="all" category="<%= dataSubcategoria[i].nombre_cat %>" value="<%= dataSubcategoria[i].nombre_subcat %>" ><%= dataSubcategoria[i].nombre_subcat %></option>
                         <% } %>
