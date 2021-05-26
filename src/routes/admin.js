@@ -82,11 +82,17 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
             res.redirect('/');
         },(req,res) =>{
         conn.query('SELECT * FROM servicio where servicio_admin = 1', (err, servicios) => {
-            if (err) {
-                res.json(err);
-            }
-            res.render('servicios-reg', {
-                data: servicios
+            conn.query('SELECT * FROM categoria', (err, categorias) => {
+                conn.query('SELECT * FROM subcategoria', (err, subcategorias) => {
+                    if (err) {
+                        res.json(err);
+                    }
+                    res.render('servicios-reg', {
+                        data: servicios,
+                        datacat: categorias,
+                        dataSubcategoria: subcategorias
+                    });
+                });
             });
         });
     });
@@ -322,7 +328,7 @@ router.post('/modificar-atractivo-reg/:id_atractivo', (req, res, next) => {
 
 /* -------------------------------------- */
 
-// CATEGORIAS
+// CATEGORIAS - ADMIN
 
 router.get('/administrar-categorias', (req, res, next) => {
     if (req.isAuthenticated()) {
@@ -331,13 +337,16 @@ router.get('/administrar-categorias', (req, res, next) => {
     res.redirect('/');
 }, (req, res) => {
     conn.query('SELECT * FROM categoria', (err, resp1) => {
-        if (err) {
-            res.json(err);
-        } else {
-            res.render('admin-categorias', {
-                datacat: resp1
-            });
-        }
+        conn.query('SELECT * FROM subcategoria', (err, resp2) => {
+            if (err) {
+                res.json(err);
+            } else {
+                res.render('admin-categorias', {
+                    datacat: resp1,
+                    datasubcat: resp2
+                });
+            }
+        });
     });
 });
 
@@ -359,6 +368,7 @@ router.post('/agregar-categoria', (req,res,next) => {
         res.redirect('/administrar-categorias');
     });
 });
+
 
 router.get('/eliminar-categoria/:nombre_cat', (req, res, next) => {
     if(req.isAuthenticated()){
@@ -390,7 +400,61 @@ router.post('/modificar-categoria', (req, res, next) => {
     });
 });
 
-// Fin apartado de Categorías
+// Sub - categorias
+
+router.post('/agregar-subcategoria', (req,res,next) => {
+    if(req.isAuthenticated()){
+        return next();
+    }
+        res.redirect('/');
+    },(req,res) =>{
+    let data = Object.assign({},req.body);
+    conn.query('INSERT INTO subcategoria set ?', {
+        nombre_subcat: data.nombre_subcat,
+        nombre_cat: data.nombre_cat
+    }, (err, resp) => {
+        if (err) {
+            res.json(err);
+        }
+        res.redirect('/administrar-categorias');
+    });
+});
+
+router.get('/eliminar-subcategoria/:parametros', (req, res, next) => {
+    if(req.isAuthenticated()){
+        return next();
+    }
+        res.redirect('/');
+    },(req,res) =>{
+        const { parametros } = req.params;
+        var arregloParametros = parametros.split('+');
+        console.log(arregloParametros);
+        conn.query('DELETE FROM subcategoria WHERE nombre_subcat = ? and nombre_cat = ?', [arregloParametros[1],arregloParametros[0]], (err, rows) => {
+        if (err) {
+            res.json(err);
+        }
+        res.redirect('/administrar-categorias');
+    });
+});
+
+router.post('/modificar-subcategoria', (req, res, next) => {
+    if(req.isAuthenticated()){
+        return next();
+    }
+        res.redirect('/');
+    },(req,res) =>{
+        const newCus = req.body;
+        console.log(newCus);
+        conn.query('UPDATE subcategoria set nombre_subcat = ? WHERE nombre_subcat = ? AND nombre_cat = ?', [newCus.new_nombre_subcat,newCus.nombre_subcat, newCus.nombre_cat], (err, rows) => {
+        if (err) {
+            res.json(err);
+        }
+        res.redirect('/administrar-categorias');
+    });
+});
+
+// Fin apartado de Categorías - ADMIN
+
 
 /* -------------------------------------- */
 

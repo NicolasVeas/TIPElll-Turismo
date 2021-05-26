@@ -16,12 +16,15 @@ router.get('/mis-servicios', (req, res,next) => {
             res.json(err);
         }else{
         conn.query('SELECT * FROM categoria', (err, categorias) => {
-            if (err) {
-                res.json(err);
-            }
-            res.render('user.ejs', {
-                data: servicios,
-                datacat: categorias
+            conn.query('SELECT * FROM subcategoria', (err, subcategorias) => {
+                if (err) {
+                    res.json(err);
+                }
+                res.render('user.ejs', {
+                    data: servicios,
+                    datacat: categorias,
+                    dataSubcategoria: subcategorias
+                });
             });
         });
         }

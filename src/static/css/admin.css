@@ -299,6 +299,33 @@ form textarea{
     background: var(--hover);
 }
 
+.separador{
+    height: 10px; background: var(--pri);
+}
+select{
+    margin-left: 5px;
+    padding: 7px 10px;
+    font-size: 2vh;
+}
+
+.contenedor-subcat{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -1rem;
+    margin-left: -1rem;
+    justify-content: center;
+}
+
+.form-subcat{
+    position: relative;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+
+
 
 /* Fin formulario */
 
@@ -388,6 +415,8 @@ form textarea{
     }
 }
 
+/* Fin Responsive CSS */
+
 /* POPUP */
 
 .overlay {
@@ -436,12 +465,17 @@ form textarea{
 
 .popup.active {	transform: scale(1); opacity: 1; }
 
-#nombre-actual{
+.input-disabled{
     font-weight:bold; 
-    background: #bbbbbb;
+    background: #bbbbbb !important;
 }
 
 .contenedor-inputs{
     margin-bottom: 20px;
 }
 
+.label-popup{
+    justify-content: center;
+}
+
+/* Fin POPUP */

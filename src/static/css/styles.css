@@ -690,7 +690,19 @@ select{
 
 .dropdown{
     text-align: center;
-    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -1rem;
+    margin-left: -1rem;
+    justify-content: center;
+}
+
+.select_style{
+    position: relative;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .row .col-individual{

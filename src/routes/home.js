@@ -8,14 +8,17 @@ router.get('/', (req, res) => {
     conn.query('SELECT * FROM servicio', (err, servicio) => {
         conn.query('SELECT * FROM atractivo_admin', (err, atractivo) => {
             conn.query('SELECT * FROM categoria', (err, categoria) => {
-                if (err) {
-                    res.json(err);
-                }
-                res.render('home.ejs', {
-                    usuario: req.user,
-                    dataServicio: servicio,
-                    dataAtractivo: atractivo,
-                    dataCategoria: categoria
+                conn.query('SELECT * FROM subcategoria', (err, subcategoria) => {
+                    if (err) {
+                        res.json(err);
+                    }
+                    res.render('home.ejs', {
+                        usuario: req.user,
+                        dataServicio: servicio,
+                        dataAtractivo: atractivo,
+                        dataCategoria: categoria,
+                        dataSubcategoria: subcategoria
+                    });
                 });
             });
         });
@@ -25,12 +28,18 @@ router.get('/', (req, res) => {
 // servicios - home
 router.get('/servicios-turisticos', (req, res) => {
     conn.query('SELECT * FROM servicio', (err, data) => {
-        if (err) {
-            res.json(err);
-        }
-        res.render('servicios.ejs', {
-            usuario: req.user,
-            data: data
+        conn.query('SELECT * FROM categoria', (err, categoria) => {
+            conn.query('SELECT * FROM subcategoria', (err, subcategoria) => {
+                if (err) {
+                    res.json(err);
+                }
+                res.render('servicios.ejs', {
+                    usuario: req.user,
+                    data: data,
+                    dataCategoria: categoria,
+                    dataSubcategoria: subcategoria
+                });
+            });
         });
     });
 });

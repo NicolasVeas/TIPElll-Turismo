@@ -50,47 +50,100 @@
     <!-- Fin iconos de navegación -->
 
     <section class="prueba" id="">
-        <!-- <section class="mis-servicios" id=""> -->
+        
 
-        <div class="cont-serv">
-            <h2 class="centrado texto-ng">TODOS LOS SERVICIOS</h2>
-            <div class="divisor">
-                <div class="divisor-linea"></div>
-                <div class="divisor-icon"><i class="fas fa-concierge-bell"></i></div>
-                <div class="divisor-linea"></div>
+        <div class="div-filtro">
+            <h2 class="centrado texto-blanco">SERVICIOS Y ATRACTIVOS</h2>
+            <div class="dropdown">
+                <div class="select_style">
+                    <select id="mySelect">
+                        <option class="category_item" value="Todos">Tipo de servicio (Todos)</option>
+                        <% for(var i=0; i < dataCategoria.length; i++) { %>
+                        <option class="category_item" value="<%= dataCategoria[i].nombre_cat %>" ><%= dataCategoria[i].nombre_cat %></option>
+                        <% } %>
+                    </select>
+                </div>
+            
+                <div class="select_style">
+                    <select id="mySelectDos">
+                        <option class="category_item_dos" value="Todos">Subtipo de servicio (Todos)</option>
+                        <% for(var i=0; i < dataSubcategoria.length; i++) { %>
+                        <option class="category_item_dos" all="all" category="<%= dataSubcategoria[i].nombre_cat %>" value="<%= dataSubcategoria[i].nombre_subcat %>" ><%= dataSubcategoria[i].nombre_subcat %></option>
+                        <% } %>
+                    </select>
+                </div>
+                
             </div>
+        </div>
+    </section>
 
+    <section class="products-list">
+        <div class="cont-serv">
+    
             <% var cont=0;%>
                 <% if (data) { %>
                     <div class="row">
-                    <% for(var i=0; i < data.length; i++) { %>
+                        <% for(var i=0; i < data.length; i++) { %>
                             <% cont=1;%>
-                            <% if (data[i].solicitud == 1) { %>
-                                <div class="col-individual">
-                                    <div class="contex">
-                                        <div class="cont-serv">
-                                            <h3 class="centrado texto-ng">
-                                                <%= data[i].titulo %>
-                                            </h3>
-                                        </div>
-                                        <div class="divisor">
-                                            <div class="divisor-linea"></div>
-                                        </div>
-                                        <div class="img-div" data-target="">
-                                            <a href="/servicio/<%= data[i].id_servicio%>"><img class="img-cont" src="/img/<%= data[i].img || 'default.png'%>" /></a>
+                                <% if (data[i].solicitud==1) { %>
+                                    <div class="col-individual" all="all" category="<%= data[i].nombre_cat %>">
+                                        <div class="contex">
+                                            <div class="cont-serv">
+                                                <h3 class="centrado texto-ng">
+                                                    <%= data[i].titulo %>
+                                                </h3>
+                                            </div>
+                                            <div class="divisor">
+                                                <div class="divisor-linea"></div>
+                                            </div>
+                                            <div class="img-div" data-target="">
+                                                <a href="/servicio/<%= data[i].id_servicio%>"><img class="img-cont"
+                                                        src="/img/<%= data[i].img || 'default.png'%>" /></a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            <% } %>
-                    <% } %>
-                <% } %>
-                
-                <% if (cont==0) { %>
-                    <h4 class="centrado texto-ng text-h4">Lo sentimos, no hay servicios disponibles.</a></h4>
-                <% } %>
-                </div>
+                                    <% } %>
+                                        <% } %>
+                                            <% } %>
+    
+    
+                    </div>
+                    <% if (cont==1) { %>
+                        <h4 id="msj" class="centrado texto-ng text-h4">Lo sentimos, no hay publicaciones disponibles.</a>
+                        </h4>
+                        <% } %>
         </div>
+    
     </section>
+
+    <!-- JS -->
+    <script>
+        $(document).ready(function(){
+            
+            $('#mySelectDos option[all="all"]').hide();
+            // combobox y servicios
+            $('#mySelect').on('change', function() {
+                
+                var value = $(this).val();
+                //var Todos =   $("#mySelect option[value='Todos']").attr("selected", true);
+                
+
+                $('#mySelectDos option[all="all"]').hide();
+                $('#mySelectDos option[category="' + value + '"]').show();
+
+                // TODOS
+                if ($(this).val() === 'Todos') {
+                        function showAll() {
+                            $('#mySelectDos option[all="all"]').hide();
+                        } setTimeout(showAll, 100);
+                }
+
+                
+            });
+
+        });
+
+    </script>
 
     <script>
         var a = '<%- JSON.stringify(data)%>';
