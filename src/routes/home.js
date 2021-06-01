@@ -2,6 +2,58 @@ const express = require('express');
 const router = express.Router();
 const conn = require('../database');
 
+router.get('/x', (req, res) => {
+    conn.query('SELECT * FROM servicio', (err, servicio) => {
+        conn.query('SELECT * FROM atractivo_admin', (err, atractivo) => {
+            conn.query('SELECT * FROM categoria', (err, categoria) => {
+                conn.query('SELECT * FROM subcategoria', (err, subcategoria) => {
+                    if (err) {
+                        res.json(err);
+                    }
+                    res.render('x.ejs', {
+                        usuario: req.user,
+                        dataServicio: servicio,
+                        dataAtractivo: atractivo,
+                        dataCategoria: categoria,
+                        dataSubcategoria: subcategoria
+                    });
+                });
+            });
+        });
+    });
+});
+
+router.get('/x2', (req, res) => {
+    conn.query('SELECT * FROM servicio', (err, data) => {
+        conn.query('SELECT * FROM categoria', (err, categoria) => {
+            conn.query('SELECT * FROM subcategoria', (err, subcategoria) => {
+                if (err) {
+                    res.json(err);
+                }
+                res.render('x2.ejs', {
+                    usuario: req.user,
+                    data: data,
+                    dataCategoria: categoria,
+                    dataSubcategoria: subcategoria
+                });
+            });
+        });
+    });
+});
+
+router.get('/x3', (req,res,next) => {
+    conn.query('SELECT * FROM atractivo_admin', (err, data) => {
+        if (err) {
+            res.json(err);
+        }
+        res.render('x3.ejs', {
+            usuario: req.user,
+            data: data
+        });
+    });
+});
+
+
 // home
 
 router.get('/', (req, res) => {
@@ -64,7 +116,7 @@ router.get('/atractivo/:id_atractivo', (req, res) => {
         if (err) {
             res.json(err);
         }
-        res.render('individual.ejs', {
+        res.render('x4.ejs', {
             usuario: req.user,
             data: data
         });
@@ -78,7 +130,7 @@ router.get('/servicio/:id_servicio', (req, res) => {
         if (err) {
             res.json(err);
         }
-        res.render('individual-emp.ejs', {
+        res.render('x5.ejs', {
             usuario: req.user,
             data: data
         });

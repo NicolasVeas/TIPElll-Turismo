@@ -21,6 +21,7 @@ router.get('/mis-servicios', (req, res,next) => {
                     res.json(err);
                 }
                 res.render('user.ejs', {
+                    usuario: req.user,
                     data: servicios,
                     datacat: categorias,
                     dataSubcategoria: subcategorias
@@ -101,9 +102,10 @@ router.get('/modificar-servicio-emp/:id_servicio', (req, res, next) => {
 
     conn.query('SELECT * FROM servicio WHERE id_servicio = ?', [id_servicio], (err, rows) => {
         conn.query('SELECT * FROM categoria', (err, resp1) => {
-            res.render('mod-servicios-emp', {
-                    data: rows[0],
-                    datacat: resp1
+            res.render('mod-servicios-empX', {
+                usuario: req.user,
+                data: rows[0],
+                datacat: resp1
             });
         });
     });
