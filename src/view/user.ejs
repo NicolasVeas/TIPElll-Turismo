@@ -6,43 +6,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Turismo - San Antonio</title>
         <link rel="icon" type="image/x-icon" href="/img/icon.png" />
-        <link rel='stylesheet' type='text/css' href='/css/styles.css'/>
+        <link rel='stylesheet' type='text/css' href='/css/x.css'/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
         <!-- Mapa -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-        <!-- Clave API de Google Maps -->
-        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1NrmdL2QkaeuG_1-1VFGU_YeT2zzZ0qs&callback=initMap"></script>
-        <!-- jquery -->
         <script src="js/jquery-3.2.1.js"></script>
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@500&family=Calligraffitti&display=swap" rel="stylesheet">
     </head>
 
     <body>
-        <div class="usuario">
-            <nav class="navegacion">
-                <input type="checkbox" id="check-menu" class="chk">
-                <label for="check-menu" class="mostrar-menu"><i class="fas fa-bars"></i></label>
+        <div class="nav">
+            <div class="sesion">
                 <a href="" class="logo"><img src="/img/icon.png"/></a>
-                <% if (data != null) { %>
-                    <a class="btn-logout texto mayus" href="/logout">Cerrar sesión</a>
+                <% if (usuario != null) { %>
+                    <a class="cuenta" href="/logout">Cerrar sesión</a>
                 <% } %>
-                <% if (data == null){ %>
-                    <div class="cuenta texto">
-                        <label for="registro" class="texto" href="">Registrarse</label>
-                        o
-                        <label for="iniciar-sesion" class="texto" href="">Iniciar sesión</label>
-                    </div>
+                <% if (usuario == null){ %>
+                    <label for="iniciar-sesion" class="cuenta" href="">Iniciar sesión</label>
+                    <label class="cuenta">|</label>
+                    <label for="registro" class="cuenta" href="">Registrarse</label>
                 <% } %>
-
-                <ul class="menu">
-                    <% if (data != null) { %>
-                        <li class="btn-servicios"><a href="/mis-servicios">MIS SERVICIOS</a></li>
-                    <% } %>
-                    <li><a href="/servicios-turisticos">SERVICIOS</a></li>
-                    <li><a href="/atractivos-turisticos">ATRACTIVOS</a></li>
-                    <li><a href="/">INICIO</a></li>
-                </ul>
-
                 <!-- PopUP inicio de sesion y registro -->
                 <input type="checkbox" id="iniciar-sesion" class="chk">
                 <input type="checkbox" id="registro" class="chk">
@@ -92,30 +76,39 @@
                 <!-- Fin registro -->
 
                 <!-- Fin PopUP inicio de sesion y registro -->
-            </nav>
+            </div>
+            <div class="navegacion">
+                <input type="checkbox" id="check-menu" class="chk">
+                <label for="check-menu" class="mostrar-menu"><i class="fas fa-bars"></i></label>
+                <ul class="menu">
+                    <% if (usuario != null) { %>
+                        <li class="btn-servicios"><a href="/mis-servicios">MIS SERVICIOS</a></li>
+                    <% } %>
+                    <li><a href="/servicios-turisticos">SERVICIOS</a></li>
+                    <li><a href="/atractivos-turisticos">ATRACTIVOS</a></li>
+                    <li><a href="/">INICIO</a></li>
+                </ul>
+            </div>
+        </div>
 
 
 
 
-            <section class="mis-servicios" id="">
-            <!-- <section class="mis-servicios" id=""> -->
-                <div class="cont-serv">
-                    <h2 class="centrado texto-ng">SERVICIOS PENDIENTES</h2>
-                    <table class="table order-table centrado texto-ng">
-                        <thead>
-                            <tr>
-                                <th>Título</th>
-                                <th>Ubicación</th>
-                                <th colspan="2">Estado</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        
-                            <% if (data) { %>
-                            <% for(var i=0; i < data.length; i++) { %>
-                                
-                                <% if (data[i].solicitud == 0) { %>
-                                    
+        <div class="mis-servicios">
+            <div class="cont-serv">
+                <h2 class="centrado texto-ng mayus">Servicios pendientes</h2>
+                <table class="table order-table centrado texto-ng">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Ubicación</th>
+                            <th colspan="2">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (data) { %>
+                        <% for(var i=0; i < data.length; i++) { %>
+                        <% if (data[i].solicitud == 0) { %>
                             <tr>
                                 <td> <%= data[i].titulo %></td>
                                 <td> <%= data[i].geo_local %></td>
@@ -123,168 +116,151 @@
                                     <a onclick="return confirm('¿Está seguro que desea eliminar la solicitud?')" href="/cancelar-servicio-emp/<%= data[i].id_servicio %>" class="boton-act cancelar">Cancelar</a>
                                 </td>
                             </tr>
-                                <% } %>
-                            <% } %>
-                            <% } %>
-                        </tbody>
-                    </table>
-
+                        <% } %>
+                        <% } %>
+                        <% } %> 
+                    </tbody>
+                </table>
+            </div>
+            <div class="cont-serv">
+                <h2 class="centrado texto-ng">MIS SERVICIOS</h2>
+                <div class="divisor">
+                    <div class="divisor-linea linea-ng"></div>
+                    <div class="divisor-icon icon-ng"><i class="fas fa-concierge-bell"></i></div>
+                    <div class="divisor-linea linea-ng"></div>
                 </div>
-
-                <div class="cont-serv">
-                    <h2 class="centrado texto-ng">MIS SERVICIOS</h2>
-                    <div class="divisor">
-                        <div class="divisor-linea"></div>
-                        <div class="divisor-icon"><i class="fas fa-concierge-bell"></i></div>
-                        <div class="divisor-linea"></div>
-                    </div>
-
+                <div class="tarjetas">
                     <% var cont=0;%>
-                        <% if (data) { %>
-                            <div class="row">
-                            <% for(var i=0; i < data.length; i++) { %>
-                                <% if (data[i].solicitud==1) { %>
-                                    <% cont=1;%>
-                                    <div class="col-servicio">
-                                        <a class="edit" href="/modificar-servicio-emp/<%= data[i].id_servicio %>"><i class="fas fa-edit"></i></a>
-                                        <div class="contex">
-                                            <div class="cont-serv">
-                                                <h3 class="centrado texto-ng">
-                                                    <%= data[i].titulo %>
-                                                </h3>
-                                            </div>
-                                            <div class="divisor">
-                                                <div class="divisor-linea"></div>
-                                            </div>
-                                            <div class="img-div" data-target="">
-                                                <a width="260" height="300" href=""><img class="img-cont" src="/img/<%= data[i].img || 'default.png'%>" /></a>
-                                            </div>
-                                        </div>
+                    <% if (data) { %>
+                        <div class="row">
+                        <% for(var i=0; i < data.length; i++) { %>
+                            <% cont=1;%>
+                            <% if (data[i].solicitud == 1) { %>
+                                <div id="tarj" class="tarjeta" all="all" category="<%= data[i].nombre_cat%>">
+                                    <div class="baner">
+                                        <p class="mayus negrita"><%= data[i].titulo %></p>
+                                        <p><%= data[i].nombre_cat %></p>
                                     </div>
-                                <% } %>
+                                    <a href="/servicio/<%= data[i].id_servicio%>">
+                                        <img src="/img/<%= data[i].img || 'default.png'%>">
+                                        <div class="overlay overlayFade" style="border-radius: 0px;">
+                                            <a href="/servicio/<%= data[i].id_servicio%>" class="boton-act aceptar" style="margin-top: 40px;">Ver servicio</a>
+                                            <a href="/modificar-servicio-emp/<%= data[i].id_servicio %>" class="boton-act actualizar">Modificar</a>
+                                            <a onclick="return confirm('¿Está seguro que desea eliminar el servicio?')" href="" class="boton-act eliminar">Eliminar</a>
+                                        </div>
+                                    </a>
+                                </div>
                             <% } %>
                         <% } %>
-                        
-                        <% if (cont==0) { %>
-                            <h4 class="centrado texto-ng text-h4">Lo sentimos, no hay servicios disponibles. Debes revisar las solicitudes pendientes o <a href="#add-service">ingresar una solicitud.</a></h4>
-                        <% } %>
                         </div>
+                    <% } %>
+                    
+                    <% if (cont==0) { %>
+                        <h4 id="msj" class="centrado texto-ng text-h4">Lo sentimos, no hay publicaciones disponibles.</a></h4>
+                    <% } %>
+                    
                 </div>
-            </section>
+            </div>
+        </div>
 
-            <section class="form-user">
-                <div class="separador"></div>
-                <div class="container-form">
-                    <h2 class="centrado texto-ng" id="add-service">INGRESO DE SERVICIO</h2>
-                    <form action="agregar-servicio-emprendedor" enctype="multipart/form-data" method="POST">
-                        <div class="data">
-                            <h3 class="negrita">Título</h3>
-                            <div class="input-user">
-                                <input class="" name="titulo" type="text" placeholder="Título" required>
-                            </div>
+        <div class="form-user">
+            <div class="separador"></div>
+            <div class="container-form">
+                <h2 class="centrado texto-ng" id="add-service">INGRESO DE SERVICIO</h2>
+                <form action="agregar-servicio-emprendedor" enctype="multipart/form-data" method="POST">
+                    <div class="data">
+                        <h3 class="negrita">Título</h3>
+                        <div class="input-user">
+                            <input class="" name="titulo" type="text" placeholder="Título" required>
                         </div>
-                        <div class="data">
-                            <label>Descripción</label>
-                            <div class="input-user">
-                                <textarea class="" name="descripcion" id=""
-                                    placeholder="Escriba aquí la descripción completa del servicio"></textarea required>
-                                </div>
-                            </div>
-                            <div class="data">
-                                <label>Ubicación</label>
-                                <div class="input-user">
-                                    <input class="text" type="text" name="geo_local" placeholder="Ingresar la dirección del lugar, Ej: “Barros Luco 1881, San Antonio, Chile”" required>
-                                </div>
-                            </div>
-                            <div class="data">
-                                <label>Teléfono o Celular (Contacto)</label>
-                                <div class="input-user">
-                                    <input class="text" type="number" name="contacto_tel" placeholder="Ingrese el teléfono o celular de contacto" required>
-                                </div>
-                            </div>
-                            <div class="data">
-                                <label>Correo electrónico (Contacto) </label>
-                                <div class="input-user">
-                                    <input class="text" type="email" name="contacto_correo" placeholder="Ingrese el correo de contacto" required>
-                                </div>
-                            </div>
-                            <div class="data">
-                                <label>Facebook (opcional) </label>
-                                <div class="input-user">
-                                    <input class="text" name="facebook" id="" placeholder="Ingrese el Facebook asociado"></input>
-                                </div>
-                            </div>
-                            <div class="data">
-                                <label>Twitter (opcional) </label>
-                                <div class="input-user">
-                                    <input class="text" name="twitter" id="" placeholder="Ingrese el Twitter asociado"></input>
-                                </div>
-                            </div>
-                            <div class="data">
-                                <label>Instagram (opcional) </label>
-                                <div class="input-user">
-                                    <input class="text" name="instagram" id="" placeholder="Ingrese el Intagram asociado"></input>
-                                </div>
-                            </div>
-                            <div class="data">
-                                <label>Sitio web (opcional)</label>
-                                <div class="input-user">
-                                    <input class="text" name="web" id="" placeholder="Ingrese el Intagram asociado"></input>
-                                </div>
-                            </div>
-                            <div class="data">
-                                <label for="cars">Seleccione la categoría del servicio:</label>
-                                <select id="mySelect" name="nombre_cat">
-                                    <% for(var i=0; i < datacat.length; i++) { %>
-                                    <option class="category_item" value="<%= datacat[i].nombre_cat %>"><%= datacat[i].nombre_cat %></option>
-                                    <% } %>
-                                </select required>
-                            </div>
-                            <div class="data">
-                                <label for="cars">Seleccione la subcategoría de su servicio:</label>
-                                <select id="mySelectDos" name="nombre_subcat">
-                                    <option class="category_item_dos" value="Ninguna">Ninguna</option>
-                                    <% for(var i=0; i < dataSubcategoria.length; i++) { %>
-                                    <option class="category_item_dos" all="all" category="<%= dataSubcategoria[i].nombre_cat %>" value="<%= dataSubcategoria[i].nombre_subcat %>" ><%= dataSubcategoria[i].nombre_subcat %></option>
-                                    <% } %>
-                                </select>
-                            </div>
-                            <div class="dataimage">
-                                <label for="cars">Adjunte imagen (Tamaño máximo: 5 MB - Formato: JPG o PNG): </label>
-                                <input class="file" type="file" name='img' required>
-                            </div>
-                            <div class="boton">
-                                <button type="submit">Enviar registro</button>
-                            </div>
-                        </form>
                     </div>
-                </section>
-            <script>
-                $(document).ready(function () {
+                    <div class="data">
+                        <label>Descripción</label>
+                        <div class="input-user">
+                            <textarea class="" name="descripcion"  placeholder="Escriba aquí la descripción completa del servicio"></textarea required>
+                        </div>
+                    </div>
+                    <div class="data">
+                        <label>Ubicación</label>
+                        <div class="input-user">
+                            <input class="text" type="text" name="geo_local" placeholder="Ingresar la dirección del lugar, Ej: “Barros Luco 1881, San Antonio, Chile”" required>
+                        </div>
+                    </div>
+                    <div class="data">
+                        <label>Teléfono o Celular (Contacto)</label>
+                        <div class="input-user">
+                            <input class="text" type="number" name="contacto_tel" placeholder="Ingrese el teléfono o celular de contacto" required>
+                        </div>
+                    </div>
+                    <div class="data">
+                        <label>Correo electrónico (Contacto) </label>
+                        <div class="input-user">
+                            <input class="text" type="email" name="contacto_correo" placeholder="Ingrese el correo de contacto" required>
+                        </div>
+                    </div>
+                    <div class="data">
+                        <label>Facebook (opcional) </label>
+                        <div class="input-user">
+                            <input class="text" name="facebook" placeholder="Ingrese el Facebook asociado"></input>
+                        </div>
+                    </div>
+                    <div class="data">
+                        <label>Twitter (opcional) </label>
+                        <div class="input-user">
+                            <input class="text" name="twitter"  placeholder="Ingrese el Twitter asociado"></input>
+                        </div>
+                    </div>
+                    <div class="data">
+                        <label>Instagram (opcional) </label>
+                        <div class="input-user">
+                            <input class="text" name="instagram"  placeholder="Ingrese el Intagram asociado"></input>
+                        </div>
+                    </div>
+                    <div class="data">
+                        <label>Sitio web (opcional)</label>
+                        <div class="input-user">
+                            <input class="text" name="web"  placeholder="Ingrese el Intagram asociado"></input>
+                        </div>
+                    </div>
+                    <div class="data">
+                        <label for="cars">Seleccione la categoría del servicio:</label>
+                        <select id="mySelect" name="nombre_cat">
+                            <% for(var i=0; i < datacat.length; i++) { %>
+                            <option class="category_item" value="<%= datacat[i].nombre_cat %>"><%= datacat[i].nombre_cat %></option>
+                            <% } %>
+                        </select required>
+                    </div>
+                    <div class="data">
+                        <label for="cars">Seleccione la subcategoría de su servicio:</label>
+                        <select id="mySelectDos" name="nombre_subcat">
+                            <option class="category_item_dos" value="Ninguna">Ninguna</option>
+                            <% for(var i=0; i < dataSubcategoria.length; i++) { %>
+                            <option class="category_item_dos" all="all" category="<%= dataSubcategoria[i].nombre_cat %>" value="<%= dataSubcategoria[i].nombre_subcat %>" ><%= dataSubcategoria[i].nombre_subcat %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="dataimage">
+                        <label for="cars">Adjunte imagen (Tamaño máximo: 5 MB - Formato: JPG o PNG): </label>
+                        <input class="file" type="file" name='img' required>
+                    </div>
+                    <div class="boton">
+                        <button type="submit">Enviar registro</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-                    $('#mySelectDos option[all="all"]').hide();
-                    $('#mySelectDos option[category="Agencias y TTOO"]').show();
-                    // combobox y servicios
-                    $('#mySelect').on('change', function () {
 
-                        var value = $(this).val();
-                        //var Todos =   $("#mySelect option[value='Todos']").attr("selected", true);
-
-
-                        $('#mySelectDos option[all="all"]').hide();
-                        $('#mySelectDos option[category="' + value + '"]').show();
-
-                        // TODOS
-                        if ($(this).val() === 'Todos') {
-                            function showAll() {
-                                $('#mySelectDos option[all="all"]').show();
-                            } setTimeout(showAll, 100);
-                        }
-
-
-                    });
-
-                });
-
-            </script>
-<%- include ('partials-home/_footer-home')  %>
+        <div class="footer">
+            <div class="footer-box centrado texto-blanco">
+                <h3 class="texto mayus"><i class="fas fa-headset"></i> Contacto</h3>
+                <h4 class="texto">+56 - 35 - 2337000 | +56 - 35 - 2337001</h4>
+                <h4 class="texto">informaciones@sanantonio.cl</h4>
+            </div>
+            <div class="footer-box centrado texto-blanco">
+                <h3 class="texto mayus"><i class="fas fa-map-marker-alt texto"></i> Edificio Consistorial</h3>
+                <h4 class="texto">Av. Ramón Barros Luco 1881</h4>
+            </div>
+        </div>
+    </body>
+</html>     

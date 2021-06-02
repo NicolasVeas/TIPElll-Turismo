@@ -102,7 +102,7 @@ router.get('/modificar-servicio-emp/:id_servicio', (req, res, next) => {
 
     conn.query('SELECT * FROM servicio WHERE id_servicio = ?', [id_servicio], (err, rows) => {
         conn.query('SELECT * FROM categoria', (err, resp1) => {
-            res.render('mod-servicios-empX', {
+            res.render('mod-servicios-emp', {
                 usuario: req.user,
                 data: rows[0],
                 datacat: resp1
