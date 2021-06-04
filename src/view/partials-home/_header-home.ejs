@@ -9,42 +9,24 @@
         <link rel='stylesheet' type='text/css' href='/css/styles.css'/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
         <!-- Mapa -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ3GT9BCmJJLxmb_wwOrT8_VVS4ljKy_Q"></script>
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-		
-        <!-- jquery -->
         <script src="js/jquery-3.2.1.js"></script>
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200&family=Calligraffitti&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@500&family=Calligraffitti&display=swap" rel="stylesheet">
     </head>
 
     <body>
-        <div class="principal">
-            <nav class="navegacion">
-                <input type="checkbox" id="check-menu" class="chk">
-                <label for="check-menu" class="mostrar-menu"><i class="fas fa-bars"></i></label>
+        <div class="nav">
+            <div class="sesion">
                 <a href="" class="logo"><img src="/img/icon.png"/></a>
                 <% if (usuario != null) { %>
-                    <a class="btn-logout texto mayus" href="/logout">Cerrar sesión</a>
+                    <a class="cuenta" href="/logout">Cerrar sesión</a>
                 <% } %>
                 <% if (usuario == null){ %>
-                    <div class="cuenta texto">
-                        <label for="registro" class="texto" href="">Registrarse</label>
-                        o
-                        <label for="iniciar-sesion" class="texto" href="">Iniciar sesión</label>
-                    </div>
+                    <label for="iniciar-sesion" class="cuenta" href="">Iniciar sesión</label>
+                    <label class="cuenta">|</label>
+                    <label for="registro" class="cuenta" href="">Registrarse</label>
                 <% } %>
-
-                <ul class="menu">
-                    <% if (usuario != null) { %>
-                        <li class="btn-servicios"><a href="/mis-servicios">MIS SERVICIOS</a></li>
-                    <% } %>
-                    <li><a href="/servicios-turisticos">SERVICIOS</a></li>
-                    <li><a href="/atractivos-turisticos">ATRACTIVOS</a></li>
-                    <li><a href="/">INICIO</a></li>
-                </ul>
-
                 <!-- PopUP inicio de sesion y registro -->
                 <input type="checkbox" id="iniciar-sesion" class="chk">
                 <input type="checkbox" id="registro" class="chk">
@@ -94,4 +76,17 @@
                 <!-- Fin registro -->
 
                 <!-- Fin PopUP inicio de sesion y registro -->
-            </nav>
+            </div>
+            <div class="navegacion">
+                <input type="checkbox" id="check-menu" class="chk">
+                <label for="check-menu" class="mostrar-menu"><i class="fas fa-bars"></i></label>
+                <ul class="menu">
+                    <% if (usuario != null) { %>
+                        <li class="btn-servicios"><a href="/mis-servicios">MIS SERVICIOS</a></li>
+                    <% } %>
+                    <li><a href="/servicios-turisticos">SERVICIOS</a></li>
+                    <li><a href="/atractivos-turisticos">ATRACTIVOS</a></li>
+                    <li><a href="/">INICIO</a></li>
+                </ul>
+            </div>
+        </div>
