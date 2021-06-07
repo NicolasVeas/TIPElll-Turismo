@@ -6,6 +6,7 @@ const path = require('path');
 
 //Principal del user emprendedor
 router.get('/mis-servicios', (req, res,next) => {
+    //a
     if (req.isAuthenticated()) {
         return next();
     }
