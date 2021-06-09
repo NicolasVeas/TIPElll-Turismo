@@ -246,6 +246,7 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
 // Apartado de ATRACTIVOS REGIONALES
 
 router.get('/atractivos-regionales', (req,res,next) => {
+    
     if(req.isAuthenticated()){
         return next();
     }

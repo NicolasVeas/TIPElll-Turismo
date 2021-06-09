@@ -17,7 +17,50 @@ router.get('/', (req, res) => {
                         dataServicio: servicio,
                         dataAtractivo: atractivo,
                         dataCategoria: categoria,
-                        dataSubcategoria: subcategoria
+                        dataSubcategoria: subcategoria,
+                        icono: "null"
+                    });
+                });
+            });
+        });
+    });
+});
+
+router.get('/cat/:cat', (req, res) => {
+
+    var icono = req.params.cat;
+   
+    switch (icono) {
+        case "alojamientos":
+            icono = "Alojamientos";
+            break;
+        case "gastronomia":
+            icono = "Servicios Gastronómicos";
+            break;
+        case "agencias":
+            icono = "Agencias y TTOO";
+            break;
+        case "paseosnauticos":
+            icono = "Paseos Náuticos";
+            break;
+        default:
+            icono = "null";
+            break;
+    }
+    conn.query('SELECT * FROM servicio', (err, servicio) => {
+        conn.query('SELECT * FROM atractivo_admin', (err, atractivo) => {
+            conn.query('SELECT * FROM categoria', (err, categoria) => {
+                conn.query('SELECT * FROM subcategoria', (err, subcategoria) => {
+                    if (err) {
+                        res.json(err);
+                    }
+                    res.render('home.ejs', {
+                        usuario: req.user,
+                        dataServicio: servicio,
+                        dataAtractivo: atractivo,
+                        dataCategoria: categoria,
+                        dataSubcategoria: subcategoria,
+                        icono: icono
                     });
                 });
             });

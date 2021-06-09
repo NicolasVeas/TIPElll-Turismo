@@ -1,5 +1,5 @@
 <%- include ('partials-home/_header-home')  %> 
-
+      
         <div class="slide">
             <div class="slide-body">
                 <input type="radio" id="i1" name="images" checked />
@@ -26,7 +26,7 @@
 
         <div class="iconos">
             <div class="row-iconos">
-                <a href="">
+                <a class="icono-img" href="/cat/gastronomia">
                     <img src="/img/icono-1.png" alt="Servicios Gastronómicos">
                     <div class="overlay overlayFade">
                         <div class="text-over">Gastronomia</div>
@@ -34,7 +34,7 @@
                 </a>
             </div>
             <div class="row-iconos">
-                <a href="">
+                <a class="icono-img" href="/cat/alojamientos">
                     <img src="/img/icono-2.png" alt="Alojamientos">
                     <div class="overlay overlayFade">
                         <div class="text-over">Alojamientos</div>
@@ -42,7 +42,7 @@
                 </a>
             </div>
             <div class="row-iconos">
-                <a href="">
+                <a class="icono-img" href="/cat/agencias">
                     <img src="/img/icono-3.png" alt="Agencias y TTOO">
                     <div class="overlay overlayFade">
                         <div class="text-over">Agencias y TTOO</div>
@@ -50,7 +50,7 @@
                 </a>
             </div>
             <div class="row-iconos">
-                <a href="">
+                <a class="icono-img" href="/cat/paseosnauticos">
                     <img src="/img/icono-4.png" alt="Paseos Náuticos">
                     <div class="overlay overlayFade">
                         <div class="text-over">Paseos Náuticos</div>
@@ -87,7 +87,7 @@
             </div>
         </div>
 
-        <div class="tarjetas">
+        <div id="tarjetas" class="tarjetas">
             <% var cont=0;%>
             <% if (dataServicio) { %>
                 <div class="row">
@@ -127,13 +127,32 @@
             <% } %>
         </div>
 
-        <script src="js/confirm.js"></script>
-        <script src="js/navegador.js"></script>
+        
+        <% if(icono!= "null"){  %> 
+            <script src="../js/confirm.js"></script>
+            <script src="../js/navegador.js"></script>
+            <script src="../js/jquery-3.2.1.js"></script>
+        <% }else{ %>     
+            <script src="js/confirm.js"></script>
+            <script src="js/navegador.js"></script>
+            <script src="js/jquery-3.2.1.js"></script>
+        <% }%>
+        
         <script>
             $(document).ready(function(){
+               
+                // ICONOS HOMES
+                var icono = "<%= icono%>";
                 
-                
-                
+                if(icono != "null"){
+                    $('#mySelect').val(icono);
+                    $('#mySelectDos').val("Todos");
+                    $('#mySelectDos option[all="all"]').hide();
+                    $('#mySelect option[category="' + icono + '"]').show();
+                    $('#mySelectDos option[category="' + icono + '"]').show();
+                    
+                }
+
                 // SEGUNDO SELECT - CATEGORIAS
                 $('#mySelect').on('change', function() {
                     var value = $(this).val();
@@ -210,7 +229,13 @@
                         } setTimeout(showProduct, 300);
                     }
                 });
+
+                // // Actualiza
+                $('#mySelectDos').change();
+
+
             });   
         </script>
-
+        
+         
 <%- include ('partials-home/_footer-home')  %>    
