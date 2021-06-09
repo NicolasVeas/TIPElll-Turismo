@@ -136,4 +136,21 @@ router.post('/modificar-servicio-emp/:id_servicio', (req, res, next) => {
     });
 });
 
+
+// DELETE del servicio del emprendedor
+router.get('/eliminar-servicio/:id_servicio', (req, res, next) => {
+    if(req.isAuthenticated()){
+        return next();
+    }
+        res.redirect('/');
+    },(req,res) =>{
+        const { id_servicio } = req.params;
+        conn.query('DELETE FROM servicio WHERE id_servicio = ?', [id_servicio], (err, rows) => {
+        if (err) {
+            res.json(err);
+        }
+        res.redirect('/mis-servicios');
+    });
+});
+
 module.exports = router;

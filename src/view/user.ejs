@@ -52,7 +52,7 @@
                                         <div class="overlay overlayFade" style="border-radius: 0px;">
                                             <a href="/servicio/<%= data[i].id_servicio%>" class="boton-act aceptar" style="margin-top: 40px;">Ver servicio</a>
                                             <a href="/modificar-servicio-emp/<%= data[i].id_servicio %>" class="boton-act actualizar">Modificar</a>
-                                            <a onclick="return confirm('¿Está seguro que desea eliminar el servicio?')" href="" class="boton-act eliminar">Eliminar</a>
+                                            <a onclick="return confirm('¿Está seguro que desea eliminar el servicio?')" href="/eliminar-servicio/<%= data[i].id_servicio%>" class="boton-act eliminar">Eliminar</a>
                                         </div>
                                     </a>
                                 </div>
