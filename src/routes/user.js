@@ -53,7 +53,7 @@ router.post('/agregar-servicio-emprendedor',(req, res, next) => {
     },(req,res) =>{
 
     let data = Object.assign({},req.body);
-    if(data.nombre_subcat == 'Ninguna') data.nombre_subcat = null;
+    if(data.nombre_subcat == 'null') data.nombre_subcat = null;
         
     conn.query('INSERT INTO servicio set ? ', {
         titulo: data.titulo,
@@ -102,11 +102,14 @@ router.get('/modificar-servicio-emp/:id_servicio', (req, res, next) => {
     const { id_servicio } = req.params;
 
     conn.query('SELECT * FROM servicio WHERE id_servicio = ?', [id_servicio], (err, rows) => {
-        conn.query('SELECT * FROM categoria', (err, resp1) => {
-            res.render('mod-servicios-emp', {
-                usuario: req.user,
-                data: rows[0],
-                datacat: resp1
+        conn.query('SELECT * FROM categoria', (err, categorias) => {
+            conn.query('SELECT * FROM subcategoria', (err, subcategorias) => {
+                res.render('mod-servicios-emp', {
+                    usuario: req.user,
+                    data: rows[0],
+                    datacat: categorias,
+                    datasubcat: subcategorias
+                });
             });
         });
     });
@@ -120,9 +123,11 @@ router.post('/modificar-servicio-emp/:id_servicio', (req, res, next) => {
     }
         res.redirect('/');
     },(req,res) =>{
+        
         const { id_servicio } = req.params;
         const solicitud = { solicitud: 0};
-        const newServicio = Object.assign(req.body,solicitud)
+        const newServicio = Object.assign(req.body,solicitud);
+        if(newServicio.nombre_subcat === "null") newServicio.nombre_subcat = null;
         conn.query('UPDATE servicio set ? WHERE id_servicio = ?', [newServicio, id_servicio], (err, rows) => {
         if (err) {
             res.json(err);

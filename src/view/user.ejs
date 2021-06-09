@@ -139,7 +139,7 @@
                     <div class="data">
                         <label for="cars">Seleccione la subcategoría de su servicio:</label>
                         <select id="mySelectDos" name="nombre_subcat">
-                            <option class="category_item_dos" value="Ninguna">Ninguna</option>
+                            <option class="category_item_dos" value="null">Ninguna</option>
                             <% for(var i=0; i < dataSubcategoria.length; i++) { %>
                             <option class="category_item_dos" all="all" category="<%= dataSubcategoria[i].nombre_cat %>" value="<%= dataSubcategoria[i].nombre_subcat %>" ><%= dataSubcategoria[i].nombre_subcat %></option>
                             <% } %>
@@ -159,6 +159,26 @@
                 </form>
             </div>
         </div>
+        
+        <script>
+            $(document).ready(function () {
+                
+                $('#mySelectDos option[all="all"]').hide();
+                $('#mySelectDos option[category="Agencias y TTOO"]').show();
+                // combobox y servicios
+                $('#mySelect').on('change', function () {
 
+                    var value = $(this).val();
+                    //var Todos =   $("#mySelect option[value='Todos']").attr("selected", true);
+                    
+                    $('#mySelectDos option[all="all"]').hide();
+                    $('#mySelectDos').val("null");
+                    $('#mySelectDos option[category="' + value + '"]').show();
+
+                });
+
+            });
+    
+        </script>
 
         <%- include ('partials-home/_footer-home')  %>   

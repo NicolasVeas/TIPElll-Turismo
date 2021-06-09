@@ -76,7 +76,7 @@
                 <% for(var i=0; i < data.length; i++) { %>
                     <% cont=1;%>
                     <% if (data[i].solicitud == 1) { %>
-                        <div class="tarjeta" all="all" category="<%= data[i].nombre_cat%>">
+                        <div class="tarjeta" all="all" category="<%= data[i].nombre_cat%>" subcategory="<%= data[i].nombre_subcat %>" > 
                             <div class="baner">
                                 <p class="mayus negrita"><%= data[i].titulo %></p>
                                 <p><%= data[i].nombre_cat %></p>
@@ -98,17 +98,17 @@
         <script>
             $(document).ready(function(){
                 
-                $('#mySelectDos option[all="all"]').hide();
                 
-                // combobox y servicios
+                
+                // SEGUNDO SELECT - CATEGORIAS
                 $('#mySelect').on('change', function() {
                     var value = $(this).val();
-                    //var Todos =   $("#mySelect option[value='Todos']").attr("selected", true);
-                    // console.log(value);
+                    
+                    $('#mySelectDos').val("Todos");
                     $('#mySelectDos option[all="all"]').hide();
                     $('#mySelectDos option[category="' + value + '"]').show();
-    
                     
+    
                     // OCULTAR PRODUCTO
                     $('.tarjeta').css('transform', 'scale(0)');
                     function hideProduct() {
@@ -119,19 +119,56 @@
                     function showProduct() {
                         $('.tarjeta[category="' + value + '"]').show();
                         $('.tarjeta[category="' + value + '"]').css('transform', 'scale(1)');
+                        
                     } setTimeout(showProduct, 300);
     
                     // TODOS
                     if ($(this).val() === 'Todos') {
                         function showAll() {
-                            $('#mySelectDos option[all="all"]').hide();
+                            $('#mySelectDos option[all="all"]').show();
                             $('.tarjeta[all="all"]').show();
                             $('.tarjeta').css('transform', 'scale(1)');
                         } setTimeout(showAll, 300);
                     }
 
                 });
-            });
+
+                // SEGUNDO SELECT - SUBCATEGORIAS 
+                $('#mySelectDos').on('change', function() {
+
+                    var value = $(mySelect).val();
+                    var valueDos = $(this).val();
+
+                    $('.tarjeta').css('transform', 'scale(0)');
+                    function hideProduct() {
+                        $('.tarjeta').hide();
+                    } setTimeout(hideProduct, 300);
+                    
+                    //Mostrar Producto
+                    function showProduct() {
+                        $('.tarjeta[subcategory="' + valueDos + '"]').show();
+                        $('.tarjeta[subcategory="' + valueDos + '"]').css('transform', 'scale(1)');
+                        
+                    } setTimeout(showProduct, 300);
+                
+                    if (valueDos === 'Todos' && value === 'Todos') {
+                        function showAll() {
+                            $('.tarjeta[all="all"]').show();
+                            $('.tarjeta').css('transform', 'scale(1)');
+                        } setTimeout(showAll, 300);
+                    }else if (valueDos === 'Todos' && value != 'Todos') {
+                        function showProduct() {
+                            $('.tarjeta[category="' + value + '"]').show();
+                            $('.tarjeta[category="' + value + '"]').css('transform', 'scale(1)');
+                        } setTimeout(showProduct, 300);
+                    }else if(valueDos != 'Todos' && value != 'Todos'){
+                        function showProduct() {
+                        $('.tarjeta[category="' + value + '"][subcategory="' + valueDos + '"]').show();
+                        $('.tarjeta[category="' + value + '"][subcategory="' + valueDos + '"]').css('transform', 'scale(1)');
+                        } setTimeout(showProduct, 300);
+                    }
+                });
+            });   
         </script>
 
         <script>

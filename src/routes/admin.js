@@ -105,7 +105,8 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
         },(req,res) =>{
         let data = Object.assign({},req.body);
         let user = req.user.correo;
-        if(data.nombre_subcat == 'Ninguna') data.nombre_subcat = null;
+   
+        if(data.nombre_subcat == 'null') data.nombre_subcat = null;
         
 
         conn.query('INSERT INTO servicio set ? ', {
@@ -152,14 +153,17 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
         },(req,res) =>{
             const { id_servicio } = req.params;
             conn.query('SELECT * FROM servicio WHERE id_servicio = ?', [id_servicio], (err, rows) => {
-            if (err) {
-                res.json(err);
-            }
-            res.render('mod-servicios-reg', {
-                data: rows[0]
+                conn.query('SELECT * FROM categoria', (err, categorias) => {
+                    conn.query('SELECT * FROM subcategoria', (err, subcategorias) => {
+                        res.render('mod-servicios-reg', {
+                            data: rows[0],
+                            datacat: categorias,
+                            datasubcat: subcategorias
+                        });
+                    });
+                });
             });
         });
-    });
     
     router.post('/modificar-servicio-reg/:id_servicio', (req, res, next) => {
         if(req.isAuthenticated()){
@@ -169,6 +173,8 @@ router.get('/aceptar-usuario/:correo', (req, res, next) => {
         },(req,res) =>{
             const { id_servicio } = req.params;
             const newServicio = Object.assign({},req.body)
+            if(newServicio.nombre_subcat === "null") newServicio.nombre_subcat = null;
+            
             conn.query('UPDATE servicio set ? WHERE id_servicio = ?', [newServicio, id_servicio], (err, rows) => {
             if (err) {
                 res.json(err);
@@ -431,7 +437,7 @@ router.get('/eliminar-subcategoria/:parametros', (req, res, next) => {
     },(req,res) =>{
         const { parametros } = req.params;
         var arregloParametros = parametros.split('+');
-        console.log(arregloParametros);
+        
         conn.query('DELETE FROM subcategoria WHERE nombre_subcat = ? and nombre_cat = ?', [arregloParametros[1],arregloParametros[0]], (err, rows) => {
         if (err) {
             res.json(err);
@@ -447,7 +453,6 @@ router.post('/modificar-subcategoria', (req, res, next) => {
         res.redirect('/');
     },(req,res) =>{
         const newCus = req.body;
-        console.log(newCus);
         conn.query('UPDATE subcategoria set nombre_subcat = ? WHERE nombre_subcat = ? AND nombre_cat = ?', [newCus.new_nombre_subcat,newCus.nombre_subcat, newCus.nombre_cat], (err, rows) => {
         if (err) {
             res.json(err);
