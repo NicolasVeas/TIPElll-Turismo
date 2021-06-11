@@ -62,7 +62,7 @@
                     </div>
                     <div class="data">
                         <label for="cars">Seleccione la categoría de su servicio:</label>
-                        <select id="mySelect" name="nombre_cat">
+                        <select class="select-user" id="mySelect" name="nombre_cat">
                             <option value="<%= data.nombre_cat%>" selected="true" ><%= data.nombre_cat%> (Actual)</option>
                             <% for(var i=0; i < datacat.length; i++) { %>
                                 <% if (datacat[i].nombre_cat != data.nombre_cat){  %>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="data">
                         <label for="cars">Seleccione la subcategoría de su servicio:</label>
-                        <select id="mySelectDos" name="nombre_subcat">
+                        <select class="select-user" id="mySelectDos" name="nombre_subcat">
                             <% if(data.nombre_subcat === null || data.nombre_subcat === "" ){ %>
                                 <option  category="<%= data.nombre_cat %>" actual="actual" value="null" selected="true" ><%= "Ninguna" %> (Actual)</option>
                             <% }else{ %>

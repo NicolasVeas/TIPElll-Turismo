@@ -130,7 +130,7 @@
                     </div>
                     <div class="data">
                         <label for="cars">Seleccione la categoría del servicio:</label>
-                        <select id="mySelect" name="nombre_cat">
+                        <select class="select-user" id="mySelect" name="nombre_cat">
                             <% for(var i=0; i < datacat.length; i++) { %>
                             <option class="category_item" value="<%= datacat[i].nombre_cat %>"><%= datacat[i].nombre_cat %></option>
                             <% } %>
@@ -138,7 +138,7 @@
                     </div>
                     <div class="data">
                         <label for="cars">Seleccione la subcategoría de su servicio:</label>
-                        <select id="mySelectDos" name="nombre_subcat">
+                        <select class="select-user" id="mySelectDos" name="nombre_subcat">
                             <option class="category_item_dos" value="null">Ninguna</option>
                             <% for(var i=0; i < dataSubcategoria.length; i++) { %>
                             <option class="category_item_dos" all="all" category="<%= dataSubcategoria[i].nombre_cat %>" value="<%= dataSubcategoria[i].nombre_subcat %>" ><%= dataSubcategoria[i].nombre_subcat %></option>

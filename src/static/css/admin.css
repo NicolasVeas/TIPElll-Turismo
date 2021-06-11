@@ -1,17 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap");
 
 :root{
-    --pri: #303841;
+    --pri: #292623;
     --sec: #3A4750;
-    --ter: #c4a119;
+    --ter: #e6b800;
     --cuar: #EEE;
-    --hover: #1abc9c;
+    --hover: #31a550;
 }
 
 body{
     margin: 0;
     padding: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Assistant', sans-serif;
 }
 
 h3{
@@ -212,17 +212,11 @@ label #sidebar-btn:hover{
     padding: .75rem 1.5rem;
     font-size: 1rem;
     line-height: 1.5rem;
+    cursor: pointer;
 }
-.aceptar{
-    background-color: #5cb85c;
-}
-.eliminar{
-    background-color: #d9534f;
-}
-.actualizar{
-    background-color: #1f9bcf;
-    
-}
+.aceptar{ background-color: #31a550; }
+.eliminar{ background-color: #d9534f; }
+.actualizar{ background-color: #1d4b95; }
 
 /* Fin sección del contenido (Cuerpo general) */
 
