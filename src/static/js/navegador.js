@@ -5,6 +5,6 @@ setInterval(function () {
     if (counter > 5) {
         counter = 1;
     }
-}, 2500);
+}, 6000);
 
 

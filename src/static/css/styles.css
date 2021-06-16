@@ -108,6 +108,9 @@ select:hover{ background:var(--blanco); color: var(--pri); }
     .slide, #map{ height: 300px; }
     #nav-slide .dots{ width: 30px; }
     /* Slide */
+    .descripcion, .info{ margin: 20px 40px 0px; }
+    .descripcion h3, .info-box h3{ font-size: 16px; }
+    .info{ grid-template-rows: repeat(2, 0fr); grid-gap: 0px; }
     /* Divisor */
     .divisor-linea{ margin: 7px; }
     .divisor-linea:first-child { margin-right: 0.5rem; }
@@ -119,7 +122,7 @@ select:hover{ background:var(--blanco); color: var(--pri); }
     .container-form{ padding: 30px 10px 20px; }
     .boton button{ width: 60%; }
     /* Footer */
-    .footer{ grid-template-rows: repeat(2, 1fr); grid-gap: 0px;}
+    .footer{ grid-template-rows: repeat(2, 1fr); grid-gap: 5px;}
     /* Footer */
 }
 /* Pantalla de PC */
@@ -138,6 +141,8 @@ select:hover{ background:var(--blanco); color: var(--pri); }
     .slide, #map{ height: 550px; }
     #nav-slide .dots{ width: 50px; }
     /* Slide */
+    .descripcion, .info{ margin: 0px 120px; }
+    .info{ grid-template-columns: repeat(2, 1fr); grid-gap: 10px; }
     /* Divisor */
     .divisor-linea{ margin: 0; }
     .divisor-linea:first-child { margin-right: 1rem; }
@@ -285,10 +290,11 @@ ul{ margin: 0; }
     position: absolute;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 .slide-body .slide_img img{
-    width: inherit;
-    height: inherit;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -461,6 +467,51 @@ ul{ margin: 0; }
 
 /* --- */
 
+/* Vista de servicios o atractivos individuales */
+
+.info{
+    background: var(--blanco);
+    display: grid;
+    padding-bottom: 30px; 
+}
+.info-box{ margin: auto auto;}
+.info-box h3{ font-size: 20px; }
+.descripcion{ padding-bottom: 50px;}
+.title{ padding: 20px 0px 20px; }
+.title h2{ 
+    margin: 10px; 
+    font-family: 'Calligraffitti', cursive; 
+    font-size: 35px; 
+    letter-spacing: 1px;
+}
+.rs{ 
+    list-style-type: none; 
+    color: var(--blanco); 
+    margin-right: 5px;
+    padding: 0;
+    overflow: hidden;
+}
+ul{ margin: 0; }
+.rs li{ float: left;}
+.rs li a{
+    display: inline-block;
+    color: var(--cuar);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 25px;
+}
+.rs li:hover { 
+    background-color: rgba(29, 75, 149, .6);
+    border-radius: 10px;
+    color: var(--blanco);
+}
+
+/* Vista de servicios o atractivos individuales */
+
+/* --- */
+
+
 /* Usuario */
 #tarj:hover .overlay{ opacity: 0.9; padding: 80px 3px;}
 .cont-serv{
@@ -468,7 +519,6 @@ ul{ margin: 0; }
     width: 100%;
     margin-bottom: 20px;
 }
-.info{ margin: 20px 40px; }
 /* --- */
 
 /* Formulario */
