@@ -6,7 +6,6 @@
                 <input type="radio" id="i2" name="images" />
                 
                 <div class="slide_img" id="one"> <img src="/img/<%= data[0].img || 'default.png'%>"> </div>
-                <div class="slide_img" id="two"> <img src="/img/home2.jpg"> </div>
     
                 <div id="nav-slide">
                     <label for="i1" class="dots" id="dot1"></label>
@@ -66,8 +65,8 @@
                             map: map,
                             title: data[i].titulo,
                             animation: google.maps.Animation.DROP,
-                            icon: pinImage,
-                            shadow: pinShadow
+                            // icon: pinImage,
+                            // shadow: pinShadow
                         });
                         google.maps.event.addListener(marker, 'click', function() {
                             infowindow.setContent(data[i].titulo);

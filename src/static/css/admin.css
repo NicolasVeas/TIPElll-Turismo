@@ -239,7 +239,7 @@ label #sidebar-btn:hover{
     margin-left: 10%;
     font-size: 3vh;
 }
-
+form p{ margin: 4px 10%; opacity: 0.7;}
 .input-user{
     align-content: center;
     text-align: center;
