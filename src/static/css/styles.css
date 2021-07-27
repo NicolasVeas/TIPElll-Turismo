@@ -380,7 +380,8 @@ ul{ margin: 0; }
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    font-size: 15px;
+    font-size: 19px;
+    font-weight: bold;
 }
 .overlayFade{
     height: 100%;
@@ -608,3 +609,9 @@ ul{ margin: 0; }
 .linea-ng{background-color:  var(--pri); border-color:  var(--pri) !important;}
 .linea-bl{background-color: var(--blanco); border-color: var(--blanco) !important;}
 /* Divisor de página */
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

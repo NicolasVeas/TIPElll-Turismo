@@ -8,11 +8,11 @@
                 <input type="radio" id="i4" name="images" />
                 <input type="radio" id="i5" name="images" />	
                 
-                <div class="slide_img" id="one"> <img src="/img/home1.jpg"> </div>
-                <div class="slide_img" id="two"> <img src="/img/home2.jpg"> </div>
-                <div class="slide_img" id="three"> <img src="/img/home3.jpg"> </div>
-                <div class="slide_img" id="four"> <img src="/img/home4.jpg"> </div>
-                <div class="slide_img" id="five"> <img src="/img/home5.jpg"> </div>
+                <div class="slide_img" id="one"> <img src="/img/home1.jpg" loading="lazy"> </div>
+                <div class="slide_img" id="two"> <img src="/img/home2.jpg" loading="lazy"> </div>
+                <div class="slide_img" id="three"> <img src="/img/home3.jpg" loading="lazy"> </div>
+                <div class="slide_img" id="four"> <img src="/img/home4.jpg" loading="lazy"> </div>
+                <div class="slide_img" id="five"> <img src="/img/home5.jpg" loading="lazy"> </div>
     
                 <div id="nav-slide">
                     <label for="i1" class="dots" id="dot1"></label>
@@ -27,7 +27,7 @@
         <div class="iconos">
             <div class="row-iconos">
                 <a class="icono-img" href="/cat/gastronomia">
-                    <img src="/img/icono-1.png" alt="Servicios Gastronómicos">
+                    <img src="/img/icono-1.png" loading="lazy"  alt="Servicios Gastronómicos">
                     <div class="overlay overlayFade">
                         <div class="text-over">Gastronomia</div>
                     </div>
@@ -35,7 +35,7 @@
             </div>
             <div class="row-iconos">
                 <a class="icono-img" href="/cat/alojamientos">
-                    <img src="/img/icono-2.png" alt="Alojamientos">
+                    <img src="/img/icono-2.png" loading="lazy" alt="Alojamientos">
                     <div class="overlay overlayFade">
                         <div class="text-over">Alojamientos</div>
                     </div>
@@ -43,7 +43,7 @@
             </div>
             <div class="row-iconos">
                 <a class="icono-img" href="/cat/agencias">
-                    <img src="/img/icono-3.png" alt="Agencias y TTOO">
+                    <img src="/img/icono-3.png" loading="lazy" alt="Agencias y TTOO">
                     <div class="overlay overlayFade">
                         <div class="text-over">Agencias y TTOO</div>
                     </div>
@@ -51,7 +51,7 @@
             </div>
             <div class="row-iconos">
                 <a class="icono-img" href="/cat/paseosnauticos">
-                    <img src="/img/icono-4.png" alt="Paseos Náuticos">
+                    <img src="/img/icono-4.png" loading="lazy" alt="Paseos Náuticos">
                     <div class="overlay overlayFade">
                         <div class="text-over">Paseos Náuticos</div>
                     </div>
@@ -95,7 +95,7 @@
                                 <p><%= dataServicio[i].nombre_cat %></p>
                             </div>
                             <a href="/servicio/<%= dataServicio[i].id_servicio%>">
-                                <img src="/img/<%= dataServicio[i].img || 'default.png'%>">
+                                <img src="/img/<%= dataServicio[i].img || 'default.png'%>" loading="lazy" >
                             </a>
                         </div>
                     <% } %>
@@ -110,7 +110,7 @@
                             <p>Atractivos</p>
                         </div>
                         <a href="/atractivo/<%= dataAtractivo[i].id_atractivo%>">
-                            <img src="/img/<%= dataAtractivo[i].img || 'default.png'%>">
+                            <img src="/img/<%= dataAtractivo[i].img || 'default.png'%>" loading="lazy" >
                         </a>
                     </div>
                 <% } %>

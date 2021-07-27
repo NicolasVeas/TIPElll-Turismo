@@ -21,12 +21,16 @@
                             <tr>
                                 <td> <%= i+1 %> </td>
                                 <td> <%= datacat[i].nombre_cat %> </td>
-                                <td>
-                                    <a href="/eliminar-categoria/<%= datacat[i].nombre_cat%>" class="boton eliminar">Eliminar</a>
-                                </td>
+                                <% if (datacat[i].nombre_cat != "Agencias y TTOO" && datacat[i].nombre_cat != "Alojamientos" && datacat[i].nombre_cat != "Paseos Náuticos" && datacat[i].nombre_cat != "Servicios Gastronómicos" ) {%>
+                                    <td>
+                                        <a href="/eliminar-categoria/<%= datacat[i].nombre_cat%>" class="boton eliminar">Eliminar</a>
+                                    </td>
+                                
                                 <td>
                                     <a onclick="cambiarboton('<%= datacat[i].nombre_cat%>')" id="btn-abrir-popup" class="boton actualizar btnpop">Modificar</a>
                                 </td>
+
+                                <% } %>
                             </tr>
                         <% } %>
                     <% } %>
